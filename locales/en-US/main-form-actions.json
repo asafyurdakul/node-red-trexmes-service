@@ -1,0 +1,14 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    },
+    "main-form-action": {
+        "label": {                        
+            "buttonindex": "Button ID"
+        }
+    }
+}

@@ -1,0 +1,196 @@
+
+
+<script type="text/html" data-template-name="Button Configurator">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+
+        <div class="form-row node-input-property-container-row">
+            <ol id="node-input-property-container"></ol>
+        </div>
+
+    </div>   
+</script>
+
+<script type="text/javascript">
+    (function() {
+        
+        function resizeDialog(size) {
+            size = size || { height: $(".red-ui-tray-content form").height() }
+            var rows = $("#dialog-form>div:not(.node-input-property-container-row):visible");
+            var height = size.height;
+            $("#node-input-property-container").editableList('height',height - 150);
+        }
+
+        function getProps(el) {
+            var result = {
+                props: []
+            };
+            el.each(function(i) {
+                var prop = $(this);
+                var p = {
+                    p: prop.find(".node-input-prop-property-name").typedInput('value')
+                };
+                if (p.p) {
+                    p.v = prop.find(".node-input-prop-property-value").typedInput('value');
+                    p.d = prop.find(".node-input-prop-property-description").typedInput('value'); 
+                    p.e = prop.find(".node-input-prop-property-override").typedInput('value'); 
+                    p.f = prop.find(".node-input-prop-property-event").typedInput('value'); 
+                    result.props.push(p);
+                }
+            });
+            return result;
+        }
+        
+        
+        RED.nodes.registerType('Button Configurator',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                formainform: {value: false },
+                props:{value:[]},
+                data:{value:"", required:false},
+                dataType:{value:"msg"},
+                formname: {value:""},
+            },
+            inputs:1,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else {
+                    return "Button Configurator";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() { 
+                var node = this;
+
+                var eList = $('#node-input-property-container').css('min-height','250px').css('min-width','450px');
+                eList.editableList({
+                    addItem: function(container, i, opt) {
+                        var prop = opt;
+                        if (!prop.hasOwnProperty('p')) {
+                            prop = { p: "1", v: "Test", d: "true", e: "true", f: "After" }; 
+                        }
+                        container.css({
+                            overflow: 'hidden',
+                            whiteSpace: 'nowrap'
+                        });
+
+                        var row = $('<div/>').appendTo(container);
+
+                        var propertyName = $('<input/>', { class: "node-input-prop-property-name", type: "number" })
+                            .css("width", "10%")
+                            .appendTo(row)
+                            .typedInput({ types: [{ label: 'Index', value: 'number' }] });
+
+                        $('<div/>', { style: 'display:inline-block; padding:0px 6px;' })
+                            .text(',')
+                            .appendTo(row);
+
+                        var propertyValue = $('<input/>', { class: "node-input-prop-property-value", type: "text" })
+                            .css("width", "calc(25% - 20px)")
+                            .appendTo(row)
+                            .typedInput({ types: [{ label: 'Caption', value: 'str' }] });
+
+                        $('<div/>', { style: 'display:inline-block; padding:0px 3px;' })
+                            .text(',')
+                            .appendTo(row);
+
+                        var label = $('<label/>', {
+                            id: "propertyDescriptionLabel",
+                            text: "Visible:"
+                        })
+                        .css("width", "calc(8% - 20px)")
+                        .css("margin-right", "2px")
+                        .appendTo(row);
+
+                        var propertyDescription = $('<input/>', {
+                            class: "node-input-prop-property-description",
+                            type: "text",
+                            'aria-labelledby': "propertyDescriptionLabel"
+                        })
+                        .css("width", "calc(15% - 20px)")
+                        .appendTo(row)
+                        .typedInput({ types: ['bool'] });
+                        
+                        $('<div/>', { style: 'display:inline-block; padding:0px 3px;' })
+                            .text(',')
+                            .appendTo(row);
+
+                        var label = $('<label/>', {
+                            id: "propertyOverrideLabel",
+                            text: "Override:"
+                        })
+                        .css("width", "calc(9% - 20px)")
+                        .css("margin-right", "2px")
+                        .appendTo(row);
+
+                        var propertyOverride = $('<input/>', {
+                            class: "node-input-prop-property-override",
+                            type: "text",
+                            'aria-labelledby': "propertyOverrideLabel"
+                        })
+                        .css("width", "calc(15% - 20px)")
+                        .appendTo(row)
+                        .typedInput({ types: ['bool'] });
+
+                        $('<div/>', { style: 'display:inline-block; padding:0px 6px;' })
+                            .text(',')
+                            .appendTo(row);
+
+                        var propertyEvent = $('<input/>', { class: "node-input-prop-property-event", type: "text" })
+                            .css("width", "calc(20% - 20px)")
+                            .appendTo(row)
+                            .typedInput({
+                                            types: [
+                                                {
+                                                    value: "event",                                                
+                                                    options: [
+                                                        { value: "After", label: "After Event" },
+                                                        { value: "Before", label: "Before Event" }
+                                                    ]
+                                                }
+                                            ]
+                                        });  
+                        
+                        propertyName.typedInput('value', prop.p);
+                        propertyValue.typedInput('value', prop.v);
+                        propertyDescription.typedInput('value', prop.d);
+                        propertyOverride.typedInput('value', prop.e);
+                        propertyEvent.typedInput('value', prop.f);
+
+                        resizeDialog();
+                    },
+                    removable: true,
+                    sortable: true                                        
+                });
+                $('#node-inject-test-inject-button').css("float", "right").css("margin-right", "unset");
+
+                for (var i=0; i<node.props.length; i++) {
+                    var prop = node.props[i];
+                    var newProp = { p: prop.p, v: prop.v , d:prop.d, e:prop.e, f:prop.f};
+                    eList.editableList('addItem',newProp);
+                }
+                
+            },
+            oneditsave: function() {
+                var items = $("#node-input-property-container").editableList('items');
+                var result = getProps(items);
+                this.props = result.props;
+            },
+            oneditresize: resizeDialog
+    
+        });
+    
+       
+    
+    })();
+    </script>

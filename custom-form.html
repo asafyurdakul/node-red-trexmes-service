@@ -1,0 +1,84 @@
+
+
+<script type="text/html" data-template-name="Custom Form">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <div class="form-row" style="display: flex; align-items: center; gap: 10px;">
+            <label for="node-input-customformxml" style="width: 100px; flex-shrink: 0;"><i class="fa fa-globe"></i> <span data-i18n="custom-form.label.customformxml"></label>
+            <input type="text" id="node-input-customformxml" style="flex-grow: 1; min-width: 0;">
+            <button id="node-button-customformxml" class="red-ui-button"><i class="fa fa-windows"></i></button>
+        </div>
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-formainform" style="width: 70%"><span data-i18n="custom-form.label.formainform"></span></label>        
+            <input type="checkbox" id="node-input-formainform" style="width: 30%">
+        </div>
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-isstyled" style="width: 70%"><span data-i18n="custom-form.label.isstyled"></span></label>        
+            <input type="checkbox" id="node-input-isstyled" style="width: 30%">
+        </div>
+    </div>   
+</script>
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('Custom Form',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                customformxml: {value:""},
+                isstyled: {value: true },
+                formainform: {value: false }
+            },
+            inputs:1,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else {
+                    return "Custom Form";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                var node = this;
+                // Input alanına mevcut customformxml değerini aktar
+                /*$("#node-input-customformxml").val(node.customformxml);
+
+                // Input alanındaki değeri node.customformxml'a aktar
+                $("#node-input-customformxml").on('input', function() {
+                    node.customformxml = $(this).val(); // Input değeri node'a aktarılır
+                });*/
+
+                $("#node-button-customformxml").click(function () {
+                    var xmlContent = node.customformxml || "";  
+                    //alert(xmlContent );
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/custom-form/run-exe",  
+                        contentType: "application/json",  
+                        data: JSON.stringify({ xml: xmlContent }),  
+                        success: function (data) {
+                            node.customformxml = data.output;
+                            $("#node-input-customformxml").val(data.output);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert("Exe could not worked! Error: " + textStatus + " " + errorThrown);
+                        }
+                    });
+                });
+            }
+    
+        });
+    
+       
+    
+    })();
+    </script>

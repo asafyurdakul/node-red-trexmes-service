@@ -1,0 +1,9 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    }
+}

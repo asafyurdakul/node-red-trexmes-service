@@ -1,0 +1,15 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    },
+    "button-configurator": {
+        "label": {
+            "data": "Data",
+            "formname": "Form Name"
+        }
+    }
+}

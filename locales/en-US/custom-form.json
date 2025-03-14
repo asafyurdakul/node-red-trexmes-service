@@ -1,0 +1,16 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    },
+    "custom-form": {
+        "label": {
+            "customformxml": "Design Custom Form",
+            "isstyled": "Default Style",
+            "formainform": "For Main-Form"
+        }
+    }
+}

@@ -1,0 +1,835 @@
+<script type="text/html" data-template-name="Business Events">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+        <select type="text" id="node-input-event" style="width:70%;"></select>
+        <script type="text/javascript">
+            (function() {
+            var options = [
+                    "OnUndefinedStoppagesListing",
+                    "OnUndefinedStoppagesQuerying",
+                    "OnWorkstationStatusEntryCreating",
+                    "OnWorkstationStatusItemEntryCreating",
+                    "OnWorkstationStatesSet",
+                    "OnWorkStationInfoLoaded",
+                    "OnProductionSaving",
+                    "OnSignalProductionSaved",
+                    "OnSignalProductionSaving",
+                    "OnQualityReceiptCreated",
+                    "OnShiftChanged",
+                    "OnShiftChanging",
+                    "OnAuthorizationRequiredStoppageEnding",
+                    "OnStoppageChanging",
+                    "OnStoppageEnded",
+                    "OnStoppageReasonEquipmentSelected",
+                    "OnStoppageSelected",
+                    "OnStoppageSelecting",
+                    "OnStoppageStarted",
+                    "OnTestModeChanged",
+                    "OnUndefinedStoppageChanged",
+                    "OnUndefinedStoppageChanging",
+                    "OnProductionReceiptIntegrationSaving",
+                    "OnSubProductReceiptsCreating",
+                    "OnUnapprovedProductionReceiptIntegrating",
+                    "OnUnapprovedProductionReceiptUsedMaterialSelecting",
+                    "OnUserDefinedReceiptDataCreated",
+                    "OnProductionReceiptUserDefinedFieldsGetting",
+                    "OnFractionalAmountProductionSaved",
+                    "OnOperatorApprovedProductionSaveAmount",
+                    "OnOperatorApprovingProductionSaveAmount",
+                    "OnOperatorProductionSaving",
+                    "OnProductionSaveCompleted",
+                    "OnProductionSaveCompleting",
+                    "OnProductionSaved",
+                    "OnProductionSaveAllowanceChecked",
+                    "OnProductionSaveStarted",
+                    "OnProductionSaveViabilityChecking",
+                    "OnProPlanCycleFromStockCycleSetting",
+                    "OnSelectedJoborderProductionParametersSetting",
+                    "OnSpecPortSelected",
+                    "OnStockCoefficientChangeSaving",
+                    "OnStockEquipmentMatchViabilityChecking",
+                    "OnEditedProductionReceiptSaving",
+                    "OnEditProductionReceiptSaved",
+                    "OnPidReceiptCreated",
+                    "OnPidReceiptCreating",
+                    "OnPidreceiptMaterialReceiptsCreated",
+                    "OnPidSectionReceiptCreated",
+                    "OnProductionReceiptCreated",
+                    "OnProductionReceiptEditQuantityConverting",
+                    "OnProductionReceiptEditReceiptLoading",
+                    "OnProductionReceiptEditSaving",
+                    "OnProductionReceiptIntegrating",
+                    "OnProductionFinishStatusChecking",
+                    "OnProductionInfoResetted",
+                    "OnProductionInfoSet",
+                    "OnProductionQuantityConverting",
+                    "OnProductionSummaryUpdated",
+                    "OnRotationSpeedCalculating",
+                    "OnSignalProductionEnding",
+                    "OnCounterIncrementViabilityChecked",
+                    "OnOpcProductionCounterIncreasing",
+                    "OnOperatorCounterIncreasing",
+                    "OnProductionCounterIncreased",
+                    "OnProductionCounterIncrementCompleted",
+                    "OnStockProductionCounterIncreased",
+                    "OnCoefficientChangeSaved",
+                    "OnCyclePeriodSet",
+                    "OnCyclePeriodSetting",
+                    "OnPeriodicalMaintenanceApproved",
+                    "OnPeriodicalMaintenanceConditionChecking",
+                    "OnPokaYokeBarcodeValidating",
+                    "OnCurrentSpeedCalculated",
+                    "OnCurrentSpeedCalculating",
+                    "OnEstimatedCompletionTimeCalculating",
+                    "OnJoblessProductionOccured",
+                    "OnNoShiftTimeProductionOccuring",
+                    "OnProcycleEntryCreated",
+                    "OnProcycleEntryCreating",
+                    "OnProcycleEntryUndefinedStockDetected",
+                    "OnProcycleEntryUpdating",
+                    "OnProcycleStoppageEntryUpdating",
+                    "OnProductionCompleted",
+                    "OnProductionCompleting",
+                    "OnProductionContinuing",
+                    "OnPlanSelecting",
+                    "OnPlanSelectionApproved",
+                    "OnPlanSelectViabilityChecking",
+                    "OnPlanStartViabilityChecking",
+                    "OnProductionPlanChanging",
+                    "OnProductionPlanCreated",
+                    "OnLabelReprinting",
+                    "OnUnapprovedProductionReceiptLabelPrinting",
+                    "OnLanguageChanged",
+                    "OnLanguageSelectionChanged",
+                    "OnMaintenanceOrderCompleted",
+                    "OnMaintenanceOrderCreated",
+                    "OnMaintenancePlanSetting",
+                    "OnMaintenanceServiceReceiptCreated",
+                    "OnMaintenanceServiceRequestCreated",
+                    "OnOperatorCreatingMaintenanceOrder",
+                    "OnSerieDefectCreated",
+                    "OnShiftDefectsQuerying",
+                    "OnDocumentNotFound",
+                    "OnTeamChanged",
+                    "OnForkliftOrderCreated",
+                    "OnForkliftFetchOrderCreating",
+                    "OnForkliftOrderUpdated",
+                    "OnForkliftOrdersQuerying",
+                    "OnCreatedProductionPlanLoading",
+                    "OnCurrentPlanInfoSet",
+                    "OnJoborderSelecting",
+                    "OnOperatorAddedNextPlan",
+                    "OnOperatorDeletedNextPlan",
+                    "OnPlanChanged",
+                    "OnPlanLoaded",
+                    "OnPlanLoadViaOpcStockNoFailed",
+                    "OnProcessDataAnalysisAlertOccured",
+                    "OnProcessDataAnalysisProcessing",
+                    "OnShiftProductivityCalculated",
+                    "OnConsumedDcasLotsDeleting",
+                    "OnDcasLotsDeletingOnProductionCompletion",
+                    "OnLotDeleted",
+                    "OnMaterialCounterIncreased",
+                    "OnMaterialLotSelectionProcessed",
+                    "OnPlanLotsFromDcasLotsGenerating",
+                    "OnPlanMaterialsQuerying",
+                    "OnForkliftGetOrderCreating",
+                    "OnProductionPlanJobordersAppending",
+                    "OnDefectAmountQuerying",
+                    "OnDefectEntryCreated",
+                    "OnDefectEntryDeleted",
+                    "OnDefectQuantityConverting"
+                    ];
+            var select = document.getElementById("node-input-event");
+            options.forEach(function(option) {
+                var opt = document.createElement("option");
+                opt.value = option;
+                opt.innerHTML = option;
+                select.appendChild(opt);
+            });
+            })();
+        </script>
+    </div>   
+</script>
+
+<script type="text/html" data-template-name="Application Events">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+        <select type="text" id="node-input-event" style="width:70%;">
+        </select>
+        <script type="text/javascript">
+            (function() {
+            var options = [
+                    "OnProductionSaveFailed",
+                    "OnProductionSaved",
+                    "OnNextProductionPlanLoading",
+                    "OnPokaYokeResultProcessRequesting",
+                    "OnOverCapacityPlanLoading",
+                    "OnTeamPlanPolyvalenceValidationFailed",
+                    "OnPlanEquipmentBarcodeRequesting",
+                    "OnPokaYokeCheckRequesting",
+                    "OnRobotModelNotFound",
+                    "OnRobotModelStockNotMatched",
+                    "OnRobotModelCounterIncrementRequesting",
+                    "OnDcasMessageProcessing",
+                    "OnSerieBarcodeScanning",
+                    "OnLotBarcodeScanning",
+                    "OnJoborderStockBarcodeScanning",
+                    "OnJoborderStockBarcodeScanned",
+                    "OnWorkstationStatesSet",
+                    "OnUIButtonConfigurationSet",
+                    "OnProductionReceiptBriefRequesting",
+                    "OnStoppageSignalActivityCheckRequesting",
+                    "OnOverCapacityCounterIncrementDetected",
+                    "OnProductionPlanLoadingStarted",
+                    "OnProductionPlanLoadingCompleted",
+                    "OnPlanDetailsSetting",
+                    "OnProductionCounterIncreasingWithoutAnyLoadedPlan",
+                    "OnProductionCounterIncreased",
+                    "OnProductionSaving",
+                    "OnPortManagerConnected",
+                    "OnDigitalInputValueChanging",
+                    "OnDigitalInputValueChanged",
+                    "OnDigitalOutputValueChanging",
+                    "OnDigitalOutputValueChanged",
+                    "OnIOCardDataCoalesced",
+                    "OnStoppageSignalChanged",
+                    "OnAssemblyPictureSignalChanged",
+                    "OnProductionSaveSignalChanged",
+                    "OnBarcodeScanning",
+                    "OnBarcodeScanned",
+                    "OnSerialPortBarcodeScanning",
+                    "OnPortParametersLoaded",
+                    "OnSocketMessageInterpreted",
+                    "OnProductionSaveSignalInputValuesSetting",
+                    "OnNgpCommandProcessing",
+                    "OnOpcDataPortInitialized",
+                    "OnTeamChanging",
+                    "OnProcycleStoppageEstimatedDurationRequesting",
+                    "OnStoppageCauseRequesting",
+                    "OnPlannedStoppageEstimatedDurationReached",
+                    "OnCurrentPlanInfoSet",
+                    "OnPlanLoaded",
+                    "OnPlanChanged",
+                    "OnProductionContinuing",
+                    "OnProductionCompleted",
+                    "OnPeriodicalMaintenanceApproved",
+                    "OnProductionReceiptCreated",
+                    "OnPortDataChanging",
+                    "OnPortDataChanged",
+                    "OnPortManagerInitializing",
+                    "OnPortManagerInitialized"
+                    ];
+            var select = document.getElementById("node-input-event");
+            options.forEach(function(option) {
+                var opt = document.createElement("option");
+                opt.value = option;
+                opt.innerHTML = option;
+                select.appendChild(opt);
+            });
+            })();
+        </script>
+    </div>   
+</script>
+
+<script type="text/html" data-template-name="System Events">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+        <select type="text" id="node-input-event" style="width:70%;">
+        </select>
+        <script type="text/javascript">
+            (function() {
+            var options = [
+                "OnApplicationClosing",
+                "OnApplicationStarted",
+                "OnGlobalTimerTicked"
+                ];
+            var select = document.getElementById("node-input-event");
+            options.forEach(function(option) {
+                var opt = document.createElement("option");
+                opt.value = option;
+                opt.innerHTML = option;
+                select.appendChild(opt);
+            });
+            })();
+        </script>
+    </div>   
+</script>
+
+<script type="text/html" data-template-name="Communication Events">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+        <select type="text" id="node-input-event" style="width:70%;">
+        </select>
+        <script type="text/javascript">
+            (function() {
+            var options = [
+                "OnPortManagerInitialized",
+                "OnPortManagerInitializing",
+                "OnPortParametersLoaded",
+                "OnProductionSaveSignalChanged",
+                "OnProductionSaveSignalInputValuesSetting",
+                "OnSerialPortBarcodeScanning",
+                "OnSerieBarcodeScanning",
+                "OnSocketMessageInterpreted",
+                "OnStoppageSignalChanged",
+                "OnDefectEntrySignalChanged",
+                "OnAssemblyPictureSignalChanged",
+                "OnBarcodeScanned",
+                "OnBarcodeScanning",
+                "OnDcasMessageProcessing",
+                "OnDigitalInputValueChanged",
+                "OnDigitalInputValueChanging",
+                "OnDigitalOutputValueChanged",
+                "OnDigitalOutputValueChanging",
+                "OnIOCardDataCoalesced",
+                "OnJoborderStockBarcodeScanned",
+                "OnJoborderStockBarcodeScanning",
+                "OnLotBarcodeScanning",
+                "OnNgpCommandProcessing",
+                "OnPortDataChanged",
+                "OnPortDataChanging",
+                "OnPortManagerConnected"
+                ];
+            var select = document.getElementById("node-input-event");
+            options.forEach(function(option) {
+                var opt = document.createElement("option");
+                opt.value = option;
+                opt.innerHTML = option;
+                select.appendChild(opt);
+            });
+            })();
+        </script>
+    </div>   
+</script>
+
+<script type="text/html" data-template-name="Display Events">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+            <select type="text" id="node-input-event" style="width:70%;"></select>
+        <script type="text/javascript">
+            (function() {
+            var options = [
+                    "OnBarcodeTextBoxSetting",
+                    "OnCommandKeyProcessing",
+                    "OnDefectEntryOperatorConfirmationFailed",
+                    "OnDefectSelected",
+                    "OnEventDetailSelectionsListing",
+                    "OnForkliftTakeTransferSelecting",
+                    "OnJobInformationEquipmentCounterTextSetting",
+                    "OnJobLoadColumnCellFormatSetting",
+                    "OnJobOrderSearching",
+                    "OnMainFormCounterTextsSetting",
+                    "OnMainFormNoteTextSetting",
+                    "OnMainUserControlJobOrderPanelClicked",
+                    "OnOperationSpecFormOpening",
+                    "OnOperatorCreatingDefectEntry",
+                    "OnOperatorPlanLoadButtonClicking",
+                    "OnOtherOperationsFormClosed",
+                    "OnPitchLabelSetting",
+                    "OnPlanContinueQuestionAsking",
+                    "OnPlanSearching",
+                    "OnPlanSelectionDetailClicked",
+                    "OnProductionAmountLeftTextSetting",
+                    "OnProductionApproveFormOpening",
+                    "OnProductionApproveGridSet",
+                    "OnProductionApproveGridSetting",
+                    "OnProductionApproveOperatorDataGridSetting",
+                    "OnScreenSaverShowning",
+                    "OnShiftEventFormOpening",
+                    "OnUIButtonConfigurationSet",
+                    "OnWorkstationSelected"
+                    ];
+            var select = document.getElementById("node-input-event");
+            options.forEach(function(option) {
+                var opt = document.createElement("option");
+                opt.value = option;
+                opt.innerHTML = option;
+                select.appendChild(opt);
+            });
+            })();
+        </script>
+    </div>   
+</script>
+
+<script type="text/html" data-template-name="Form Events">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-formainform" style="width: 70%"><span data-i18n="event-subscribers.label.formainform"></span></label>        
+            <input type="checkbox" id="node-input-formainform" style="width: 30%">
+        </div>
+
+        <div class="form-row">
+            <label for="node-input-formname"><i class="fa fa-windows"></i> <span data-i18n="event-subscribers.label.formname"></span></label>
+            <select id="node-input-formname"></select>
+        </div>
+
+        <div class="form-row">
+            <label for="node-input-control"><i class="fa fa-address-card"></i> <span data-i18n="event-subscribers.label.control"></span></label>
+            <input type="text" id="node-input-control" style="width:70%;"></select>
+        </div>
+        
+        <div class="form-row">
+            <label for="node-input-eventtime"><i class="fa fa-fire"></i><span data-i18n="event-subscribers.label.eventtime"></span></label>        
+            <select id="node-input-eventtime" style="width: 70%;">
+                <option value="After">After</option>
+                <option value="Before">Before</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="node-input-eventname"><i class="fa fa-fire"></i> <span data-i18n="event-subscribers.label.eventname"></span></label>
+            <select id="node-input-eventname" style="width:70%;">
+            <script type="text/javascript">
+                (function() {
+                var options = [
+                        "Click",
+                        "Change",
+                        "Load",
+                        "Tick"];
+                var select = document.getElementById("node-input-eventname");
+                options.forEach(function(option) {
+                    var opt = document.createElement("option");
+                    opt.value = option;
+                    opt.innerHTML = option;
+                    select.appendChild(opt);
+                });
+                })();
+            </script>
+        </div>
+
+    </div>   
+</script>
+
+<script type="text/html" data-template-name="Display Methods">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+        <select type="text" id="node-input-event" style="width:70%;">
+        </select>
+        <script type="text/javascript">
+            (function() {
+            var options = [
+                "GetMainUserControl",
+                "GetUIButtonConfiguration"
+                ];
+            var select = document.getElementById("node-input-event");
+            options.forEach(function(option) {
+                var opt = document.createElement("option");
+                opt.value = option;
+                opt.innerHTML = option;
+                select.appendChild(opt);
+            });
+            })();
+        </script>
+    </div>   
+</script>
+
+<script type="text/html" data-template-name="Responser">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+    </div>   
+</script>
+
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('Business Events',{
+        category: 'trexMes service',
+        color:"rgb(204, 255, 204)",
+        defaults: {
+            name: {value:""},
+            method: {value:"post",required:true},
+            event: {value:"", required:true,
+                  label:RED._("node-red:event-subscribers.label.event")},
+        },
+        inputs:0,
+        outputs:1,
+        icon: "trex.png",
+        label: function() {
+            if (this.name) {
+                return this.name;
+            } else if (this.event) {
+                return this.event;
+            } else {
+                return "Business Events";
+            }
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        oneditprepare: function() {
+            var root = RED.settings.httpNodeRoot;
+            if (root.slice(-1) == "/") {
+                root = root.slice(0,-1);
+            }
+        }
+
+    });
+
+   
+
+})();
+</script>
+
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('Application Events',{
+        category: 'trexMes service',
+        color:"rgb(204, 255, 204)",
+        defaults: {
+            name: {value:""},
+            method: {value:"post",required:true},
+            event: {value:"", required:true,
+                  label:RED._("node-red:event-subscribers.label.event")},
+        },
+        inputs:0,
+        outputs:1,
+        icon: "trex.png",
+        label: function() {
+            if (this.name) {
+                return this.name;
+            } else if (this.event) {
+                return this.event;
+            } else {
+                return "Application Events";
+            }
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        oneditprepare: function() {
+            var root = RED.settings.httpNodeRoot;
+            if (root.slice(-1) == "/") {
+                root = root.slice(0,-1);
+            }
+        }
+
+    });
+})();
+</script>  
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('System Events',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                method: {value:"post",required:true},
+                event: {value:"", required:true,
+                      label:RED._("node-red:event-subscribers.label.event")},
+            },
+            inputs:0,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else if (this.event) {
+                    return this.event;
+                } else {
+                    return "System Events";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                var root = RED.settings.httpNodeRoot;
+                if (root.slice(-1) == "/") {
+                    root = root.slice(0,-1);
+                }
+            }
+    
+        });
+    })();
+</script>  
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('Communication Events',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                method: {value:"post",required:true},
+                event: {value:"", required:true,
+                      label:RED._("node-red:event-subscribers.label.event")},
+            },
+            inputs:0,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else if (this.event) {
+                    return this.event;
+                } else {
+                    return "Communication Events";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                var root = RED.settings.httpNodeRoot;
+                if (root.slice(-1) == "/") {
+                    root = root.slice(0,-1);
+                }
+            }
+    
+        });
+    })();
+</script>  
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('Display Events',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                method: {value:"post",required:true},
+                event: {value:"", required:true,
+                      label:RED._("node-red:event-subscribers.label.event")},
+            },
+            inputs:0,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else if (this.event) {
+                    return this.event;
+                } else {
+                    return "Display Events";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                var root = RED.settings.httpNodeRoot;
+                if (root.slice(-1) == "/") {
+                    root = root.slice(0,-1);
+                }
+            }
+    
+        });
+    })();
+</script>  
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('Form Events',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                method: {value:"post",required:true},
+                event: {value:""},
+                formname: {value:"", required:true,
+                      label:RED._("node-red:event-subscribers.label.formname")},
+                control: {value:"", required:true,
+                      label:RED._("node-red:event-subscribers.label.control")},  
+                eventname: {value:"Click", required:true,
+                      label:RED._("node-red:event-subscribers.label.eventname")},
+                formainform: {value: false },
+                eventtime: {value: "After"}
+            },
+            inputs:0,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                
+                if (this.name) {
+                    return this.name;
+                } 
+                else if(this.formainform === true && this.eventname && this.control) {
+                    return "AppForm " + this.control + " " + this.eventname;  
+                }
+                else if (this.formname && this.eventname && this.control) {
+                    return this.formname + " " + this.control + " " + this.eventname;                    
+                } else {
+                    return "Form Events";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                var root = RED.settings.httpNodeRoot;
+                if (root.slice(-1) == "/") {
+                    root = root.slice(0,-1);
+                }
+                
+                var $combo = $("#node-input-formname");
+                var currentSelection = this.formname; 
+                $combo.empty();
+
+                RED.nodes.eachNode(function (node) {
+                    if (node.type === "Custom Form") { 
+                        var option = $("<option></option>")
+                        .attr("value", node.name)
+                        .text(node.name);
+
+                        if (currentSelection === node.name) {
+                            option.attr("selected", "selected");
+                        }
+                        $combo.append(option);  
+                    }
+                });
+
+
+                function toggleInputVisibility() {
+                    if ($("#node-input-formainform").prop("checked")) {
+                        $("#node-input-formname").parent().hide();
+                        $("#node-input-eventtime").parent().show();
+                    } else {
+                        $("#node-input-formname").parent().show();
+                        $("#node-input-eventtime").parent().hide();
+                    }
+                }
+
+                // Sayfa yüklendiğinde çalıştır
+                toggleInputVisibility();
+
+                 // Checkbox değiştiğinde input alanını göster/gizle
+                $("#node-input-formainform").on("change", function () {
+                    toggleInputVisibility();
+                });
+            }
+    
+        });   
+    
+    })();
+</script>
+   
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('Display Methods',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                method: {value:"post",required:true},
+                event: {value:"", required:true,
+                      label:RED._("node-red:event-subscribers.label.event")},
+            },
+            inputs:0,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else if (this.event) {
+                    return this.event;                  
+                } else {
+                    return "Display Methods";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                var root = RED.settings.httpNodeRoot;
+                if (root.slice(-1) == "/") {
+                    root = root.slice(0,-1);
+                }
+                
+                var $combo = $("#node-input-formname");
+                var currentSelection = this.formname; 
+                $combo.empty();
+
+                RED.nodes.eachNode(function (node) {
+                    if (node.type === "Custom Form") { 
+                        var option = $("<option></option>")
+                        .attr("value", node.name)
+                        .text(node.name);
+
+                        if (currentSelection === node.name) {
+                            option.attr("selected", "selected");
+                        }
+                        $combo.append(option);  
+                    }
+                });
+
+            }
+    
+        });   
+    
+    })();
+</script>
+
+<script type="text/javascript">
+(function() {
+ 
+    /*var headerTypes = [
+        {value:"content-type",label:"Content-Type",hasValue: false},
+        {value:"location",label:"Location",hasValue: false},
+        {value:"other",label:RED._("node-red:event-subscribers.label.other"),icon:"red/images/typedInput/az.svg"}
+       ]
+    var contentTypes = [
+        {value:"application/json",label:"application/json",hasValue: false},
+        {value:"application/xml",label:"application/xml",hasValue: false},
+        {value:"text/css",label:"text/css",hasValue: false},
+        {value:"text/html",label:"text/html",hasValue: false},
+        {value:"text/plain",label:"text/plain",hasValue: false},
+        {value:"image/gif",label:"image/gif",hasValue: false},
+        {value:"image/png",label:"image/png",hasValue: false},
+        {value:"other",label:RED._("node-red:event-subscribers.label.other"),icon:"red/images/typedInput/az.svg"}
+    ];*/
+    
+    RED.nodes.registerType('Responser',{
+        category: 'trexMes service',
+        color:"rgb(204, 255, 204)",
+        defaults: {
+            name: {value:""},
+            statusCode: {
+                value:"",
+                label: RED._("node-red:event-subscribers.label.status"),
+                validate: RED.validators.number(true)},
+            headers: {value:{}}
+        },
+        inputs:1,
+        outputs:0,
+        align: "right",
+        icon: "trex.png",
+        label: function() {
+            return this.name;
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }        
+    });
+})();
+</script>
+

@@ -1,0 +1,183 @@
+
+
+<script type="text/html" data-template-name="Control Properties">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-formainform" style="width: 70%"><span data-i18n="control-properties.label.formainform"></span></label>        
+            <input type="checkbox" id="node-input-formainform" style="width: 30%">
+        </div>
+        <div class="form-row">
+            <label for="node-input-formname"><i class="fa fa-windows"></i> <span data-i18n="control-properties.label.formname"></span></label>
+            <select id="node-input-formname"></select>
+        </div>
+
+        <div class="form-row node-input-property-container-row">
+            <ol id="node-input-property-container"></ol>
+        </div>
+
+
+    </div>   
+</script>
+
+<script type="text/javascript">
+    (function() {
+        
+        function resizeDialog(size) {
+            size = size || { height: $(".red-ui-tray-content form").height() }
+            var rows = $("#dialog-form>div:not(.node-input-property-container-row):visible");
+            var height = size.height;
+            $("#node-input-property-container").editableList('height',height - 150);
+        }
+
+        function getProps(el) {
+            var result = {
+                props: []
+            };
+            el.each(function(i) {
+                var prop = $(this);
+                var p = {
+                    p: prop.find(".node-input-prop-property-name").typedInput('value')
+                };
+                if (p.p) {
+                    p.v = prop.find(".node-input-prop-property-value").typedInput('value');
+                    p.d = prop.find(".node-input-prop-property-description").typedInput('value'); 
+                    result.props.push(p);
+                }
+            });
+            return result;
+        }
+        
+        
+        RED.nodes.registerType('Control Properties',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                formainform: {value: false },
+                props:{value:[]},
+                data:{value:"", required:false},
+                dataType:{value:"msg"},
+                formname: {value:""},
+            },
+            inputs:1,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else {
+                    return "Control Properties";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() { 
+                var node = this;
+
+                var eList = $('#node-input-property-container').css('min-height','250px').css('min-width','450px');
+                eList.editableList({
+                    addItem: function(container, i, opt) {
+                        var prop = opt;
+                        if (!prop.hasOwnProperty('p')) {
+                            prop = { p: "", v: "", d: "" }; 
+                        }
+                        container.css({
+                            overflow: 'hidden',
+                            whiteSpace: 'nowrap'
+                        });
+
+                        var row = $('<div/>').appendTo(container);
+
+                        var propertyName = $('<input/>', { class: "node-input-prop-property-name", type: "text" })
+                            .css("width", "33%")
+                            .appendTo(row)
+                            .typedInput({ types: [{ label: 'Control', value: 'str' }] });
+
+                        $('<div/>', { style: 'display:inline-block; padding:0px 6px;' })
+                            .text(',')
+                            .appendTo(row);
+
+                        var propertyValue = $('<input/>', { class: "node-input-prop-property-value", type: "text" })
+                            .css("width", "calc(33% - 20px)")
+                            .appendTo(row)
+                            .typedInput({ types: [{ label: 'Property', value: 'str' }] });
+
+                        $('<div/>', { style: 'display:inline-block; padding:0px 6px;' })
+                            .text(',')
+                            .appendTo(row);
+
+                        var propertyDescription = $('<input/>', { class: "node-input-prop-property-description", type: "text" })
+                            .css("width", "calc(33% - 20px)")
+                            .appendTo(row)
+                            .typedInput({ types: [{ label: 'Value', value: 'str' }] });
+
+                        propertyName.typedInput('value', prop.p);
+                        propertyValue.typedInput('value', prop.v);
+                        propertyDescription.typedInput('value', prop.d);
+
+                        resizeDialog();
+                    },
+                    removable: true,
+                    sortable: true                                        
+                });
+                $('#node-inject-test-inject-button').css("float", "right").css("margin-right", "unset");
+
+                for (var i=0; i<node.props.length; i++) {
+                    var prop = node.props[i];
+                    var newProp = { p: prop.p, v: prop.v , d:prop.d};
+                    eList.editableList('addItem',newProp);
+                }
+                
+                var $combo = $("#node-input-formname");
+                var currentSelection = this.formname; 
+                $combo.empty();
+
+                RED.nodes.eachNode(function (node) {
+                    if (node.type === "Custom Form") { 
+                        var option = $("<option></option>")
+                        .attr("value", node.name)
+                        .text(node.name);
+
+                        if (currentSelection === node.name) {
+                            option.attr("selected", "selected");
+                        }
+                        $combo.append(option);  
+                    }
+                });
+
+
+                function toggleInputVisibility() {
+                    if ($("#node-input-formainform").prop("checked")) {
+                        $("#node-input-formname").parent().hide();
+                    } else {
+                        $("#node-input-formname").parent().show();
+                    }
+                }
+
+                // Sayfa yüklendiğinde çalıştır
+                toggleInputVisibility();
+
+                 // Checkbox değiştiğinde input alanını göster/gizle
+                $("#node-input-formainform").on("change", function () {
+                    toggleInputVisibility();
+                });
+
+            },
+            oneditsave: function() {
+                var items = $("#node-input-property-container").editableList('items');
+                var result = getProps(items);
+                this.props = result.props;
+            },
+            oneditresize: resizeDialog
+    
+        });
+    
+       
+    
+    })();
+    </script>

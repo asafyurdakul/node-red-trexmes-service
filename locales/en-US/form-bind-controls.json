@@ -1,0 +1,16 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    },
+    "form-bind-controls": {
+        "label": {
+            "formainform": "For Main-Form",
+            "data": "Data",
+            "formname": "Form Name"
+        }
+    }
+}

@@ -1,0 +1,52 @@
+
+
+<script type="text/html" data-template-name="Main Form Action">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-buttonindex"><i class="fa fa-tag"></i><span data-i18n="main-form-action.label.buttonindex"></span></label>        
+            <input type="number" id="node-input-buttonindex" style="width: 30%;">
+        </div>
+    </div>   
+</script>
+
+<script type="text/javascript">
+    (function() {
+        
+        
+        RED.nodes.registerType('Main Form Action',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                buttonindex:{value:"", required:true}                
+            },
+            inputs:1,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                }
+                else if(this.buttonindex) {
+                    return "Main Form Action:" + this.buttonindex;
+                } else {
+                    return "Main Form Action";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+            },
+            oneditsave: function() {
+            }    
+        });
+    
+       
+    
+    })();
+    </script>

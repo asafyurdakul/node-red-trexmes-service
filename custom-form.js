@@ -48,8 +48,9 @@ module.exports = function(RED) {
 
         // Gönderilecek XML içeriği
         const xmlContent = req.body.xml;
+        const filename = req.body.filename;
         // XML içeriğini parametre olarak gönder
-        const process = spawn(exePath, [xmlContent]);  
+        const process = spawn(exePath, [filename + "|"+ xmlContent]);  
 
         let output = "";
         let errorOutput = "";
@@ -63,8 +64,12 @@ module.exports = function(RED) {
         });
 
         process.on("close", (code) => {
-            if (code === 0) {                
-                const outputPath = "c:\\temp\\form_design.xml";  
+            if (code === 0) {    
+                const outputPath = "c:\\temp\\"+filename+"_form_design.xml";  
+                if (!fs.existsSync(outputPath)) {
+                    return res.status(404).json({ success: false, error: "File not found" });
+                }                        
+                
                 fs.readFile(outputPath, "utf8", (err, data) => {
                     if (err) {
                         return res.status(500).json({ success: false, error: err.message });

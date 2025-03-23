@@ -45,6 +45,7 @@
                 if (p.p) {
                     p.v = prop.find(".node-input-prop-property-value").typedInput('value');
                     p.d = prop.find(".node-input-prop-property-description").typedInput('value'); 
+                    p.dt = prop.find(".node-input-prop-property-description").typedInput('type');
                     result.props.push(p);
                 }
             });
@@ -84,7 +85,7 @@
                     addItem: function(container, i, opt) {
                         var prop = opt;
                         if (!prop.hasOwnProperty('p')) {
-                            prop = { p: "", v: "", d: "" }; 
+                            prop = { p: "", v: "", d: "", dt: "str" }; 
                         }
                         container.css({
                             overflow: 'hidden',
@@ -114,10 +115,11 @@
                         var propertyDescription = $('<input/>', { class: "node-input-prop-property-description", type: "text" })
                             .css("width", "calc(33% - 20px)")
                             .appendTo(row)
-                            .typedInput({ types: [{ label: 'Value', value: 'str' }] });
-
+                            .typedInput({ types:['flow','global','str','num','bool','json','bin','date','jsonata','env','msg']});
+                            
                         propertyName.typedInput('value', prop.p);
                         propertyValue.typedInput('value', prop.v);
+                        propertyDescription.typedInput('type', prop.dt || 'str');
                         propertyDescription.typedInput('value', prop.d);
 
                         resizeDialog();
@@ -125,11 +127,10 @@
                     removable: true,
                     sortable: true                                        
                 });
-                $('#node-inject-test-inject-button').css("float", "right").css("margin-right", "unset");
-
+     
                 for (var i=0; i<node.props.length; i++) {
                     var prop = node.props[i];
-                    var newProp = { p: prop.p, v: prop.v , d:prop.d};
+                    var newProp = { p: prop.p, v: prop.v , d:prop.d, dt:prop.dt };
                     eList.editableList('addItem',newProp);
                 }
                 

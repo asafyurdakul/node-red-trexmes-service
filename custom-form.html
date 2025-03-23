@@ -64,7 +64,7 @@
                         type: "POST",
                         url: "/custom-form/run-exe",  
                         contentType: "application/json",  
-                        data: JSON.stringify({ xml: xmlContent }),  
+                        data: JSON.stringify({ filename: node.name, xml: xmlContent }),  
                         success: function (data) {
                             node.customformxml = data.output;
                             $("#node-input-customformxml").val(data.output);

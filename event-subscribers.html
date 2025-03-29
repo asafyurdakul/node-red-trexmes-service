@@ -452,6 +452,21 @@
     </div>   
 </script>
 
+<script type="text/html" data-template-name="Method Returns">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <div class="form-row">
+            <label for="node-input-methodname"><i class="fa fa-windows"></i> <span data-i18n="event-subscribers.label.methodname"></span></label>
+            <select id="node-input-methodname"></select>
+        </div>
+
+    </div>   
+</script>
+
+
 <script type="text/html" data-template-name="Responser">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
@@ -790,46 +805,173 @@
 </script>
 
 <script type="text/javascript">
-(function() {
- 
-    /*var headerTypes = [
-        {value:"content-type",label:"Content-Type",hasValue: false},
-        {value:"location",label:"Location",hasValue: false},
-        {value:"other",label:RED._("node-red:event-subscribers.label.other"),icon:"red/images/typedInput/az.svg"}
-       ]
-    var contentTypes = [
-        {value:"application/json",label:"application/json",hasValue: false},
-        {value:"application/xml",label:"application/xml",hasValue: false},
-        {value:"text/css",label:"text/css",hasValue: false},
-        {value:"text/html",label:"text/html",hasValue: false},
-        {value:"text/plain",label:"text/plain",hasValue: false},
-        {value:"image/gif",label:"image/gif",hasValue: false},
-        {value:"image/png",label:"image/png",hasValue: false},
-        {value:"other",label:RED._("node-red:event-subscribers.label.other"),icon:"red/images/typedInput/az.svg"}
-    ];*/
+    (function() {
+        RED.nodes.registerType('Method Returns',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},                
+                methodname: {value:"", required:true }
+            },
+            inputs:0,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {                
+                if (this.name) {
+                    return this.name;
+                }                 
+                else if (this.methodname) {
+                    return this.methodname +"_Return"
+                } else {
+                    return "Method Returns";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                
+                var $combo = $("#node-input-methodname");
+                var currentSelection = this.methodname; 
+                $combo.empty();
+
+                RED.nodes.eachNode(function (node) {
+                    if (node.type === "Method Invoker") { 
+                        var option = $("<option></option>")
+                        .attr("value", node.name)
+                        .text(node.name);
+
+                        if (currentSelection === node.name) {
+                            option.attr("selected", "selected");
+                        }
+                        $combo.append(option);  
+                    }
+                });
+               
+            }
     
-    RED.nodes.registerType('Responser',{
-        category: 'trexMes service',
-        color:"rgb(204, 255, 204)",
-        defaults: {
-            name: {value:""},
-            statusCode: {
-                value:"",
-                label: RED._("node-red:event-subscribers.label.status"),
-                validate: RED.validators.number(true)},
-            headers: {value:{}}
-        },
-        inputs:1,
-        outputs:0,
-        align: "right",
-        icon: "trex.png",
-        label: function() {
-            return this.name;
-        },
-        labelStyle: function() {
-            return this.name?"node_label_italic":"";
-        }        
-    });
-})();
+        });   
+    
+    })();
+</script>
+   
+
+<script type="text/javascript">
+    (function() {
+
+        RED.nodes.registerType('Responser',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                statusCode: {
+                    value:"",
+                    label: RED._("node-red:event-subscribers.label.status"),
+                    validate: RED.validators.number(true)},
+                headers: {value:{}}
+            },
+            inputs:1,
+            outputs:0,
+            align: "right",
+            icon: "trex.png",
+            label: function() {
+                return this.name;
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            }        
+        });
+    })();
 </script>
 
+<script type="text/javascript">
+    
+    let methodInvoke_RenderNodeInfo = function (id, data) {
+        
+        let $chart = document.getElementById("methodInvoke-chart-" + id);
+
+        if ($chart) {
+            let $text = document.getElementById(`methodInvoke-text-${id}`);
+            $text.textContent = ''
+
+            var
+                lines = data.split('\n'),
+                tn,
+                ts
+
+            
+            lines.forEach(function (value, index) {
+                let countSpace = value.length - value.trim().length
+                tn = document.createTextNode(value);
+                ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                ts.setAttribute('dy', (index) ? "1.2em" : 0);
+                ts.setAttribute('x', countSpace * 10);
+                ts.setAttribute('text-anchor', 'start');
+                ts.setAttribute('fill', '#555');
+                //if (allstatus)
+                //    ts.setAttribute('stroke', 'green');
+                //else
+                //    ts.setAttribute('stroke', 'red');
+                ts.setAttribute('font-size', `12`)
+                ts.appendChild(tn);
+                $text.append(ts);
+            });
+            
+
+        } else {
+
+            const $container = document.getElementById(id)
+            if (!$container) { return }
+
+            const text = document.createElementNS("http://www.w3.org/2000/svg", 'text')
+            text.setAttribute('id', `methodInvoke-text-${id}`)
+            text.setAttribute('x', `0`)
+            text.setAttribute('y', `50`)
+            text.setAttribute('text-anchor', `start`)
+            $container.insertBefore(text, $container.lastChild.nextSibling);
+            // Create group
+            const group = document.createElementNS("http://www.w3.org/2000/svg", 'g');
+            group.setAttribute('id', `methodInvoke-chart-${id}`);
+            group.setAttribute('innerHTML', `methodInvoke-chart-${id}`);
+            $container.insertBefore(group, $container.lastChild.nextSibling);
+            $chart = $container
+
+            let $text = document.getElementById(`methodInvoke-text-${id}`);
+            $text.textContent = ''
+
+            var
+                lines = data.split('\n'),
+                tn,
+                ts
+            
+            lines.forEach(function (value, index) {
+                let countSpace = value.length - value.trim().length
+                tn = document.createTextNode(value);
+                ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                ts.setAttribute('dy', (index) ? "1.2em" : 0);
+                ts.setAttribute('x', countSpace * 10);
+                ts.setAttribute('text-anchor', 'start');
+                ts.setAttribute('fill', '#555');
+                //if (allstatus)
+                //    ts.setAttribute('stroke', 'green');
+                //else
+                //    ts.setAttribute('stroke', 'red');
+                
+                ts.setAttribute('font-size', `12`)
+                ts.appendChild(tn);
+                $text.append(ts);
+            });
+            
+        }
+        
+    }
+
+    
+    RED.comms.subscribe('methodInvoke-message', function (event, data) {
+        if (data.hasOwnProperty("message")) {
+            //console.log("render :"+data.data); 
+            methodInvoke_RenderNodeInfo(data.id, data.message);
+        }
+    })
+
+</script>

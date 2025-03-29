@@ -104,7 +104,8 @@ module.exports = function(RED) {
                                                 "Communication Events",
                                                 "Display Events",
                                                 "Form Events",
-                                                "Display Methods",]);
+                                                "Display Methods",
+                                                "Method Returns",]);
                         
                     let matchingNodes = [];
                     RED.nodes.eachNode(function (n) {

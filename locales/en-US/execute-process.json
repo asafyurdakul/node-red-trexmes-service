@@ -1,0 +1,14 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    },
+    "execute-process": {
+        "label": {
+            "processname": "Process Name"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    },
+    "method-invoker": {
+        "label": {            
+            "data": "Data",
+            "service": "Service",
+            "method": "Method"
+        }
+    }
+}

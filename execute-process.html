@@ -1,0 +1,56 @@
+
+
+<script type="text/html" data-template-name="Execute Process">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+
+        <div class="form-row">
+            <label for="node-input-processname"><i class="fa fa-windows"></i> <span data-i18n="control-properties.label.formname"></span></label>
+            <input type="text" id="node-input-processname">
+        </div>
+
+    </div>   
+</script>
+
+<script type="text/javascript">
+    (function() {
+    
+                       
+        RED.nodes.registerType('Execute Process',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},                
+                processname:{value:"", required:true}
+            },
+            inputs:1,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else {
+                    return "Execute Process";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() { 
+                var node = this;
+
+            },
+            oneditsave: function() {
+                
+                //this.props = result.props;
+            }
+    
+        });
+    
+       
+    
+    })();
+    </script>

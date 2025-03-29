@@ -37,6 +37,7 @@
             "eventname":"Event Name",
             "formname":"Form Name",
             "control":"Control",
+            "methodname": "Method Name",
             "formainform":"For MainForm",
             "eventtime": "Event Time",
             "doc": "Docs",

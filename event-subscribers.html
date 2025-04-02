@@ -4,155 +4,164 @@
             <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
             <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
         </div> 
-        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-        <select type="text" id="node-input-event" style="width:70%;"></select>
-        <script type="text/javascript">
-            (function() {
-            var options = [
-                    "OnUndefinedStoppagesListing",
-                    "OnUndefinedStoppagesQuerying",
-                    "OnWorkstationStatusEntryCreating",
-                    "OnWorkstationStatusItemEntryCreating",
-                    "OnWorkstationStatesSet",
-                    "OnWorkStationInfoLoaded",
-                    "OnProductionSaving",
-                    "OnSignalProductionSaved",
-                    "OnSignalProductionSaving",
-                    "OnQualityReceiptCreated",
-                    "OnShiftChanged",
-                    "OnShiftChanging",
-                    "OnAuthorizationRequiredStoppageEnding",
-                    "OnStoppageChanging",
-                    "OnStoppageEnded",
-                    "OnStoppageReasonEquipmentSelected",
-                    "OnStoppageSelected",
-                    "OnStoppageSelecting",
-                    "OnStoppageStarted",
-                    "OnTestModeChanged",
-                    "OnUndefinedStoppageChanged",
-                    "OnUndefinedStoppageChanging",
-                    "OnProductionReceiptIntegrationSaving",
-                    "OnSubProductReceiptsCreating",
-                    "OnUnapprovedProductionReceiptIntegrating",
-                    "OnUnapprovedProductionReceiptUsedMaterialSelecting",
-                    "OnUserDefinedReceiptDataCreated",
-                    "OnProductionReceiptUserDefinedFieldsGetting",
-                    "OnFractionalAmountProductionSaved",
-                    "OnOperatorApprovedProductionSaveAmount",
-                    "OnOperatorApprovingProductionSaveAmount",
-                    "OnOperatorProductionSaving",
-                    "OnProductionSaveCompleted",
-                    "OnProductionSaveCompleting",
-                    "OnProductionSaved",
-                    "OnProductionSaveAllowanceChecked",
-                    "OnProductionSaveStarted",
-                    "OnProductionSaveViabilityChecking",
-                    "OnProPlanCycleFromStockCycleSetting",
-                    "OnSelectedJoborderProductionParametersSetting",
-                    "OnSpecPortSelected",
-                    "OnStockCoefficientChangeSaving",
-                    "OnStockEquipmentMatchViabilityChecking",
-                    "OnEditedProductionReceiptSaving",
-                    "OnEditProductionReceiptSaved",
-                    "OnPidReceiptCreated",
-                    "OnPidReceiptCreating",
-                    "OnPidreceiptMaterialReceiptsCreated",
-                    "OnPidSectionReceiptCreated",
-                    "OnProductionReceiptCreated",
-                    "OnProductionReceiptEditQuantityConverting",
-                    "OnProductionReceiptEditReceiptLoading",
-                    "OnProductionReceiptEditSaving",
-                    "OnProductionReceiptIntegrating",
-                    "OnProductionFinishStatusChecking",
-                    "OnProductionInfoResetted",
-                    "OnProductionInfoSet",
-                    "OnProductionQuantityConverting",
-                    "OnProductionSummaryUpdated",
-                    "OnRotationSpeedCalculating",
-                    "OnSignalProductionEnding",
-                    "OnCounterIncrementViabilityChecked",
-                    "OnOpcProductionCounterIncreasing",
-                    "OnOperatorCounterIncreasing",
-                    "OnProductionCounterIncreased",
-                    "OnProductionCounterIncrementCompleted",
-                    "OnStockProductionCounterIncreased",
-                    "OnCoefficientChangeSaved",
-                    "OnCyclePeriodSet",
-                    "OnCyclePeriodSetting",
-                    "OnPeriodicalMaintenanceApproved",
-                    "OnPeriodicalMaintenanceConditionChecking",
-                    "OnPokaYokeBarcodeValidating",
-                    "OnCurrentSpeedCalculated",
-                    "OnCurrentSpeedCalculating",
-                    "OnEstimatedCompletionTimeCalculating",
-                    "OnJoblessProductionOccured",
-                    "OnNoShiftTimeProductionOccuring",
-                    "OnProcycleEntryCreated",
-                    "OnProcycleEntryCreating",
-                    "OnProcycleEntryUndefinedStockDetected",
-                    "OnProcycleEntryUpdating",
-                    "OnProcycleStoppageEntryUpdating",
-                    "OnProductionCompleted",
-                    "OnProductionCompleting",
-                    "OnProductionContinuing",
-                    "OnPlanSelecting",
-                    "OnPlanSelectionApproved",
-                    "OnPlanSelectViabilityChecking",
-                    "OnPlanStartViabilityChecking",
-                    "OnProductionPlanChanging",
-                    "OnProductionPlanCreated",
-                    "OnLabelReprinting",
-                    "OnUnapprovedProductionReceiptLabelPrinting",
-                    "OnLanguageChanged",
-                    "OnLanguageSelectionChanged",
-                    "OnMaintenanceOrderCompleted",
-                    "OnMaintenanceOrderCreated",
-                    "OnMaintenancePlanSetting",
-                    "OnMaintenanceServiceReceiptCreated",
-                    "OnMaintenanceServiceRequestCreated",
-                    "OnOperatorCreatingMaintenanceOrder",
-                    "OnSerieDefectCreated",
-                    "OnShiftDefectsQuerying",
-                    "OnDocumentNotFound",
-                    "OnTeamChanged",
-                    "OnForkliftOrderCreated",
-                    "OnForkliftFetchOrderCreating",
-                    "OnForkliftOrderUpdated",
-                    "OnForkliftOrdersQuerying",
-                    "OnCreatedProductionPlanLoading",
-                    "OnCurrentPlanInfoSet",
-                    "OnJoborderSelecting",
-                    "OnOperatorAddedNextPlan",
-                    "OnOperatorDeletedNextPlan",
-                    "OnPlanChanged",
-                    "OnPlanLoaded",
-                    "OnPlanLoadViaOpcStockNoFailed",
-                    "OnProcessDataAnalysisAlertOccured",
-                    "OnProcessDataAnalysisProcessing",
-                    "OnShiftProductivityCalculated",
-                    "OnConsumedDcasLotsDeleting",
-                    "OnDcasLotsDeletingOnProductionCompletion",
-                    "OnLotDeleted",
-                    "OnMaterialCounterIncreased",
-                    "OnMaterialLotSelectionProcessed",
-                    "OnPlanLotsFromDcasLotsGenerating",
-                    "OnPlanMaterialsQuerying",
-                    "OnForkliftGetOrderCreating",
-                    "OnProductionPlanJobordersAppending",
-                    "OnDefectAmountQuerying",
-                    "OnDefectEntryCreated",
-                    "OnDefectEntryDeleted",
-                    "OnDefectQuantityConverting"
-                    ];
-            var select = document.getElementById("node-input-event");
-            options.forEach(function(option) {
-                var opt = document.createElement("option");
-                opt.value = option;
-                opt.innerHTML = option;
-                select.appendChild(opt);
-            });
-            })();
-        </script>
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-ishandled" style="width: 70%"><span data-i18n="event-subscribers.label.ishandled"></span></label>        
+            <input type="checkbox" id="node-input-ishandled" style="width: 30%">
+        </div>
+        
+        <div class="form-row">
+            <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+            <select type="text" id="node-input-event" style="width:70%;"></select>
+            <script type="text/javascript">
+                (function() {
+                var options = [
+                        "OnUndefinedStoppagesListing",
+                        "OnUndefinedStoppagesQuerying",
+                        "OnWorkstationStatusEntryCreating",
+                        "OnWorkstationStatusItemEntryCreating",
+                        "OnWorkstationStatesSet",
+                        "OnWorkStationInfoLoaded",
+                        "OnProductionSaving",
+                        "OnSignalProductionSaved",
+                        "OnSignalProductionSaving",
+                        "OnQualityReceiptCreated",
+                        "OnShiftChanged",
+                        "OnShiftChanging",
+                        "OnAuthorizationRequiredStoppageEnding",
+                        "OnStoppageChanging",
+                        "OnStoppageEnded",
+                        "OnStoppageReasonEquipmentSelected",
+                        "OnStoppageSelected",
+                        "OnStoppageSelecting",
+                        "OnStoppageStarted",
+                        "OnTestModeChanged",
+                        "OnUndefinedStoppageChanged",
+                        "OnUndefinedStoppageChanging",
+                        "OnProductionReceiptIntegrationSaving",
+                        "OnSubProductReceiptsCreating",
+                        "OnUnapprovedProductionReceiptIntegrating",
+                        "OnUnapprovedProductionReceiptUsedMaterialSelecting",
+                        "OnUserDefinedReceiptDataCreated",
+                        "OnProductionReceiptUserDefinedFieldsGetting",
+                        "OnFractionalAmountProductionSaved",
+                        "OnOperatorApprovedProductionSaveAmount",
+                        "OnOperatorApprovingProductionSaveAmount",
+                        "OnOperatorProductionSaving",
+                        "OnProductionSaveCompleted",
+                        "OnProductionSaveCompleting",
+                        "OnProductionSaved",
+                        "OnProductionSaveAllowanceChecked",
+                        "OnProductionSaveStarted",
+                        "OnProductionSaveViabilityChecking",
+                        "OnProPlanCycleFromStockCycleSetting",
+                        "OnSelectedJoborderProductionParametersSetting",
+                        "OnSpecPortSelected",
+                        "OnStockCoefficientChangeSaving",
+                        "OnStockEquipmentMatchViabilityChecking",
+                        "OnEditedProductionReceiptSaving",
+                        "OnEditProductionReceiptSaved",
+                        "OnPidReceiptCreated",
+                        "OnPidReceiptCreating",
+                        "OnPidreceiptMaterialReceiptsCreated",
+                        "OnPidSectionReceiptCreated",
+                        "OnProductionReceiptCreated",
+                        "OnProductionReceiptEditQuantityConverting",
+                        "OnProductionReceiptEditReceiptLoading",
+                        "OnProductionReceiptEditSaving",
+                        "OnProductionReceiptIntegrating",
+                        "OnProductionFinishStatusChecking",
+                        "OnProductionInfoResetted",
+                        "OnProductionInfoSet",
+                        "OnProductionQuantityConverting",
+                        "OnProductionSummaryUpdated",
+                        "OnRotationSpeedCalculating",
+                        "OnSignalProductionEnding",
+                        "OnCounterIncrementViabilityChecked",
+                        "OnOpcProductionCounterIncreasing",
+                        "OnOperatorCounterIncreasing",
+                        "OnProductionCounterIncreased",
+                        "OnProductionCounterIncrementCompleted",
+                        "OnStockProductionCounterIncreased",
+                        "OnCoefficientChangeSaved",
+                        "OnCyclePeriodSet",
+                        "OnCyclePeriodSetting",
+                        "OnPeriodicalMaintenanceApproved",
+                        "OnPeriodicalMaintenanceConditionChecking",
+                        "OnPokaYokeBarcodeValidating",
+                        "OnCurrentSpeedCalculated",
+                        "OnCurrentSpeedCalculating",
+                        "OnEstimatedCompletionTimeCalculating",
+                        "OnJoblessProductionOccured",
+                        "OnNoShiftTimeProductionOccuring",
+                        "OnProcycleEntryCreated",
+                        "OnProcycleEntryCreating",
+                        "OnProcycleEntryUndefinedStockDetected",
+                        "OnProcycleEntryUpdating",
+                        "OnProcycleStoppageEntryUpdating",
+                        "OnProductionCompleted",
+                        "OnProductionCompleting",
+                        "OnProductionContinuing",
+                        "OnPlanSelecting",
+                        "OnPlanSelectionApproved",
+                        "OnPlanSelectViabilityChecking",
+                        "OnPlanStartViabilityChecking",
+                        "OnProductionPlanChanging",
+                        "OnProductionPlanCreated",
+                        "OnLabelReprinting",
+                        "OnUnapprovedProductionReceiptLabelPrinting",
+                        "OnLanguageChanged",
+                        "OnLanguageSelectionChanged",
+                        "OnMaintenanceOrderCompleted",
+                        "OnMaintenanceOrderCreated",
+                        "OnMaintenancePlanSetting",
+                        "OnMaintenanceServiceReceiptCreated",
+                        "OnMaintenanceServiceRequestCreated",
+                        "OnOperatorCreatingMaintenanceOrder",
+                        "OnSerieDefectCreated",
+                        "OnShiftDefectsQuerying",
+                        "OnDocumentNotFound",
+                        "OnTeamChanged",
+                        "OnForkliftOrderCreated",
+                        "OnForkliftFetchOrderCreating",
+                        "OnForkliftOrderUpdated",
+                        "OnForkliftOrdersQuerying",
+                        "OnCreatedProductionPlanLoading",
+                        "OnCurrentPlanInfoSet",
+                        "OnJoborderSelecting",
+                        "OnOperatorAddedNextPlan",
+                        "OnOperatorDeletedNextPlan",
+                        "OnPlanChanged",
+                        "OnPlanLoaded",
+                        "OnPlanLoadViaOpcStockNoFailed",
+                        "OnProcessDataAnalysisAlertOccured",
+                        "OnProcessDataAnalysisProcessing",
+                        "OnShiftProductivityCalculated",
+                        "OnConsumedDcasLotsDeleting",
+                        "OnDcasLotsDeletingOnProductionCompletion",
+                        "OnLotDeleted",
+                        "OnMaterialCounterIncreased",
+                        "OnMaterialLotSelectionProcessed",
+                        "OnPlanLotsFromDcasLotsGenerating",
+                        "OnPlanMaterialsQuerying",
+                        "OnForkliftGetOrderCreating",
+                        "OnProductionPlanJobordersAppending",
+                        "OnDefectAmountQuerying",
+                        "OnDefectEntryCreated",
+                        "OnDefectEntryDeleted",
+                        "OnDefectQuantityConverting"
+                        ];
+                var select = document.getElementById("node-input-event");
+                options.forEach(function(option) {
+                    var opt = document.createElement("option");
+                    opt.value = option;
+                    opt.innerHTML = option;
+                    select.appendChild(opt);
+                });
+                })();
+            </script>
+        </div>
+
+        
     </div>   
 </script>
 
@@ -162,81 +171,87 @@
             <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
             <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
         </div> 
-        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-        <select type="text" id="node-input-event" style="width:70%;">
-        </select>
-        <script type="text/javascript">
-            (function() {
-            var options = [
-                    "OnProductionSaveFailed",
-                    "OnProductionSaved",
-                    "OnNextProductionPlanLoading",
-                    "OnPokaYokeResultProcessRequesting",
-                    "OnOverCapacityPlanLoading",
-                    "OnTeamPlanPolyvalenceValidationFailed",
-                    "OnPlanEquipmentBarcodeRequesting",
-                    "OnPokaYokeCheckRequesting",
-                    "OnRobotModelNotFound",
-                    "OnRobotModelStockNotMatched",
-                    "OnRobotModelCounterIncrementRequesting",
-                    "OnDcasMessageProcessing",
-                    "OnSerieBarcodeScanning",
-                    "OnLotBarcodeScanning",
-                    "OnJoborderStockBarcodeScanning",
-                    "OnJoborderStockBarcodeScanned",
-                    "OnWorkstationStatesSet",
-                    "OnUIButtonConfigurationSet",
-                    "OnProductionReceiptBriefRequesting",
-                    "OnStoppageSignalActivityCheckRequesting",
-                    "OnOverCapacityCounterIncrementDetected",
-                    "OnProductionPlanLoadingStarted",
-                    "OnProductionPlanLoadingCompleted",
-                    "OnPlanDetailsSetting",
-                    "OnProductionCounterIncreasingWithoutAnyLoadedPlan",
-                    "OnProductionCounterIncreased",
-                    "OnProductionSaving",
-                    "OnPortManagerConnected",
-                    "OnDigitalInputValueChanging",
-                    "OnDigitalInputValueChanged",
-                    "OnDigitalOutputValueChanging",
-                    "OnDigitalOutputValueChanged",
-                    "OnIOCardDataCoalesced",
-                    "OnStoppageSignalChanged",
-                    "OnAssemblyPictureSignalChanged",
-                    "OnProductionSaveSignalChanged",
-                    "OnBarcodeScanning",
-                    "OnBarcodeScanned",
-                    "OnSerialPortBarcodeScanning",
-                    "OnPortParametersLoaded",
-                    "OnSocketMessageInterpreted",
-                    "OnProductionSaveSignalInputValuesSetting",
-                    "OnNgpCommandProcessing",
-                    "OnOpcDataPortInitialized",
-                    "OnTeamChanging",
-                    "OnProcycleStoppageEstimatedDurationRequesting",
-                    "OnStoppageCauseRequesting",
-                    "OnPlannedStoppageEstimatedDurationReached",
-                    "OnCurrentPlanInfoSet",
-                    "OnPlanLoaded",
-                    "OnPlanChanged",
-                    "OnProductionContinuing",
-                    "OnProductionCompleted",
-                    "OnPeriodicalMaintenanceApproved",
-                    "OnProductionReceiptCreated",
-                    "OnPortDataChanging",
-                    "OnPortDataChanged",
-                    "OnPortManagerInitializing",
-                    "OnPortManagerInitialized"
-                    ];
-            var select = document.getElementById("node-input-event");
-            options.forEach(function(option) {
-                var opt = document.createElement("option");
-                opt.value = option;
-                opt.innerHTML = option;
-                select.appendChild(opt);
-            });
-            })();
-        </script>
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-ishandled" style="width: 70%"><span data-i18n="event-subscribers.label.ishandled"></span></label>        
+            <input type="checkbox" id="node-input-ishandled" style="width: 30%">
+        </div>
+        <div class="form-row">
+            <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+            <select type="text" id="node-input-event" style="width:70%;">
+            </select>
+            <script type="text/javascript">
+                (function() {
+                var options = [
+                        "OnProductionSaveFailed",
+                        "OnProductionSaved",
+                        "OnNextProductionPlanLoading",
+                        "OnPokaYokeResultProcessRequesting",
+                        "OnOverCapacityPlanLoading",
+                        "OnTeamPlanPolyvalenceValidationFailed",
+                        "OnPlanEquipmentBarcodeRequesting",
+                        "OnPokaYokeCheckRequesting",
+                        "OnRobotModelNotFound",
+                        "OnRobotModelStockNotMatched",
+                        "OnRobotModelCounterIncrementRequesting",
+                        "OnDcasMessageProcessing",
+                        "OnSerieBarcodeScanning",
+                        "OnLotBarcodeScanning",
+                        "OnJoborderStockBarcodeScanning",
+                        "OnJoborderStockBarcodeScanned",
+                        "OnWorkstationStatesSet",
+                        "OnUIButtonConfigurationSet",
+                        "OnProductionReceiptBriefRequesting",
+                        "OnStoppageSignalActivityCheckRequesting",
+                        "OnOverCapacityCounterIncrementDetected",
+                        "OnProductionPlanLoadingStarted",
+                        "OnProductionPlanLoadingCompleted",
+                        "OnPlanDetailsSetting",
+                        "OnProductionCounterIncreasingWithoutAnyLoadedPlan",
+                        "OnProductionCounterIncreased",
+                        "OnProductionSaving",
+                        "OnPortManagerConnected",
+                        "OnDigitalInputValueChanging",
+                        "OnDigitalInputValueChanged",
+                        "OnDigitalOutputValueChanging",
+                        "OnDigitalOutputValueChanged",
+                        "OnIOCardDataCoalesced",
+                        "OnStoppageSignalChanged",
+                        "OnAssemblyPictureSignalChanged",
+                        "OnProductionSaveSignalChanged",
+                        "OnBarcodeScanning",
+                        "OnBarcodeScanned",
+                        "OnSerialPortBarcodeScanning",
+                        "OnPortParametersLoaded",
+                        "OnSocketMessageInterpreted",
+                        "OnProductionSaveSignalInputValuesSetting",
+                        "OnNgpCommandProcessing",
+                        "OnOpcDataPortInitialized",
+                        "OnTeamChanging",
+                        "OnProcycleStoppageEstimatedDurationRequesting",
+                        "OnStoppageCauseRequesting",
+                        "OnPlannedStoppageEstimatedDurationReached",
+                        "OnCurrentPlanInfoSet",
+                        "OnPlanLoaded",
+                        "OnPlanChanged",
+                        "OnProductionContinuing",
+                        "OnProductionCompleted",
+                        "OnPeriodicalMaintenanceApproved",
+                        "OnProductionReceiptCreated",
+                        "OnPortDataChanging",
+                        "OnPortDataChanged",
+                        "OnPortManagerInitializing",
+                        "OnPortManagerInitialized"
+                        ];
+                var select = document.getElementById("node-input-event");
+                options.forEach(function(option) {
+                    var opt = document.createElement("option");
+                    opt.value = option;
+                    opt.innerHTML = option;
+                    select.appendChild(opt);
+                });
+                })();
+            </script>
+        </div>       
     </div>   
 </script>
 
@@ -246,25 +261,31 @@
             <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
             <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
         </div> 
-        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-        <select type="text" id="node-input-event" style="width:70%;">
-        </select>
-        <script type="text/javascript">
-            (function() {
-            var options = [
-                "OnApplicationClosing",
-                "OnApplicationStarted",
-                "OnGlobalTimerTicked"
-                ];
-            var select = document.getElementById("node-input-event");
-            options.forEach(function(option) {
-                var opt = document.createElement("option");
-                opt.value = option;
-                opt.innerHTML = option;
-                select.appendChild(opt);
-            });
-            })();
-        </script>
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-ishandled" style="width: 70%"><span data-i18n="event-subscribers.label.ishandled"></span></label>        
+            <input type="checkbox" id="node-input-ishandled" style="width: 30%">
+        </div>         
+        <div class="form-row">
+            <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+            <select type="text" id="node-input-event" style="width:70%;">
+            </select>
+            <script type="text/javascript">
+                (function() {
+                var options = [
+                    "OnApplicationClosing",
+                    "OnApplicationStarted",
+                    "OnGlobalTimerTicked"
+                    ];
+                var select = document.getElementById("node-input-event");
+                options.forEach(function(option) {
+                    var opt = document.createElement("option");
+                    opt.value = option;
+                    opt.innerHTML = option;
+                    select.appendChild(opt);
+                });
+                })();
+            </script>
+        </div>       
     </div>   
 </script>
 
@@ -274,48 +295,55 @@
             <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
             <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
         </div> 
-        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-        <select type="text" id="node-input-event" style="width:70%;">
-        </select>
-        <script type="text/javascript">
-            (function() {
-            var options = [
-                "OnPortManagerInitialized",
-                "OnPortManagerInitializing",
-                "OnPortParametersLoaded",
-                "OnProductionSaveSignalChanged",
-                "OnProductionSaveSignalInputValuesSetting",
-                "OnSerialPortBarcodeScanning",
-                "OnSerieBarcodeScanning",
-                "OnSocketMessageInterpreted",
-                "OnStoppageSignalChanged",
-                "OnDefectEntrySignalChanged",
-                "OnAssemblyPictureSignalChanged",
-                "OnBarcodeScanned",
-                "OnBarcodeScanning",
-                "OnDcasMessageProcessing",
-                "OnDigitalInputValueChanged",
-                "OnDigitalInputValueChanging",
-                "OnDigitalOutputValueChanged",
-                "OnDigitalOutputValueChanging",
-                "OnIOCardDataCoalesced",
-                "OnJoborderStockBarcodeScanned",
-                "OnJoborderStockBarcodeScanning",
-                "OnLotBarcodeScanning",
-                "OnNgpCommandProcessing",
-                "OnPortDataChanged",
-                "OnPortDataChanging",
-                "OnPortManagerConnected"
-                ];
-            var select = document.getElementById("node-input-event");
-            options.forEach(function(option) {
-                var opt = document.createElement("option");
-                opt.value = option;
-                opt.innerHTML = option;
-                select.appendChild(opt);
-            });
-            })();
-        </script>
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-ishandled" style="width: 70%"><span data-i18n="event-subscribers.label.ishandled"></span></label>        
+            <input type="checkbox" id="node-input-ishandled" style="width: 30%">
+        </div> 
+        <div class="form-row">
+            <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+            <select type="text" id="node-input-event" style="width:70%;">
+            </select>
+            <script type="text/javascript">
+                (function() {
+                var options = [
+                    "OnPortManagerInitialized",
+                    "OnPortManagerInitializing",
+                    "OnPortParametersLoaded",
+                    "OnProductionSaveSignalChanged",
+                    "OnProductionSaveSignalInputValuesSetting",
+                    "OnSerialPortBarcodeScanning",
+                    "OnSerieBarcodeScanning",
+                    "OnSocketMessageInterpreted",
+                    "OnStoppageSignalChanged",
+                    "OnDefectEntrySignalChanged",
+                    "OnAssemblyPictureSignalChanged",
+                    "OnBarcodeScanned",
+                    "OnBarcodeScanning",
+                    "OnDcasMessageProcessing",
+                    "OnDigitalInputValueChanged",
+                    "OnDigitalInputValueChanging",
+                    "OnDigitalOutputValueChanged",
+                    "OnDigitalOutputValueChanging",
+                    "OnIOCardDataCoalesced",
+                    "OnJoborderStockBarcodeScanned",
+                    "OnJoborderStockBarcodeScanning",
+                    "OnLotBarcodeScanning",
+                    "OnNgpCommandProcessing",
+                    "OnPortDataChanged",
+                    "OnPortDataChanging",
+                    "OnPortManagerConnected"
+                    ];
+                var select = document.getElementById("node-input-event");
+                options.forEach(function(option) {
+                    var opt = document.createElement("option");
+                    opt.value = option;
+                    opt.innerHTML = option;
+                    select.appendChild(opt);
+                });
+                })();
+            </script>
+        </div>
+       
     </div>   
 </script>
 
@@ -325,50 +353,56 @@
             <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
             <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
         </div> 
-        <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-            <select type="text" id="node-input-event" style="width:70%;"></select>
-        <script type="text/javascript">
-            (function() {
-            var options = [
-                    "OnBarcodeTextBoxSetting",
-                    "OnCommandKeyProcessing",
-                    "OnDefectEntryOperatorConfirmationFailed",
-                    "OnDefectSelected",
-                    "OnEventDetailSelectionsListing",
-                    "OnForkliftTakeTransferSelecting",
-                    "OnJobInformationEquipmentCounterTextSetting",
-                    "OnJobLoadColumnCellFormatSetting",
-                    "OnJobOrderSearching",
-                    "OnMainFormCounterTextsSetting",
-                    "OnMainFormNoteTextSetting",
-                    "OnMainUserControlJobOrderPanelClicked",
-                    "OnOperationSpecFormOpening",
-                    "OnOperatorCreatingDefectEntry",
-                    "OnOperatorPlanLoadButtonClicking",
-                    "OnOtherOperationsFormClosed",
-                    "OnPitchLabelSetting",
-                    "OnPlanContinueQuestionAsking",
-                    "OnPlanSearching",
-                    "OnPlanSelectionDetailClicked",
-                    "OnProductionAmountLeftTextSetting",
-                    "OnProductionApproveFormOpening",
-                    "OnProductionApproveGridSet",
-                    "OnProductionApproveGridSetting",
-                    "OnProductionApproveOperatorDataGridSetting",
-                    "OnScreenSaverShowning",
-                    "OnShiftEventFormOpening",
-                    "OnUIButtonConfigurationSet",
-                    "OnWorkstationSelected"
-                    ];
-            var select = document.getElementById("node-input-event");
-            options.forEach(function(option) {
-                var opt = document.createElement("option");
-                opt.value = option;
-                opt.innerHTML = option;
-                select.appendChild(opt);
-            });
-            })();
-        </script>
+        <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
+            <label for="node-input-ishandled" style="width: 70%"><span data-i18n="event-subscribers.label.ishandled"></span></label>        
+            <input type="checkbox" id="node-input-ishandled" style="width: 30%">
+        </div> 
+        <div class="form-row">
+            <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
+                <select type="text" id="node-input-event" style="width:70%;"></select>
+            <script type="text/javascript">
+                (function() {
+                var options = [
+                        "OnBarcodeTextBoxSetting",
+                        "OnCommandKeyProcessing",
+                        "OnDefectEntryOperatorConfirmationFailed",
+                        "OnDefectSelected",
+                        "OnEventDetailSelectionsListing",
+                        "OnForkliftTakeTransferSelecting",
+                        "OnJobInformationEquipmentCounterTextSetting",
+                        "OnJobLoadColumnCellFormatSetting",
+                        "OnJobOrderSearching",
+                        "OnMainFormCounterTextsSetting",
+                        "OnMainFormNoteTextSetting",
+                        "OnMainUserControlJobOrderPanelClicked",
+                        "OnOperationSpecFormOpening",
+                        "OnOperatorCreatingDefectEntry",
+                        "OnOperatorPlanLoadButtonClicking",
+                        "OnOtherOperationsFormClosed",
+                        "OnPitchLabelSetting",
+                        "OnPlanContinueQuestionAsking",
+                        "OnPlanSearching",
+                        "OnPlanSelectionDetailClicked",
+                        "OnProductionAmountLeftTextSetting",
+                        "OnProductionApproveFormOpening",
+                        "OnProductionApproveGridSet",
+                        "OnProductionApproveGridSetting",
+                        "OnProductionApproveOperatorDataGridSetting",
+                        "OnScreenSaverShowning",
+                        "OnShiftEventFormOpening",
+                        "OnUIButtonConfigurationSet",
+                        "OnWorkstationSelected"
+                        ];
+                var select = document.getElementById("node-input-event");
+                options.forEach(function(option) {
+                    var opt = document.createElement("option");
+                    opt.value = option;
+                    opt.innerHTML = option;
+                    select.appendChild(opt);
+                });
+                })();
+            </script>
+        </div>       
     </div>   
 </script>
 
@@ -484,6 +518,7 @@
             method: {value:"post",required:true},
             event: {value:"", required:true,
                   label:RED._("node-red:event-subscribers.label.event")},
+            ishandled: {value:true, required:true}
         },
         inputs:0,
         outputs:1,
@@ -524,6 +559,7 @@
             method: {value:"post",required:true},
             event: {value:"", required:true,
                   label:RED._("node-red:event-subscribers.label.event")},
+            ishandled: {value:true, required:true}
         },
         inputs:0,
         outputs:1,
@@ -561,6 +597,7 @@
                 method: {value:"post",required:true},
                 event: {value:"", required:true,
                       label:RED._("node-red:event-subscribers.label.event")},
+                ishandled: {value:true, required:true}                      
             },
             inputs:0,
             outputs:1,
@@ -598,6 +635,7 @@
                 method: {value:"post",required:true},
                 event: {value:"", required:true,
                       label:RED._("node-red:event-subscribers.label.event")},
+                ishandled: {value:true, required:true}                      
             },
             inputs:0,
             outputs:1,
@@ -635,6 +673,7 @@
                 method: {value:"post",required:true},
                 event: {value:"", required:true,
                       label:RED._("node-red:event-subscribers.label.event")},
+                ishandled: {value:true, required:true}                      
             },
             inputs:0,
             outputs:1,

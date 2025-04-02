@@ -118,7 +118,7 @@ module.exports = function(RED) {
             if (this.event[0] !== '/') {
                 this.event = '/'+this.event;
             } 
-
+            this.ishandled = n.ishandled;
             this.method = n.method;
             var node = this;
 
@@ -142,8 +142,10 @@ module.exports = function(RED) {
                 //Bütün talepler POST olcağı için burada bir kontrol yapmaya gerek yok
                 //if (node.method.match(/^(post|delete|put|options|patch)$/)) { }
                 if(node.method == "post"){
+                    let _payload = req.body;
+                    _payload.IsHandled = node.ishandled;
                     node.status({}); //clear node status                        
-                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:req.body});   
+                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:_payload});   
                     node.status({fill:"yellow",shape:"dot",text:"Triggered"});
 
                     setTimeout(function() {
@@ -219,7 +221,7 @@ module.exports = function(RED) {
             if (this.event[0] !== '/') {
                 this.event = '/'+this.event;
             } 
-
+            this.ishandled = n.ishandled;
             this.method = n.method;
             var node = this;
 
@@ -243,8 +245,10 @@ module.exports = function(RED) {
                 //Bütün talepler POST olcağı için burada bir kontrol yapmaya gerek yok
                 //if (node.method.match(/^(post|delete|put|options|patch)$/)) { }
                 if(node.method == "post"){
+                    let _payload = req.body;
+                    _payload.IsHandled = node.ishandled;
                     node.status({}); //clear node status                        
-                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:req.body});   
+                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:_payload});   
                     node.status({fill:"yellow",shape:"dot",text:"Triggered"});
 
                     setTimeout(function() {
@@ -320,7 +324,7 @@ module.exports = function(RED) {
             if (this.event[0] !== '/') {
                 this.event = '/'+this.event;
             } 
-
+            this.ishandled = n.ishandled;
             this.method = n.method;
             var node = this;
 
@@ -344,13 +348,15 @@ module.exports = function(RED) {
                 //Bütün talepler POST olcağı için burada bir kontrol yapmaya gerek yok
                 //if (node.method.match(/^(post|delete|put|options|patch)$/)) { }
                 if(node.method == "post"){
+                    let _payload = req.body;
+                    _payload.IsHandled = node.ishandled;
                     node.status({}); //clear node status                        
-                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:req.body});   
+                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:_payload});   
                     node.status({fill:"yellow",shape:"dot",text:"Triggered"});
 
                     setTimeout(function() {
                         node.status({}); // 1 saniye sonra status'u temizle
-                    }, 1000);   
+                    }, 1000);  
                 }             
                 
             };
@@ -421,7 +427,7 @@ module.exports = function(RED) {
             if (this.event[0] !== '/') {
                 this.event = '/'+this.event;
             } 
-
+            this.ishandled = n.ishandled;
             this.method = n.method;
             var node = this;
 
@@ -431,7 +437,7 @@ module.exports = function(RED) {
             };
 
             this.callback = function(req,res) {
-                  var msgid = RED.util.generateId();
+                var msgid = RED.util.generateId();
                 res._msgid = msgid;
                 // Since Node 15, req.headers are lazily computed and the property
                 // marked as non-enumerable.
@@ -445,8 +451,10 @@ module.exports = function(RED) {
                 //Bütün talepler POST olcağı için burada bir kontrol yapmaya gerek yok
                 //if (node.method.match(/^(post|delete|put|options|patch)$/)) { }
                 if(node.method == "post"){
+                    let _payload = req.body;
+                    _payload.IsHandled = node.ishandled;
                     node.status({}); //clear node status                        
-                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:req.body});   
+                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:_payload});   
                     node.status({fill:"yellow",shape:"dot",text:"Triggered"});
 
                     setTimeout(function() {
@@ -522,7 +530,7 @@ module.exports = function(RED) {
             if (this.event[0] !== '/') {
                 this.event = '/'+this.event;
             } 
-
+            this.ishandled = n.ishandled;
             this.method = n.method;
             var node = this;
 
@@ -546,13 +554,15 @@ module.exports = function(RED) {
                 //Bütün talepler POST olcağı için burada bir kontrol yapmaya gerek yok
                 //if (node.method.match(/^(post|delete|put|options|patch)$/)) { }
                 if(node.method == "post"){
+                    let _payload = req.body;
+                    _payload.IsHandled = node.ishandled;
                     node.status({}); //clear node status                        
-                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:req.body});   
+                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:_payload});   
                     node.status({fill:"yellow",shape:"dot",text:"Triggered"});
 
                     setTimeout(function() {
                         node.status({}); // 1 saniye sonra status'u temizle
-                    }, 1000);   
+                    }, 1000);  
                 }             
                 
             };

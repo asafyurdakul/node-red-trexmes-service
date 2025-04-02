@@ -40,6 +40,7 @@
             "methodname": "Method Name",
             "formainform":"For MainForm",
             "eventtime": "Event Time",
+            "ishandled": "Handled",
             "doc": "Docs",
             "return": "Return",
             "status": "Status code",

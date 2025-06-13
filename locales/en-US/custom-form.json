@@ -10,7 +10,13 @@
         "label": {
             "customformxml": "Design Custom Form",
             "isstyled": "Default Style",
-            "formainform": "For Main-Form"
+            "formainform": "For Main-Form",
+            "designformname": "Form Design"
         }
+    },
+    "form-design":{
+        "label": {
+            "formdesignxml": "Design Form"     
+        }      
     }
 }

@@ -11,6 +11,7 @@ module.exports = function(RED) {
         node.customformxml = n.customformxml;
         node.isstyled = n.isstyled;
         node.formainform = n.formainform;
+        node.designformname = n.designformname;
         
         var operationtype = "CustomDialog";
         var continueevent = "Continue";   
@@ -18,16 +19,33 @@ module.exports = function(RED) {
         if(n.formainform == true){ 
             operationtype = "MainForm";
             continueevent = "Break";
-        }
+        }        
 
         node.on('input', function (msg) {
+            let selectedXml;
+
+            // designformname varsa, Form Design nodunu ara
+            if (node.designformname) {
+                RED.nodes.eachNode(function (n) {
+                    if (n.type === "Form Design" && n.name === node.designformname) {
+                        if (n.formdesignxml) {
+                            selectedXml = n.formdesignxml;
+                        }
+                    }
+                });
+            }
+
+            if(node.customformxml !== "") {
+                selectedXml = node.customformxml;
+            }     
+
             const newmsg = 
                 {
                     "receiveddata" : msg.payload,
                     "name": node.name,
                     "operationtype": operationtype,
                     "continueevent": continueevent,   
-                    "customformxml":node.customformxml,
+                    "customformxml":selectedXml,
                     "isstyled": node.isstyled
                 };
             msg.payload = [];
@@ -36,8 +54,6 @@ module.exports = function(RED) {
             node.send(msg);
         });
     }
-
-
 
     RED.httpAdmin.post("/custom-form/run-exe", function (req, res) {
         const exePath = RED.settings.functionGlobalContext.customFormDesignerPath;
@@ -87,47 +103,15 @@ module.exports = function(RED) {
         });
     });
 
+    RED.nodes.registerType("Custom Form",CustomForm);
 
-/*
-RED.httpAdmin.post("/custom-form/run-exe", function (req, res) {
-    const exePath = RED.settings.functionGlobalContext.customFormDesignerPath;
-    if (!exePath) {
-        res.status(500).send("Designer exe path not defined!");
-        return;
+    function FormDesign(n) {
+        RED.nodes.createNode(this,n);
+        const node = this;
+        node.name = n.name;
+        node.formdesignxml = n.formdesignxml;
     }
 
-    const xmlContent = req.body.xml;
-    const filename = req.body.filename;
-    const arg = `${filename}|${xmlContent}`;
-
-    // "start" komutu ile yeni shell'de çalıştır, GUI'yi gösterebilmek için
-    const command = `start "" "${exePath}" "${arg}"`;
-
-    const process = spawn("cmd", ["/c", command], {
-        detached: true,
-        stdio: "ignore", // process'e bağlı kalmamak için
-        windowsHide: false
-    });
-
-    // Süreci kapat ve cevap dön
-    process.unref(); // ana işlemden ayır
-
-    // XML çıktısını hemen değil, biraz gecikmeli olarak kontrol et
-    setTimeout(() => {
-        const outputPath = `c:/temp/${filename}_form_design.xml`;
-        if (!fs.existsSync(outputPath)) {
-            return res.status(404).json({ success: false, error: "File not found" });
-        }
-
-        fs.readFile(outputPath, "utf8", (err, data) => {
-            if (err) {
-                return res.status(500).json({ success: false, error: err.message });
-            }
-            res.json({ success: true, output: data });
-        });
-    }, 3000); // 3 saniye sonra dosya var mı kontrol et
-});
-*/
-    RED.nodes.registerType("Custom Form",CustomForm);
+    RED.nodes.registerType("Form Design",FormDesign);
 
 }

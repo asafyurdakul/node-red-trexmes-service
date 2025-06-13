@@ -1,11 +1,13 @@
-
-
 <script type="text/html" data-template-name="Custom Form">
     <div class="form-row">
         <div class="form-row">
             <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
             <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
         </div> 
+        <div class="form-row">
+            <label for="node-input-designformname"><i class="fa fa-windows"></i> <span data-i18n="custom-form.label.designformname"></span></label>
+            <select id="node-input-designformname"></select>
+        </div>
         <div class="form-row" style="display: flex; align-items: center; gap: 10px;">
             <label for="node-input-customformxml" style="width: 100px; flex-shrink: 0;"><i class="fa fa-globe"></i> <span data-i18n="custom-form.label.customformxml"></label>
             <input type="text" id="node-input-customformxml" style="flex-grow: 1; min-width: 0;">
@@ -22,6 +24,20 @@
     </div>   
 </script>
 
+<script type="text/html" data-template-name="Form Design">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+        <div class="form-row" style="display: flex; align-items: center; gap: 10px;">
+            <label for="node-input-formdesignxml" style="width: 100px; flex-shrink: 0;"><i class="fa fa-globe"></i> <span data-i18n="form-design.label.formdesignxml"></label>
+            <input type="text" id="node-input-formdesignxml" style="flex-grow: 1; min-width: 0;">
+            <button id="node-button-formdesignxml" class="red-ui-button"><i class="fa fa-windows"></i></button>
+        </div>
+    </div>   
+</script>
+
 <script type="text/javascript">
     (function() {
         RED.nodes.registerType('Custom Form',{
@@ -31,7 +47,8 @@
                 name: {value:""},
                 customformxml: {value:""},
                 isstyled: {value: true },
-                formainform: {value: false }
+                formainform: {value: false },
+                designformname: {value:""},
             },
             inputs:1,
             outputs:1,
@@ -48,13 +65,28 @@
             },
             oneditprepare: function() {
                 var node = this;
-                // Input alanına mevcut customformxml değerini aktar
-                /*$("#node-input-customformxml").val(node.customformxml);
 
-                // Input alanındaki değeri node.customformxml'a aktar
-                $("#node-input-customformxml").on('input', function() {
-                    node.customformxml = $(this).val(); // Input değeri node'a aktarılır
-                });*/
+                var $combo = $("#node-input-designformname");
+                var currentSelection = this.designformname; 
+                $combo.empty();
+                var option = $("<option></option>")
+                        .attr("value", "")
+                        .text("Select a Form Design");
+                $combo.append(option); 
+
+                RED.nodes.eachNode(function (node) {
+                    if (node.type === "Form Design") 
+                    { 
+                        var option = $("<option></option>")
+                        .attr("value", node.name)
+                        .text(node.name);
+
+                        if (currentSelection === node.name) {
+                            option.attr("selected", "selected");
+                        }
+                        $combo.append(option);  
+                    }
+                });
 
                 $("#node-button-customformxml").click(function () {
                     var xmlContent = node.customformxml || "";  
@@ -81,4 +113,56 @@
        
     
     })();
-    </script>
+</script>
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('Form Design',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},
+                formdesignxml: {value:""}
+            },
+            inputs:0,
+            outputs:0,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else {
+                    return "Form Design";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() {
+                var node = this;
+
+                $("#node-button-formdesignxml").click(function () {
+                    var xmlContent = node.customformxml || "";  
+                    //alert(xmlContent );
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/custom-form/run-exe",  
+                        contentType: "application/json",  
+                        data: JSON.stringify({ filename: node.name, xml: xmlContent }),  
+                        success: function (data) {
+                            node.customformxml = data.output;
+                            $("#node-input-formdesignxml").val(data.output);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert("Exe could not worked! Error: " + textStatus + " " + errorThrown);
+                        }
+                    });
+                });
+            }
+    
+        });
+    
+       
+    
+    })();
+</script>

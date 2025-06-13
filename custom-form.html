@@ -141,7 +141,7 @@
                 var node = this;
 
                 $("#node-button-formdesignxml").click(function () {
-                    var xmlContent = node.customformxml || "";  
+                    var xmlContent = node.formdesignxml || "";  
                     //alert(xmlContent );
 
                     $.ajax({
@@ -150,7 +150,7 @@
                         contentType: "application/json",  
                         data: JSON.stringify({ filename: node.name, xml: xmlContent }),  
                         success: function (data) {
-                            node.customformxml = data.output;
+                            node.formdesignxml = data.output;
                             $("#node-input-formdesignxml").val(data.output);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {

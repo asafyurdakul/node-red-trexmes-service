@@ -1,0 +1,15 @@
+{
+    "common": {
+        "label": {
+            "payload": "Payload",
+            "topic": "Topic",
+            "name": "Name"
+        }
+    },
+    "execute-script": {
+        "label": {
+            "script": "C# Script",
+            "formname": "Form Name"
+        }
+    }
+}

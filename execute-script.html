@@ -1,0 +1,88 @@
+<script type="text/html" data-template-name="Execute Script">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div> 
+
+        <div class="form-row">
+            <label for="node-input-formname"><i class="fa fa-windows"></i> <span data-i18n="execute-script.label.formname"></span></label>
+            <select id="node-input-formname"></select>
+        </div>
+
+        <div class="form-row node-input-property-container-row">
+            <ol id="node-input-property-container"></ol>
+        </div>
+
+        <div class="form-row">
+            <label for="node-input-script"><i class="fa fa-windows"></i> <span data-i18n="execute-script.label.script"></span></label>
+            <textarea id="node-input-script" rows="10" style="width: 100%"></textarea>
+        </div>        
+
+    </div>   
+</script>
+
+<script type="text/javascript">
+    (function() {
+    
+                       
+        RED.nodes.registerType('Execute Script',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},               
+                formname: {value:""}, 
+                script:{value:"", required:true}
+            },
+            inputs:1,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else {
+                    return "Execute Script";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function() { 
+                var node = this;
+
+                this.editor = RED.editor.createEditor({
+                        id: 'node-input-script',
+                        mode: 'ace/mode/csharp', // Ace editor modları desteklenir
+                        value: this.script || ""
+                    });
+
+                var $combo = $("#node-input-formname");
+                var currentSelection = this.formname; 
+                $combo.empty();
+
+                RED.nodes.eachNode(function (node) {
+                    if (node.type === "Custom Form") { 
+                        var option = $("<option></option>")
+                        .attr("value", node.name)
+                        .text(node.name);
+
+                        if (currentSelection === node.name) {
+                            option.attr("selected", "selected");
+                        }
+                        $combo.append(option);  
+                    }
+                });
+
+            },
+            oneditsave: function() {                
+                this.script = this.editor.getValue();
+                this.editor.destroy();
+                this.editor = null;
+            }
+    
+        });
+    
+       
+    
+    })();
+    </script>

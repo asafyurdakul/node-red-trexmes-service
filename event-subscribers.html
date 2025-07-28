@@ -20,6 +20,7 @@
                     "OnConsumedDcasLotsDeleting",
                     "OnCounterIncrementViabilityChecked",
                     "OnCreatedProductionPlanLoading",
+                    "OnCurrentLotBalancesValidating",
                     "OnCurrentPlanInfoSet",
                     "OnCurrentSpeedCalculated",
                     "OnCurrentSpeedCalculating",
@@ -41,7 +42,7 @@
                     "OnForkliftOrderUpdated",
                     "OnFractionalAmountProductionSaved",
                     "OnJoblessProductionOccured",
-                    "OnJoborderSelecting",
+                    "OnJobOrderSelecting",
                     "OnLabelReprinting",
                     "OnLanguageChanged",
                     "OnLanguageSelectionChanged",
@@ -52,6 +53,7 @@
                     "OnMaintenanceServiceReceiptCreated",
                     "OnMaintenanceServiceRequestCreated",
                     "OnMaterialCounterIncreased",
+                    "OnMaterialCounterIncreasing",
                     "OnMaterialLotSelectionProcessed",
                     "OnNoShiftTimeProductionOccuring",
                     "OnOpcProductionCounterIncreasing",
@@ -74,6 +76,7 @@
                     "OnPlanLoadViaOpcStockNoFailed",
                     "OnPlanLotsFromDcasLotsGenerating",
                     "OnPlanMaterialsQuerying",
+                    "OnPlannedSpeedCalculating",
                     "OnPlanSelecting",
                     "OnPlanSelectionApproved",
                     "OnPlanSelectViabilityChecking",
@@ -96,7 +99,7 @@
                     "OnProductionInfoSet",
                     "OnProductionPlanChanging",
                     "OnProductionPlanCreated",
-                    "OnProductionPlanJobordersAppending",
+                    "OnProductionPlanJobOrdersAppending",
                     "OnProductionQuantityConverting",
                     "OnProductionReceiptCreated",
                     "OnProductionReceiptEditQuantityConverting",
@@ -116,7 +119,7 @@
                     "OnProPlanCycleFromStockCycleSetting",
                     "OnQualityReceiptCreated",
                     "OnRotationSpeedCalculating",
-                    "OnSelectedJoborderProductionParametersSetting",
+                    "OnSelectedJobOrderProductionParametersSetting",
                     "OnSerieDefectCreated",
                     "OnShiftChanged",
                     "OnShiftChanging",
@@ -131,6 +134,7 @@
                     "OnStockProductionCounterIncreased",
                     "OnStoppageChanging",
                     "OnStoppageEnded",
+                    "OnStoppageEnding",
                     "OnStoppageReasonEquipmentSelected",
                     "OnStoppageSelected",
                     "OnStoppageSelecting",
@@ -147,9 +151,9 @@
                     "OnUndefinedStoppagesQuerying",
                     "OnUserDefinedReceiptDataCreated",
                     "OnWorkStationInfoLoaded",
-                    "OnWorkstationStatesSet",
-                    "OnWorkstationStatusEntryCreating",
-                    "OnWorkstationStatusItemEntryCreating"
+                    "OnWorkStationStatesSet",
+                    "OnWorkStationStatusEntryCreating",
+                    "OnWorkStationStatusItemEntryCreating"
                     ];
                 var select = document.getElementById("node-input-event");
                 options.forEach(function(option) {
@@ -191,12 +195,14 @@
                     "OnDigitalInputValueChanging",
                     "OnDigitalOutputValueChanged",
                     "OnDigitalOutputValueChanging",
-                    "OnJoborderStockBarcodeScanned",
-                    "OnJoborderStockBarcodeScanning",
+                    "OnEmployeeLoggedIn",
+                    "OnJobOrderStockBarcodeScanned",
+                    "OnJobOrderStockBarcodeScanning",
                     "OnLotBarcodeScanning",
                     "OnNextProductionPlanLoading",
                     "OnNgpCommandProcessing",
                     "OnOpcDataPortInitialized",
+                    "OnOpcOutputValueChanged",
                     "OnOverCapacityCounterIncrementDetected",
                     "OnOverCapacityPlanLoading",
                     "OnPeriodicalMaintenanceApproved",
@@ -238,7 +244,7 @@
                     "OnTeamChanging",
                     "OnTeamPlanPolyvalenceValidationFailed",
                     "OnUIButtonConfigurationSet",
-                    "OnWorkstationStatesSet"
+                    "OnWorkStationStatesSet"
                     ];
                 var select = document.getElementById("node-input-event");
                 options.forEach(function(option) {
@@ -304,32 +310,32 @@
             <script type="text/javascript">
                 (function() {
                 var options = [
-                        "OnAssemblyPictureSignalChanged",
-                        "OnBarcodeScanned",
-                        "OnBarcodeScanning",
-                        "OnDcasMessageProcessing",
-                        "OnDefectEntrySignalChanged",
-                        "OnDigitalInputValueChanged",
-                        "OnDigitalInputValueChanging",
-                        "OnDigitalOutputValueChanged",
-                        "OnDigitalOutputValueChanging",
-                        "OnIOCardDataCoalesced",
-                        "OnJoborderStockBarcodeScanned",
-                        "OnJoborderStockBarcodeScanning",
-                        "OnLotBarcodeScanning",
-                        "OnNgpCommandProcessing",
-                        "OnPortDataChanged",
-                        "OnPortDataChanging",
-                        "OnPortManagerConnected",
-                        "OnPortManagerInitialized",
-                        "OnPortManagerInitializing",
-                        "OnPortParametersLoaded",
-                        "OnProductionSaveSignalChanged",
-                        "OnProductionSaveSignalInputValuesSetting",
-                        "OnSerialPortBarcodeScanning",
-                        "OnSerieBarcodeScanning",
-                        "OnSocketMessageInterpreted",
-                        "OnStoppageSignalChanged"
+                          "OnAssemblyPictureSignalChanged",
+                            "OnBarcodeScanned",
+                            "OnBarcodeScanning",
+                            "OnDcasMessageProcessing",
+                            "OnDefectEntrySignalChanged",
+                            "OnDigitalInputValueChanged",
+                            "OnDigitalInputValueChanging",
+                            "OnDigitalOutputValueChanged",
+                            "OnDigitalOutputValueChanging",
+                            "OnIOCardDataCoalesced",
+                            "OnJobOrderStockBarcodeScanned",
+                            "OnJobOrderStockBarcodeScanning",
+                            "OnLotBarcodeScanning",
+                            "OnNgpCommandProcessing",
+                            "OnPortDataChanged",
+                            "OnPortDataChanging",
+                            "OnPortManagerConnected",
+                            "OnPortManagerInitialized",
+                            "OnPortManagerInitializing",
+                            "OnPortParametersLoaded",
+                            "OnProductionSaveSignalChanged",
+                            "OnProductionSaveSignalInputValuesSetting",
+                            "OnSerialPortBarcodeScanning",
+                            "OnSerieBarcodeScanning",
+                            "OnSocketMessageInterpreted",
+                            "OnStoppageSignalChanged"
                         ];
                 var select = document.getElementById("node-input-event");
                 options.forEach(function(option) {
@@ -391,7 +397,7 @@
                             "OnShiftEventFormOpening",
                             "OnStoppageDescriptionFormOpening",
                             "OnUIButtonConfigurationSet",
-                            "OnWorkstationSelected"
+                            "OnWorkStationSelected"
                             ];
                 var select = document.getElementById("node-input-event");
                 options.forEach(function(option) {

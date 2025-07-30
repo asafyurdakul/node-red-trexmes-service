@@ -24,13 +24,18 @@ module.exports = function(RED) {
                             receiveddata = msg.payload;
                             msg.payload = [];
                         }
-        
+                        
+                        let script = payload.script;
+                        if (script === undefined || script === null) {
+                            script = node.script;
+                        }
+
                         const newmsg = 
                             {
                                 "receiveddata" : receiveddata,                                
                                 "operationtype": "ExecuteScript",
                                 "name": formname,
-                                "message": node.script
+                                "message": script
                             };                
                         msg.payload.push(newmsg);
         

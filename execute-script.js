@@ -25,7 +25,7 @@ module.exports = function(RED) {
                             msg.payload = [];
                         }
                         
-                        let script = payload.script;
+                        let script = msg.script;
                         if (script === undefined || script === null) {
                             script = node.script;
                         }

@@ -99,7 +99,7 @@ module.exports = function(RED) {
                     //node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:req.query});
                     
                     const eventTypes = new Set(["Business Events", 
-                                                "Application Events", 
+                                                /*"Application Events", */
                                                 "System Events",
                                                 "Communication Events",
                                                 "Display Events",

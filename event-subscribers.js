@@ -208,7 +208,7 @@ module.exports = function(RED) {
     }
     RED.nodes.registerType("Business Events",BusinessEventSubscriber);
 
-    function ApplicationEventSubscriber(n) {
+    /*function ApplicationEventSubscriber(n) {
         RED.nodes.createNode(this,n);
         if (RED.settings.httpNodeRoot !== false) {
             n.method = "post";
@@ -310,6 +310,7 @@ module.exports = function(RED) {
         }
     }
     RED.nodes.registerType("Application Events",ApplicationEventSubscriber);
+    */
 
     function SystemEventSubscriber(n) {
         RED.nodes.createNode(this,n);

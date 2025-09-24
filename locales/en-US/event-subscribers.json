@@ -41,6 +41,8 @@
             "formainform":"For MainForm",
             "eventtime": "Event Time",
             "ishandled": "Handled",
+            "suffix": "Call Suffix",
+            "suffixRequired": "Required if the same event is called more than once",
             "doc": "Docs",
             "return": "Return",
             "status": "Status code",

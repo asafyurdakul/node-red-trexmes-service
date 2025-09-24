@@ -114,12 +114,17 @@ module.exports = function(RED) {
                 return;
             }
             this.event = n.event;
-
+            this.suffix = n.suffix;
+            
             if (this.event[0] !== '/') {
                 this.event = '/'+this.event;
+                if(this.suffix && this.suffix.trim() !== ""){
+                    this.event = this.event+"_"+this.suffix.trim();
+                }
             } 
             this.ishandled = n.ishandled;
             this.method = n.method;
+            
             var node = this;
 
             this.errorHandler = function(err,req,res,next) {

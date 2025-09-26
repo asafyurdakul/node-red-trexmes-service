@@ -725,8 +725,11 @@
                 name: {value:""},
                 method: {value:"post",required:true},
                 event: {value:""},
-                formname: {value:"", required:true,
-                      label:RED._("node-red:event-subscribers.label.formname")},
+                formname: {
+                    value:"CustomForm", 
+                    required: true,
+                    label:RED._("node-red:event-subscribers.label.formname")
+                },
                 control: {value:"", required:true,
                       label:RED._("node-red:event-subscribers.label.control")},  
                 eventname: {value:"Click", required:true,

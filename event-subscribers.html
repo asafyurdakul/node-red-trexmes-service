@@ -306,7 +306,8 @@
                         "Changed",
                         "Load",
                         "Tick",
-                        "KeyEnter"];
+                        "KeyEnter",
+                        "SelectionChanged",];
                 var select = document.getElementById("node-input-eventname");
                 options.forEach(function(option) {
                     var opt = document.createElement("option");
@@ -451,6 +452,7 @@
                 "OnOperatorAddedNextPlan",
                 "OnOperatorApprovedProductionConfirmationAmount",
                 "OnOperatorApprovingProductionConfirmationAmount",
+                "OnOperatorApprovingProductionSaveAmount",
                 "OnOperatorCounterIncreasing",
                 "OnOperatorCreatingMaintenanceOrder",
                 "OnOperatorDeletedNextPlan",
@@ -458,8 +460,11 @@
                 "OnOperatorProductionConfirming",
                 "OnPeriodicalMaintenanceApproved",
                 "OnPeriodicalMaintenanceConditionChecking",
+                "OnPidReceiptCreated",
+                "OnPidReceiptCreating",
                 "OnPidSectionReceiptCreated",
                 "OnPlanChanged",
+                "OnPlanCompletionSummaryCalculatedSetting",
                 "OnPlanLoaded",
                 "OnPlanLoadViaOpcStockNoFailed",
                 "OnPlanLotsFromLotEntriesGenerating",
@@ -526,6 +531,7 @@
                 "OnStockCoefficientChangeSaving",
                 "OnStockEquipmentMatchViabilityChecking",
                 "OnStockProductionCounterIncreased",
+                "OnStoppageChanged",
                 "OnStoppageChanging",
                 "OnStoppageEnded",
                 "OnStoppageEnding",

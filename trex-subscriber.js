@@ -108,21 +108,24 @@ module.exports = function(RED) {
                                                 "Method Returns",]);
                         
                     let matchingNodes = [];
+                    let matchingHandlers = [];
                     RED.nodes.eachNode(function (n) {
                         if (eventTypes.has(n.type)) {                        
                             let runtimeNode = RED.nodes.getNode(n.id);
                             if (runtimeNode) {
                                 let eName = runtimeNode.event.replace(/\//g, "")
-                                matchingNodes.push(eName);
+                                matchingNodes.push(eName);         
+                                if(runtimeNode.ishandled === true)
+                                    matchingHandlers.push(eName+"|handled");
                             }
                         }
                     });
 
+                    node.send({_msgid:msgid,payload:{ client: req.ip, subs: matchingNodes, handleds: matchingHandlers }});
 
-                    node.send({_msgid:msgid,payload:{ client: req.ip, subs: matchingNodes}});
-
-                    let msg = {_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:matchingNodes}
-
+                    const merged = [...matchingNodes, ...matchingHandlers];
+                    let msg = {_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:merged};
+                    
                     node.headers= {};
 
                     if (msg.res) {

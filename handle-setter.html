@@ -1,0 +1,83 @@
+
+
+<script type="text/html" data-template-name="Handle Setter">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div>         
+    </div>   
+    <div class="form-row">
+        <label for="node-input-ishandled">
+            <i class="fa fa-check-square"></i>
+            <span data-i18n="handle-setter.label.ishandled"></span>
+        </label>
+        <input type="text" id="node-input-ishandled" style="width: 70%;">
+        <input type="hidden" id="node-input-ishandledtype">
+    </div>
+</script>
+
+<script type="text/javascript">
+    (function() {    
+                       
+        RED.nodes.registerType('Handle Setter',{
+            category: 'trexMes service',
+            color:"rgb(204, 255, 204)",
+            defaults: {
+                name: {value:""},                
+                isHandled: { value: true },
+                isHandledType: { value: "bool" }
+            },
+            inputs:1,
+            outputs:1,
+            icon: "trex.png",
+            label: function() {
+                if (this.name) {
+                    return this.name;
+                } else {
+                    return "Handle Setter";
+                }
+            },
+            labelStyle: function() {
+                return this.name?"node_label_italic":"";
+            },
+            oneditprepare: function () {
+                const node = this;
+                $("#node-input-ishandled").typedInput({
+                    default: "bool",
+                    types: [
+                        "bool",
+                        "msg",
+                        "flow"
+                    ],
+                    typeField: "#node-input-ishandledtype"
+                });
+                
+                $("#node-input-ishandled")
+                        .typedInput("type", node.isHandledType)
+                        .typedInput("value", node.isHandled);
+            },
+            oneditsave: function () {
+                const ti = $("#node-input-ishandled");
+                
+                // isHandledType'i kaydet
+                this.isHandledType = ti.typedInput("type");
+                
+                let val = ti.typedInput("value");
+                
+                if (this.isHandledType === "bool") {
+                    this.isHandled = (val === true || val === "true");
+                } else {
+                    this.isHandled = val;
+                }
+                
+                // Ayrıca defaults'taki değeri de güncelle
+                this._def.isHandledType = { value: this.isHandledType };
+            }
+    
+        });
+    
+       
+    
+    })();
+    </script>

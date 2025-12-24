@@ -865,12 +865,8 @@ module.exports = function(RED) {
     
     
         function produceStringMessage(variableList) {
-            let str = '';
-            variableList.forEach(variable => {  
-                str = str + variable.Name + ": " + variable.Type+'\n';            
-            });        
-            //node.warn(str);
-            return str;
+            const jsonString = JSON.stringify(variableList, null, 2);
+            return jsonString;
         }
         
         RED.nodes.createNode(this,n);

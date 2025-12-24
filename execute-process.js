@@ -38,8 +38,7 @@ module.exports = function(RED) {
             } catch (err) {
                 node.error("error: " + err.message, msg);
             }
-        });
-       
+        });       
 
     }
 

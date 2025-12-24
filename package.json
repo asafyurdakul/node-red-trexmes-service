@@ -24,7 +24,8 @@
       "main-form-actions": "main-form-actions.js",
       "method-invoker": "method-invoker.js",
       "execute-process": "execute-process.js",
-      "execute-script": "execute-script.js"
+      "execute-script": "execute-script.js",
+      "handle-setter": "handle-setter.js"
     }
   },
   "repository": {

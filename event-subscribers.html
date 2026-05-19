@@ -14,6 +14,11 @@
             <select type="text" id="node-input-event" style="width:70%;"></select>
         </div>
 
+        <!-- Description container -->
+        <div class="form-row" id="event-description-row" style="display: none; margin-top: 10px; padding: 10px; background: #f8f8f8; border-left: 4px solid #4CAF50;">
+            <div style="font-size: 0.9em; color: #555;" id="event-description"></div>
+        </div>
+
         <div class="form-row">
             <label for="node-input-suffix"><i class="fa fa-tag"></i><span data-i18n="event-subscribers.label.suffix"></span></label>                    
             <input type="text" id="node-input-suffix" data-i18n="[placeholder]event-subscribers.label.suffixRequired">
@@ -30,28 +35,16 @@
         <div class="form-row" style="display: flex;align-items: center; gap: 10px;">
             <label for="node-input-ishandled" style="width: 70%"><span data-i18n="event-subscribers.label.ishandled"></span></label>        
             <input type="checkbox" id="node-input-ishandled" style="width: 30%">
-        </div>         
+        </div> 
         <div class="form-row">
             <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-            <select type="text" id="node-input-event" style="width:70%;">
-            </select>
-            <script type="text/javascript">
-                (function() {
-                var options = [
-                    "OnApplicationClosing",
-                    "OnApplicationStarted",
-                    "OnGlobalTimerTicked"
-                    ];
-                var select = document.getElementById("node-input-event");
-                options.forEach(function(option) {
-                    var opt = document.createElement("option");
-                    opt.value = option;
-                    opt.innerHTML = option;
-                    select.appendChild(opt);
-                });
-                })();
-            </script>
-        </div>       
+            <select id="node-input-event" style="width:70%;"></select>
+        </div>
+
+        <!-- Açıklama Alanı -->
+        <div class="form-row" id="system-event-description-row" style="display: none; margin-top: 8px; padding: 12px; background: #f0f8f0; border-left: 5px solid #9C27B0; border-radius: 4px;">
+            <div id="system-event-description" style="font-size: 0.92em; line-height: 1.4;"></div>
+        </div>
     </div>   
 </script>
 
@@ -67,50 +60,13 @@
         </div> 
         <div class="form-row">
             <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-            <select type="text" id="node-input-event" style="width:70%;">
-            </select>
-            <script type="text/javascript">
-                (function() {
-                var options = 
-                    [
-                        "OnAssemblyPictureSignalChanged",
-                        "OnBarcodeScanned",
-                        "OnBarcodeScanning",
-                        "OnDefectEntrySignalChanged",
-                        "OnDigitalInputValueChanged",
-                        "OnDigitalInputValueChanging",
-                        "OnDigitalOutputValueChanged",
-                        "OnDigitalOutputValueChanging",
-                        "OnIOCardDataCoalesced",
-                        "OnJobOrderStockBarcodeScanned",
-                        "OnJobOrderStockBarcodeScanning",
-                        "OnLotBarcodeScanning",
-                        "OnNgpCommandProcessing",
-                        "OnNotificationMessageProcessing",
-                        "OnPortDataChanged",
-                        "OnPortDataChanging",
-                        "OnPortManagerConnected",
-                        "OnPortManagerInitialized",
-                        "OnPortManagerInitializing",
-                        "OnPortParametersLoaded",
-                        "OnProductionConfirmationSignalChanged",
-                        "OnProductionConfirmationSignalInputValuesSetting",
-                        "OnSerialPortBarcodeScanning",
-                        "OnSerieBarcodeScanning",
-                        "OnSocketMessageInterpreted",
-                        "OnStoppageSignalChanged"
-                        ];
-                var select = document.getElementById("node-input-event");
-                options.forEach(function(option) {
-                    var opt = document.createElement("option");
-                    opt.value = option;
-                    opt.innerHTML = option;
-                    select.appendChild(opt);
-                });
-                })();
-            </script>
+            <select id="node-input-event" style="width:70%;"></select>
         </div>
-       
+
+        <!-- Açıklama Alanı -->
+        <div class="form-row" id="comm-event-description-row" style="display: none; margin-top: 8px; padding: 12px; background: #f0f8f0; border-left: 5px solid #2196F3; border-radius: 4px;">
+            <div id="comm-event-description" style="font-size: 0.92em; line-height: 1.4;"></div>
+        </div>
     </div>   
 </script>
 
@@ -126,54 +82,13 @@
         </div> 
         <div class="form-row">
             <label for="node-input-event"><i class="fa fa-globe"></i> <span data-i18n="event-subscribers.label.event"></span></label>
-                <select type="text" id="node-input-event" style="width:70%;"></select>
-            <script type="text/javascript">
-                (function() {
-                var options = 
-                    [
-                        "OnBarcodeTextBoxSetting",
-                        "OnCommandKeyProcessing",
-                        "OnDefectEntryOperatorConfirmationFailed",
-                        "OnDefectSelected",
-                        "OnEventDetailSelectionsListing",
-                        "OnForkliftTakeTransferSelecting",
-                        "OnJobInformationEquipmentCounterTextSetting",
-                        "OnJobLoadColumnCellFormatSetting",
-                        "OnJobOrderSearching",
-                        "OnMainFormCounterTextsSetting",
-                        "OnMainFormNoteTextSetting",
-                        "OnMainUserControlJobOrderPanelClicked",
-                        "OnOperationSpecFormOpening",
-                        "OnOperatorCreatingDefectEntry",
-                        "OnOperatorPlanLoadButtonClicking",
-                        "OnOperatorPlanLoaded",
-                        "OnOtherOperationsFormClosed",
-                        "OnPitchLabelSetting",
-                        "OnPlanContinueQuestionAsking",
-                        "OnPlanSearching",
-                        "OnPlanSelectionDetailClicked",
-                        "OnProductionAmountLeftTextSetting",
-                        "OnProductionApproveFormOpening",
-                        "OnProductionApproveGridSet",
-                        "OnProductionApproveGridSetting",
-                        "OnProductionApproveOperatorDataGridSetting",
-                        "OnScreenSaverShowning",
-                        "OnShiftEventFormOpening",
-                        "OnStockEquipmentMatchDisplaying",
-                        "OnStoppageDescriptionFormOpening",
-                        "OnUIButtonConfigurationSet",
-                        "OnWorkStationSelected"
-                        ];
-                var select = document.getElementById("node-input-event");
-                options.forEach(function(option) {
-                    var opt = document.createElement("option");
-                    opt.value = option;
-                    opt.innerHTML = option;
-                    select.appendChild(opt);
-                });
-                })();
-            </script>
-        </div>       
+            <select id="node-input-event" style="width:70%;"></select>
+        </div>
+
+        <!-- Açıklama Alanı -->
+        <div class="form-row" id="display-event-description-row" style="display: none; margin-top: 8px; padding: 12px; background: #f0f8f0; border-left: 5px solid #FF9800; border-radius: 4px;">
+            <div id="display-event-description" style="font-size: 0.92em; line-height: 1.4;"></div>
+        </div>
     </div>   
 </script>
 
@@ -278,19 +193,189 @@
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
-    </div>   
+    </div>
 </script>
 
 <script type="text/javascript">
 (function() {
+    const businessEvents = [
+        {event: "OnProcessDataAnalysisAlertOccured", description: "Proses verisi analizinde tolerans dışı değer algılandığında tetiklenir."},
+        {event: "OnProcessDataAnalysisProcessing", description: "Proses verisi analiz edilirken tetiklenir, IsHandled elemanına true değer atanır ise argümanlardan dönen analiz nesnesi işlenir."},
+        {event: "OnShiftDefectsQuerying", description: "Trex Edge analiz ekranında ıskarta analizi için sorgulama gerçekleştirilirken fırlatılır."},
+        {event: "OnShiftProductivityCalculated", description: "Vardiya üretkenliği hesaplandığında tetiklenir."},
+
+        {event: "OnConsumedLotEntriesDeleting", description: "Tüketilen lot kayıtları silinirken tetiklenir."},
+        {event: "OnLotEntriesDeletingOnProductionCompletion", description: "Üretim tamamlandığında lot kayıtları silinirken tetiklenir."},
+        {event: "OnLotDeleted", description: "Lot silindiğinde tetiklenir."},
+        {event: "OnMaterialCounterIncreased", description: "Malzeme sayacı artırıldığında tetiklenir."},
+        {event: "OnMaterialLotSelectionProcessed", description: "Malzeme lot seçimi işlendiğinde tetiklenir."},
+        {event: "OnPlanLotsFromLotEntriesGenerating", description: "Lot girişlerinden plan lotları oluşturulurken tetiklenir."},
+        {event: "OnPlanMaterialsQuerying", description: "Plan malzemeleri sorgulanırken tetiklenir."},
+        {event: "OnCurrentLotBalancesValidating", description: "Mevcut lot bakiyeleri doğrulanırken tetiklenir."},
+
+        {event: "OnDefectAmountQuerying", description: "Iskarta miktarı sorgulanırken tetiklenir."},
+        {event: "OnDefectEntryCreated", description: "Iskarta girişi oluşturulduğunda tetiklenir."},
+        {event: "OnDefectEntryDeleted", description: "Iskarta girişi silindiğinde tetiklenir."},
+        {event: "OnDefectQuantityConverting", description: "Iskarta miktarı çevrimi sırasında tetiklenir."},
+        {event: "OnSerieDefectCreated", description: "Seri bazlı ıskarta oluşturulduğunda tetiklenir."},
+
+        {event: "OnDocumentNotFound", description: "Belge bulunamadığında tetiklenir."},
+
+        {event: "OnTeamChanged", description: "Takım değiştiğinde tetiklenir."},
+
+        {event: "OnForkliftOrderCreated", description: "Forklift siparişi oluşturulduğunda tetiklenir."},
+        {event: "OnForkliftFetchOrderCreating", description: "Forklift alma siparişi oluşturulurken tetiklenir."},
+        {event: "OnForkliftGetOrderCreating", description: "Forklift getirme siparişi oluşturulurken tetiklenir."},
+        {event: "OnForkliftOrderUpdated", description: "Forklift siparişi güncellendiğinde tetiklenir."},
+        {event: "OnForkliftOrdersQuerying", description: "Forklift siparişleri sorgulanırken tetiklenir."},
+
+        {event: "OnCreatedProductionPlanLoading", description: "Oluşturulan üretim planı yüklenirken tetiklenir."},
+        {event: "OnCurrentPlanInfoSet", description: "Mevcut plan bilgisi ayarlandığında tetiklenir."},
+        {event: "OnJobOrderQueryGenerating", description: "İş emri sorgusu oluşturulurken tetiklenir."},
+        {event: "OnJobOrderSelecting", description: "İş emri seçilirken tetiklenir."},
+        {event: "OnOperatorAddedNextPlan", description: "Operatör sonraki plana eklendiğinde tetiklenir."},
+        {event: "OnOperatorDeletedNextPlan", description: "Operatör sonraki plandan silindiğinde tetiklenir."},
+        {event: "OnPlanChanged", description: "Plan değiştiğinde tetiklenir."},
+        {event: "OnPlanLoaded", description: "Plan yüklendiğinde tetiklenir."},
+        {event: "OnPlanLoadViaOpcStockNoFailed", description: "OPC stok no ile plan yükleme başarısız olduğunda tetiklenir."},
+        {event: "OnPlanSelecting", description: "Plan seçilirken tetiklenir."},
+        {event: "OnPlanSelectionApproved", description: "Plan seçimi onaylandığında tetiklenir."},
+        {event: "OnPlanSelectViabilityChecking", description: "Plan seçim uygunluğu kontrol edilirken tetiklenir."},
+        {event: "OnPlanStartViabilityChecking", description: "Plan başlatma uygunluğu kontrol edilirken tetiklenir."},
+        {event: "OnProductionPlanChanging", description: "Üretim planı değiştirilirken tetiklenir."},
+        {event: "OnProductionPlanCreated", description: "Üretim planı oluşturulduğunda tetiklenir."},
+        {event: "OnProductionPlanJobOrdersAppending", description: "Üretim planına iş emirleri eklenirken tetiklenir."},
+        {event: "OnProductionPlanQueryGenerating", description: "Üretim planı sorgusu oluşturulurken tetiklenir."},
+
+        {event: "OnLabelPrinting", description: "Etiket basımı sırasında tetiklenir."},
+        {event: "OnLabelReprinting", description: "Etiket yeniden basımı sırasında tetiklenir."},
+        {event: "OnUnapprovedProductionReceiptLabelPrinting", description: "Onaysız üretim fişi etiketi basılırken tetiklenir."},
+
+        {event: "OnLanguageChanged", description: "Dil değiştiğinde tetiklenir."},
+        {event: "OnLanguageSelectionChanged", description: "Dil seçimi değiştiğinde tetiklenir."},
+
+        {event: "OnMaintenanceOrderCompleted", description: "Bakım emri tamamlandığında tetiklenir."},
+        {event: "OnMaintenanceOrderCreated", description: "Bakım emri oluşturulduğunda tetiklenir."},
+        {event: "OnMaintenancePlanSetting", description: "Bakım planı ayarlanırken tetiklenir."},
+        {event: "OnMaintenanceServiceReceiptCreated", description: "Bakım servis fişi oluşturulduğunda tetiklenir."},
+        {event: "OnMaintenanceServiceRequestCreated", description: "Bakım servis talebi oluşturulduğunda tetiklenir."},
+        {event: "OnOperatorCreatingMaintenanceOrder", description: "Operatör bakım emri oluştururken tetiklenir."},
+        {event: "OnOperatorMaintenaceInterventionEnded", description: "Operatör bakım müdahalesi bittiğinde tetiklenir."},
+        {event: "OnPeriodicalMaintenanceApproved", description: "Periyodik bakım onaylandığında tetiklenir."},
+        {event: "OnPeriodicalMaintenanceConditionChecking", description: "Periyodik bakım koşulu kontrol edilirken tetiklenir."},
+
+        {event: "OnPokaYokeBarcodeValidating", description: "PokaYoke barkod doğrulaması yapılırken tetiklenir."},
+        {event: "OnPokaYokeComponentChanging", description: "PokaYoke bileşen değiştirilirken tetiklenir."},
+
+        {event: "OnPlanCompletionSummaryCalculated", description: "Plan tamamlanma özeti hesaplandığında tetiklenir."},
+        {event: "OnPlanCompletionSummaryCalculatedSetting", description: "Plan tamamlanma özeti ayarlanırken tetiklenir."},
+        {event: "OnCurrentSpeedCalculated", description: "Mevcut hız hesaplandığında tetiklenir."},
+        {event: "OnCurrentSpeedCalculating", description: "Mevcut hız hesaplanırken tetiklenir."},
+        {event: "OnEstimatedCompletionTimeCalculating", description: "Tahmini bitiş süresi hesaplanırken tetiklenir."},
+        {event: "OnJoblessProductionOccured", description: "İssiz üretim gerçekleştiğinde tetiklenir."},
+        {event: "OnNoShiftTimeProductionOccuring", description: "Vardiya dışı üretim gerçekleşirken tetiklenir."},
+        {event: "OnProductionSectionEntryCreated", description: "Üretim kesit girişi oluşturulduğunda tetiklenir."},
+        {event: "OnProductionSectionEntryCreating", description: "Üretim kesit girişi oluşturulurken tetiklenir."},
+        {event: "OnProductionSectionEntryUndefinedStockDetected", description: "Tanımsız stok algılandığında tetiklenir."},
+        {event: "OnProductionSectionEntryUpdating", description: "Üretim kesit girişi güncellenirken tetiklenir."},
+        {event: "OnProductionCompleted", description: "Üretim tamamlandığında tetiklenir."},
+        {event: "OnProductionCompleting", description: "Üretim tamamlanmak üzereyken tetiklenir."},
+        {event: "OnProductionContinuing", description: "Üretime devam edilirken tetiklenir."},
+        {event: "OnProductionFinishStatusChecking", description: "Üretim bitiş durumu kontrol edilirken tetiklenir."},
+        {event: "OnProductionInfoResetted", description: "Üretim bilgileri sıfırlandığında tetiklenir."},
+        {event: "OnProductionInfoSet", description: "Üretim bilgileri ayarlandığında tetiklenir."},
+        {event: "OnProductionQuantityConverting", description: "Üretim miktarı çevrilirken tetiklenir."},
+        {event: "OnProductionSummaryUpdated", description: "Üretim özeti güncellendiğinde tetiklenir."},
+        {event: "OnRotationSpeedCalculating", description: "Dönüş hızı hesaplanırken tetiklenir."},
+        {event: "OnPlannedSpeedCalculating", description: "Planlanan hız hesaplanırken tetiklenir."},
+        {event: "OnSignalProductionEnding", description: "Sinyal ile üretim bitişi tetiklendiğinde tetiklenir."},
+
+        {event: "OnCounterIncrementViabilityChecked", description: "Sayaç artırım uygunluğu kontrol edildiğinde tetiklenir."},
+        {event: "OnOpcProductionCounterIncreasing", description: "OPC üzerinden üretim sayacı artırılırken tetiklenir."},
+        {event: "OnOperatorCounterIncreasing", description: "Operatör sayacı artırırken tetiklenir."},
+        {event: "OnProductionCounterIncreased", description: "Üretim sayacı artırıldığında tetiklenir."},
+        {event: "OnProductionCounterIncrementCompleted", description: "Üretim sayacı artırım tamamlandığında tetiklenir."},
+        {event: "OnStockProductionCounterIncreased", description: "Stok üretim sayacı artırıldığında tetiklenir."},
+
+        {event: "OnCoefficientChangeSaved", description: "Çarpan değişikliği kaydedildiğinde tetiklenir."},
+        {event: "OnCyclePeriodSet", description: "Çevrim süresi ayarlandığında tetiklenir."},
+        {event: "OnCyclePeriodSetting", description: "Çevrim süresi ayarlanırken tetiklenir."},
+        {event: "OnProPlanCycleFromStockCycleSetting", description: "Stok çevriminden üretim planı çevrimi ayarlanırken tetiklenir."},
+        {event: "OnSelectedJobOrderProductionParametersSetting", description: "Seçili iş emri üretim parametreleri ayarlanırken tetiklenir."},
+        {event: "OnSpecPortSelected", description: "Spec port seçildiğinde tetiklenir."},
+        {event: "OnStockCoefficientChangeSaving", description: "Stok üretim çarpanı değiştirilirken tetiklenir."},
+        {event: "OnStockEquipmentMatchViabilityChecking", description: "Stok ekipman uyumu kontrol edilirken tetiklenir."},
+
+        {event: "OnEditedProductionReceiptSaving", description: "Düzenlenen üretim fişi kaydedilmeden önce tetiklenir."},
+        {event: "OnEditProductionReceiptSaved", description: "Düzenlenen üretim fişi kaydedildiğinde tetiklenir."},
+        {event: "OnPlanReceiptCreated", description: "Plan fişi oluşturulduğunda tetiklenir."},
+        {event: "OnPlanReceiptCreating", description: "Plan fişi oluşturulurken tetiklenir."},
+        {event: "OnPlanReceiptMaterialsCreated", description: "Plan fişi malzemeleri oluşturulduğunda tetiklenir."},
+        {event: "OnPidReceiptCreated", description: "Ön üretim fişi oluşturulduğunda tetiklenir."},
+        {event: "OnPidReceiptCreating", description: "Ön üretim fişi oluşturulurken tetiklenir."},
+        {event: "OnPidSectionReceiptCreated", description: "Üretim kesit fişi oluşturulduğunda tetiklenir."},
+        {event: "OnProductionReceiptCreated", description: "Üretim fişi oluşturulduğunda tetiklenir."},
+        {event: "OnProductionReceiptCreating", description: "Üretim fişi oluşturulmadan hemen önce tetiklenir."},
+        {event: "OnProductionReceiptEditQuantityConverting", description: "Üretim fişi düzenlenirken miktar çevrimi sırasında tetiklenir."},
+        {event: "OnProductionReceiptEditReceiptLoading", description: "Düzenleme için üretim fişi yüklenirken tetiklenir."},
+        {event: "OnProductionReceiptEditSaving", description: "Düzenlenen üretim fişi kaydedilirken tetiklenir."},
+        {event: "OnProductionReceiptIntegrating", description: "Üretim fişi entegrasyonu sırasında tetiklenir."},
+        {event: "OnProductionReceiptIntegrationSaving", description: "Üretim fişi entegrasyon kaydı yapılırken tetiklenir."},
+        {event: "OnSubProductReceiptsCreating", description: "Yan ürün fişleri oluşturulurken tetiklenir."},
+        {event: "OnUnapprovedProductionReceiptIntegrating", description: "Onaysız üretim fişi entegrasyonu sırasında tetiklenir."},
+        {event: "OnUnapprovedProductionReceiptUsedMaterialSelecting", description: "Onaysız fişlerde sarf malzemesi seçilirken tetiklenir."},
+        {event: "OnUserDefinedReceiptDataCreated", description: "Kullanıcı tanımlı fiş verisi oluşturulduğunda tetiklenir."},
+        {event: "OnProductionReceiptUserDefinedFieldsGetting", description: "Üretim fişi için kullanıcı tanımlı alanlar hazırlanırken tetiklenir."},
+
+        {event: "OnFractionalAmountProductionConfirmed", description: "Kısmi miktarlı otomatik üretim onayı gerçekleştiğinde tetiklenir."},
+        {event: "OnOperatorApprovedProductionConfirmationAmount", description: "Operatör üretim miktar onayını verdiğinde tetiklenir."},
+        {event: "OnOperatorApprovingProductionConfirmationAmount", description: "Operatör üretim miktar onayı verirken tetiklenir."},
+        {event: "OnOperatorApprovingProductionSaveAmount", description: "Operatör üretim kaydetme miktarı onaylarken tetiklenir (obsolete)."},
+        {event: "OnProductionConfirmationAmountValidating", description: "Üretim onay miktarı doğrulanırken tetiklenir."},
+        {event: "OnOperatorProductionConfirming", description: "Operatör üretim onayını başlatırken tetiklenir."},
+        {event: "OnProductionConfirmationCompleted", description: "Üretim onay işlemi tamamlandığında tetiklenir."},
+        {event: "OnProductionConfirmationCompleting", description: "Üretim onay işlemi tamamlanmak üzereyken tetiklenir."},
+        {event: "OnProductionConfirmed", description: "Üretim onayı gerçekleştiğinde tetiklenir."},
+        {event: "OnProductionConfirmationAllowanceChecked", description: "Üretim onay izni kontrol edildiğinde tetiklenir."},
+        {event: "OnProductionConfirmationStarted", description: "Üretim onay işlemi başladığında tetiklenir."},
+        {event: "OnProductionConfirmationViabilityChecking", description: "Üretim onay uygunluğu kontrol edilirken tetiklenir."},
+        {event: "OnProductionConfirming", description: "Üretim onay işlemi başlatılırken tetiklenir."},
+        {event: "OnSignalProductionConfirmed", description: "Sinyal ile üretim onayı gerçekleştiğinde tetiklenir."},
+        {event: "OnSignalProductionConfirming", description: "Sinyal ile üretim onayı başlamadan önce tetiklenir."},
+
+        {event: "OnQualityReceiptCreated", description: "Kalite fişi oluşturulduğunda tetiklenir."},
+
+        {event: "OnShiftChanged", description: "Vardiya değiştiğinde tetiklenir."},
+        {event: "OnShiftChanging", description: "Vardiya değişimi sırasında tetiklenir."},
+
+        {event: "OnAuthorizationRequiredStoppageEnding", description: "Yetki gerektiren duruş bitirilirken tetiklenir."},
+        {event: "OnStoppageChanging", description: "Duruş değiştirilirken tetiklenir."},
+        {event: "OnStoppageChanged", description: "Duruş değiştirildiğinde tetiklenir."},
+        {event: "OnStoppageEnding", description: "Duruş bitirilirken tetiklenir."},
+        {event: "OnStoppageEnded", description: "Duruş bittiğinde tetiklenir."},
+        {event: "OnStoppageReasonEquipmentSelected", description: "Duruş sebebi ekipmanı seçildiğinde tetiklenir."},
+        {event: "OnStoppageSelected", description: "Duruş seçildiğinde tetiklenir."},
+        {event: "OnStoppageSelecting", description: "Duruş seçilirken tetiklenir."},
+        {event: "OnStoppageStarted", description: "Duruş başladığında tetiklenir."},
+        {event: "OnTestModeChanged", description: "Test modu değiştiğinde tetiklenir."},
+        {event: "OnUndefinedStoppageChanged", description: "Tanımsız duruş değiştirildiğinde tetiklenir."},
+        {event: "OnUndefinedStoppageChanging", description: "Tanımsız duruş değiştirilirken tetiklenir."},
+        {event: "OnUndefinedStoppagesListing", description: "Tanımsız duruşlar listelenirken tetiklenir."},
+        {event: "OnUndefinedStoppagesQuerying", description: "Tanımsız duruşlar sorgulanırken tetiklenir."},
+        {event: "OnPlannedStoppageEstimatedDurationReached", description: "Planlı duruş tahmini süresine ulaşıldığında tetiklenir."},
+
+        {event: "OnWorkStationStatusEntryCreating", description: "İş istasyonu durum kaydı oluşturulurken tetiklenir."},
+        {event: "OnWorkStationStatusItemEntryCreating", description: "İş istasyonu durum kalem kaydı oluşturulurken tetiklenir."},
+        {event: "OnWorkStationStatesSet", description: "İş istasyonu durumları ayarlandığında tetiklenir."},
+        {event: "OnWorkStationInfoLoaded", description: "İş istasyonu bilgileri yüklendiğinde tetiklenir."}
+    ];
+
     RED.nodes.registerType('Business Events',{
         category: 'trexMes service',
         color:"rgb(204, 255, 204)",
         defaults: {
             name: {value:""},
-            method: {value:"post",required:true},
-            event: {value:"", required:true,
-                  label:RED._("node-red:event-subscribers.label.event")},
+            event: {value:"", required:true},
             ishandled: {value:false, required:true},
             suffix: {value:""}
         },
@@ -298,341 +383,262 @@
         outputs:1,
         icon: "trex.png",
         label: function() {
-            if (this.name) {
-                return this.name;
-            } else if (this.event) {
-                return this.event;
-            } else {
-                return "Business Events";
-            }
-        },
-        labelStyle: function() {
-            return this.name?"node_label_italic":"";
+            return this.name || this.event || "Business Events";
         },
         oneditprepare: function() {
-            var root = RED.settings.httpNodeRoot;
-            if (root.slice(-1) == "/") {
-                root = root.slice(0,-1);
-            }
-            var options = 
-            [
-                    "OnAuthorizationRequiredStoppageEnding",
-                    "OnCoefficientChangeSaved",
-                    "OnConsumedLotEntriesDeleting",
-                    "OnCounterIncrementViabilityChecked",
-                    "OnCreatedProductionPlanLoading",
-                    "OnCurrentLotBalancesValidating",
-                    "OnCurrentPlanInfoSet",
-                    "OnCurrentSpeedCalculated",
-                    "OnCurrentSpeedCalculating",
-                    "OnCyclePeriodSet",
-                    "OnCyclePeriodSetting",
-                    "OnDefectAmountQuerying",
-                    "OnDefectEntryCreated",
-                    "OnDefectEntryDeleted",
-                    "OnDefectQuantityConverting",
-                    "OnDocumentNotFound",
-                    "OnEditedProductionReceiptSaving",
-                    "OnEditProductionReceiptSaved",
-                    "OnEstimatedCompletionTimeCalculating",
-                    "OnForkliftFetchOrderCreating",
-                    "OnForkliftGetOrderCreating",
-                    "OnForkliftOrderCreated",
-                    "OnForkliftOrdersQuerying",
-                    "OnForkliftOrderUpdated",
-                    "OnFractionalAmountProductionConfirmed",
-                    "OnJoblessProductionOccured",
-                    "OnJobOrderQueryGenerating",
-                    "OnJobOrderSelecting",
-                    "OnLabelReprinting",
-                    "OnLanguageChanged",
-                    "OnLanguageSelectionChanged",
-                    "OnLotDeleted",
-                    "OnLotEntriesDeletingOnProductionCompletion",
-                    "OnMaintenanceOrderCompleted",
-                    "OnMaintenanceOrderCreated",
-                    "OnMaintenancePlanSetting",
-                    "OnMaintenanceServiceReceiptCreated",
-                    "OnMaintenanceServiceRequestCreated",
-                    "OnMaterialCounterIncreased",
-                    "OnMaterialCounterIncreasing",
-                    "OnMaterialLotSelectionProcessed",
-                    "OnNoShiftTimeProductionOccuring",
-                    "OnOpcProductionCounterIncreasing",
-                    "OnOperatorAddedNextPlan",
-                    "OnOperatorApprovedProductionConfirmationAmount",
-                    "OnOperatorApprovingProductionConfirmationAmount",
-                    "OnOperatorApprovingProductionSaveAmount",
-                    "OnOperatorCounterIncreasing",
-                    "OnOperatorCreatingMaintenanceOrder",
-                    "OnOperatorDeletedNextPlan",
-                    "OnOperatorMaintenaceInterventionEnded",
-                    "OnOperatorProductionConfirming",
-                    "OnPeriodicalMaintenanceApproved",
-                    "OnPeriodicalMaintenanceConditionChecking",
-                    "OnPidReceiptCreated",
-                    "OnPidReceiptCreating",
-                    "OnPidSectionReceiptCreated",
-                    "OnPlanChanged",
-                    "OnPlanCompletionSummaryCalculatedSetting",
-                    "OnPlanLoaded",
-                    "OnPlanLoadViaOpcStockNoFailed",
-                    "OnPlanLotsFromLotEntriesGenerating",
-                    "OnPlanMaterialsQuerying",
-                    "OnPlannedSpeedCalculating",
-                    "OnPlanReceiptCreated",
-                    "OnPlanReceiptCreating",
-                    "OnPlanReceiptMaterialsCreated",
-                    "OnPlanSelecting",
-                    "OnPlanSelectionApproved",
-                    "OnPlanSelectViabilityChecking",
-                    "OnPlanStartViabilityChecking",
-                    "OnPokaYokeBarcodeValidating",
-                    "OnProcessDataAnalysisAlertOccured",
-                    "OnProcessDataAnalysisProcessing",
-                    "OnProductionCompleted",
-                    "OnProductionCompleting",
-                    "OnProductionConfirmationAllowanceChecked",
-                    "OnProductionConfirmationAmountValidating",
-                    "OnProductionConfirmationCompleted",
-                    "OnProductionConfirmationCompleting",
-                    "OnProductionConfirmationStarted",
-                    "OnProductionConfirmationViabilityChecking",
-                    "OnProductionConfirmed",
-                    "OnProductionConfirming",
-                    "OnProductionContinuing",
-                    "OnProductionCounterIncreased",
-                    "OnProductionCounterIncrementCompleted",
-                    "OnProductionFinishStatusChecking",
-                    "OnProductionInfoResetted",
-                    "OnProductionInfoSet",
-                    "OnProductionPlanChanging",
-                    "OnProductionPlanCreated",
-                    "OnProductionPlanJobOrdersAppending",
-                    "OnProductionPlanQueryGenerating",
-                    "OnProductionQuantityConverting",
-                    "OnProductionReceiptCreated",
-                    "OnProductionReceiptCreating",
-                    "OnProductionReceiptEditQuantityConverting",
-                    "OnProductionReceiptEditReceiptLoading",
-                    "OnProductionReceiptEditSaving",
-                    "OnProductionReceiptIntegrating",
-                    "OnProductionReceiptIntegrationSaving",
-                    "OnProductionReceiptUserDefinedFieldsGetting",
-                    "OnProductionSectionEntryCreated",
-                    "OnProductionSectionEntryCreating",
-                    "OnProductionSectionEntryUndefinedStockDetected",
-                    "OnProductionSectionEntryUpdating",
-                    "OnProductionSectionStoppageEntryUpdating",
-                    "OnProductionSummaryUpdated",
-                    "OnProPlanCycleFromStockCycleSetting",
-                    "OnQualityReceiptCreated",
-                    "OnRotationSpeedCalculating",
-                    "OnSelectedJobOrderProductionParametersSetting",
-                    "OnSerieDefectCreated",
-                    "OnShiftChanged",
-                    "OnShiftChanging",
-                    "OnShiftDefectsQuerying",
-                    "OnShiftProductivityCalculated",
-                    "OnSignalProductionConfirmed",
-                    "OnSignalProductionConfirming",
-                    "OnSignalProductionEnding",
-                    "OnSpecPortSelected",
-                    "OnStockCoefficientChangeSaving",
-                    "OnStockEquipmentMatchViabilityChecking",
-                    "OnStockProductionCounterIncreased",
-                    "OnStoppageChanged",
-                    "OnStoppageChanging",
-                    "OnStoppageEnded",
-                    "OnStoppageEnding",
-                    "OnStoppageReasonEquipmentSelected",
-                    "OnStoppageSelected",
-                    "OnStoppageSelecting",
-                    "OnStoppageStarted",
-                    "OnSubProductReceiptsCreating",
-                    "OnTeamChanged",
-                    "OnTestModeChanged",
-                    "OnUnapprovedProductionReceiptIntegrating",
-                    "OnUnapprovedProductionReceiptLabelPrinting",
-                    "OnUnapprovedProductionReceiptUsedMaterialSelecting",
-                    "OnUndefinedStoppageChanged",
-                    "OnUndefinedStoppageChanging",
-                    "OnUndefinedStoppagesListing",
-                    "OnUndefinedStoppagesQuerying",
-                    "OnUserDefinedReceiptDataCreated",
-                    "OnWorkStationInfoLoaded",
-                    "OnWorkStationStatesSet",
-                    "OnWorkStationStatusEntryCreating",
-                    "OnWorkStationStatusItemEntryCreating"
-                    ];
             var select = $("#node-input-event");
-            options.forEach(function(option) {
-                $("<option></option>").val(option).text(option).appendTo(select);
+            select.empty();
+
+            businessEvents.forEach(function(item) {
+                $("<option></option>")
+                    .val(item.event)
+                    .text(item.event)
+                    .appendTo(select);
             });
-            
-            select.val(this.event);
+
+            if (this.event) select.val(this.event);
+
+            function showDescription() {
+                var val = select.val();
+                var found = businessEvents.find(e => e.event === val);
+                var row = $("#event-description-row");
+                var desc = $("#event-description");
+
+                if (found && found.description) {
+                    desc.html(`<strong>${found.event}</strong><br>${found.description}`);
+                    row.show();
+                } else {
+                    row.hide();
+                }
+            }
+
+            select.on("change", showDescription);
+            setTimeout(showDescription, 50);
         }
-
     });
-
-   
-
 })();
 </script>
 
-<!--
 <script type="text/javascript">
 (function() {
-    RED.nodes.registerType('Application Events',{
+    const systemEvents = [
+        {event: "OnApplicationClosing", description: "Uygulama kapanma aşamasında ana form kapatılmadan hemen önce tetiklenir."},
+        {event: "OnApplicationStarted", description: "Uygulama ayağa kalktığında ana ekran gösteriminden hemen önce tetiklenir."},
+        {event: "OnGlobalTimerTicked", description: "Arka planda gerçekleşen periyodik işlemler için kullanılan Timer Tick olayında tetiklenir. Benzer periyodik işlemler için kullanılabilir."}
+    ];
+
+    RED.nodes.registerType('System Events',{
         category: 'trexMes service',
         color:"rgb(204, 255, 204)",
         defaults: {
             name: {value:""},
-            method: {value:"post",required:true},
-            event: {value:"", required:true,
-                  label:RED._("node-red:event-subscribers.label.event")},
+            event: {value:"", required:true},
             ishandled: {value:false, required:true}
         },
         inputs:0,
         outputs:1,
         icon: "trex.png",
         label: function() {
-            if (this.name) {
-                return this.name;
-            } else if (this.event) {
-                return this.event;
-            } else {
-                return "Application Events";
-            }
-        },
-        labelStyle: function() {
-            return this.name?"node_label_italic":"";
+            return this.name || this.event || "System Events";
         },
         oneditprepare: function() {
-            var root = RED.settings.httpNodeRoot;
-            if (root.slice(-1) == "/") {
-                root = root.slice(0,-1);
-            }
-        }
+            var select = $("#node-input-event");
+            select.empty();
 
+            systemEvents.forEach(function(item) {
+                $("<option></option>")
+                    .val(item.event)
+                    .text(item.event)
+                    .appendTo(select);
+            });
+
+            if (this.event) select.val(this.event);
+
+            function showDescription() {
+                var val = select.val();
+                var found = systemEvents.find(e => e.event === val);
+                var row = $("#system-event-description-row");
+                var desc = $("#system-event-description");
+
+                if (found && found.description) {
+                    desc.html(`<strong>${found.event}</strong><br>${found.description}`);
+                    row.show();
+                } else {
+                    row.hide();
+                }
+            }
+
+            select.on("change", showDescription);
+            setTimeout(showDescription, 100);
+        }
     });
 })();
-</script>  
--->
+</script>
 
 <script type="text/javascript">
-    (function() {
-        RED.nodes.registerType('System Events',{
-            category: 'trexMes service',
-            color:"rgb(204, 255, 204)",
-            defaults: {
-                name: {value:""},
-                method: {value:"post",required:true},
-                event: {value:"", required:true,
-                      label:RED._("node-red:event-subscribers.label.event")},
-                ishandled: {value:false, required:true}                      
-            },
-            inputs:0,
-            outputs:1,
-            icon: "trex.png",
-            label: function() {
-                if (this.name) {
-                    return this.name;
-                } else if (this.event) {
-                    return this.event;
+(function() {
+    const communicationEvents = [
+        {event: "OnAssemblyPictureSignalChanged", description: "Montaj resim gösterim sinyalinin değişimi sırasında fırlatılır."},
+        {event: "OnBarcodeScanned", description: "Uygulama ana ekranı üzerinden veya COM barkod okuyucu kullanılarak gerçekleştirilen barkod okutma işlemlerinde tetiklenir."},
+        {event: "OnBarcodeScanning", description: "Uygulama ana ekranı üzerinden veya COM barkod okuyucu kullanılarak gerçekleştirilen barkod okutma işlemlerinde henüz standart barkod kurguları çalıştırılmadan önce tetiklenir. IsHandled true ise standart işlem yapılmaz."},
+        {event: "OnNotificationMessageProcessing", description: "Bildirim mesajı alındığında tetiklenir, IsHandled true ise sadece mesaj durumu gösterildi olarak güncellenir."},
+        {event: "OnDigitalInputValueChanged", description: "Dijital input sinyal değeri değiştiğinde tetiklenir."},
+        {event: "OnDigitalInputValueChanging", description: "Dijital input sinyal değeri değişmek üzere olduğunda tetiklenir."},
+        {event: "OnDigitalOutputValueChanged", description: "Dijital output sinyal değeri değiştiğinde tetiklenir."},
+        {event: "OnDigitalOutputValueChanging", description: "Dijital output sinyal değeri değişmek üzere olduğunda tetiklenir."},
+        {event: "OnIOCardDataCoalesced", description: "IO kart üzerinden alınan sinyal verisinin çözümlenmesinden hemen önce tetiklenir."},
+        {event: "OnJobOrderStockBarcodeScanned", description: "İş emri veya stok barkodu taratılıp ilgili işlem gerçekleştirildiğinde tetiklenir."},
+        {event: "OnJobOrderStockBarcodeScanning", description: "İş emri veya stok barkodu taratıldığında tetiklenir. IsHandled true ise standart işlemler es geçilir."},
+        {event: "OnLotBarcodeScanning", description: "Sarf lot girişi için barkod okutma işlemi gerçekleştirildiğinde tetiklenir. IsHandled true ise standart işlemler es geçilir."},
+        {event: "OnNgpCommandProcessing", description: "trex Lite üzerinden gelen istek işlenmeden hemen önce tetiklenir, IsHandled true ise standart kurgu işletilmez."},
+        {event: "OnPortDataChanged", description: "Opc haberleşmesi üzerinden gerçekleşen veri portu değer değişimi işlendiğinde tetiklenir."},
+        {event: "OnPortDataChanging", description: "Opc haberleşmesi üzerinden gerçekleşen veri portu değer değişimi işlenmek üzere olduğunda tetiklenir."},
+        {event: "OnPortManagerConnected", description: "IO kart ile port yöneticisi arasında bağlantı gerçekleştirildiğinde tetiklenir."},
+        {event: "OnPortManagerInitialized", description: "Sinyal port yöneticisi ayağa kalktığında tetiklenir."},
+        {event: "OnPortManagerInitializing", description: "Sinyal port yöneticisi ayağa kalktığı esnada tetiklenir."},
+        {event: "OnPortParametersLoaded", description: "Sinyal port parametre tanımları yüklendiğinde tetiklenir."},
+        {event: "OnProductionConfirmationSignalChanged", description: "Üretim onay sinyali ile üretim onayı gerçekleştirildiğinde tetiklenir."},
+        {event: "OnProductionConfirmationSignalInputValuesSetting", description: "Üretim onay süreci sonrası sinyal input değerlerinin set edilmesi sırasında tetiklenir."},
+        {event: "OnSerialPortBarcodeScanning", description: "Seri port üzerinden barkod okutma işlemi gerçekleştirildiğinde standart işlemler öncesi tetiklenir."},
+        {event: "OnSerieBarcodeScanning", description: "Serili üretim barkod işlemleri gerçekleştirilmeden hemen önce tetiklenir."},
+        {event: "OnSocketMessageInterpreted", description: "Opc haberleşmesi amacı ile dinlenen tcp socket üzerinden gelen mesaj çözümlendiğinde tetiklenir."},
+        {event: "OnStoppageSignalChanged", description: "Duruş sinyal input durumu değiştiğinde tetiklenir."},
+        {event: "OnDefectEntrySignalChanged", description: "Iskarta giriş sinyal input durumu değiştiğinde tetiklenir."}
+    ];
+
+    RED.nodes.registerType('Communication Events',{
+        category: 'trexMes service',
+        color:"rgb(204, 255, 204)",
+        defaults: {
+            name: {value:""},
+            event: {value:"", required:true},
+            ishandled: {value:false, required:true}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "trex.png",
+        label: function() {
+            return this.name || this.event || "Communication Events";
+        },
+        oneditprepare: function() {
+            var select = $("#node-input-event");
+            select.empty();
+
+            communicationEvents.forEach(function(item) {
+                $("<option></option>")
+                    .val(item.event)
+                    .text(item.event)
+                    .appendTo(select);
+            });
+
+            if (this.event) select.val(this.event);
+
+            function showDescription() {
+                var val = select.val();
+                var found = communicationEvents.find(e => e.event === val);
+                var row = $("#comm-event-description-row");
+                var desc = $("#comm-event-description");
+
+                if (found && found.description) {
+                    desc.html(`<strong>${found.event}</strong><br>${found.description}`);
+                    row.show();
                 } else {
-                    return "System Events";
-                }
-            },
-            labelStyle: function() {
-                return this.name?"node_label_italic":"";
-            },
-            oneditprepare: function() {
-                var root = RED.settings.httpNodeRoot;
-                if (root.slice(-1) == "/") {
-                    root = root.slice(0,-1);
+                    row.hide();
                 }
             }
-    
-        });
-    })();
-</script>  
+
+            select.on("change", showDescription);
+            setTimeout(showDescription, 100);
+        }
+    });
+})();
+</script> 
 
 <script type="text/javascript">
-    (function() {
-        RED.nodes.registerType('Communication Events',{
-            category: 'trexMes service',
-            color:"rgb(204, 255, 204)",
-            defaults: {
-                name: {value:""},
-                method: {value:"post",required:true},
-                event: {value:"", required:true,
-                      label:RED._("node-red:event-subscribers.label.event")},
-                ishandled: {value:false, required:true}                      
-            },
-            inputs:0,
-            outputs:1,
-            icon: "trex.png",
-            label: function() {
-                if (this.name) {
-                    return this.name;
-                } else if (this.event) {
-                    return this.event;
-                } else {
-                    return "Communication Events";
-                }
-            },
-            labelStyle: function() {
-                return this.name?"node_label_italic":"";
-            },
-            oneditprepare: function() {
-                var root = RED.settings.httpNodeRoot;
-                if (root.slice(-1) == "/") {
-                    root = root.slice(0,-1);
-                }
-            }
-    
-        });
-    })();
-</script>  
+(function() {
+    const displayEvents = [
+        {event: "OnBarcodeTextBoxSetting", description: "Ana ekranda barkod metin kutusu ayarları yapılandırılırken tetiklenir."},
+        {event: "OnCommandKeyProcessing", description: "Arayüzde komut tuşu girdisi işlenirken tetiklenir."},
+        {event: "OnDefectEntryOperatorConfirmationFailed", description: "Iskarta girişinde ek operatör onayı istendiği ve onay alınamadığı durumda tetiklenir."},
+        {event: "OnDefectSelected", description: "Iskarta buton seçim işlemi gerçekleştirildiğinde ve miktar giriş ekranı gösterilmeden hemen önce tetiklenir. IsHandled true ise alternatif ıskarta ekranı kullanılabilir."},
+        {event: "OnEventDetailSelectionsListing", description: "Olay detay seçimleri listelenmeden hemen önce tetiklenir."},
+        {event: "OnForkliftTakeTransferSelecting", description: "Forklift mamul-yarı mamul götürme operasyonu gerçekleştirilmek istendiğinde tetiklenir. IsHandled true ise standart kurgu işletilmez."},
+        {event: "OnJobInformationEquipmentCounterTextSetting", description: "İş bilgi panelinde ekipman sayaç metinleri ayarlanırken tetiklenir."},
+        {event: "OnJobLoadColumnCellFormatSetting", description: "İş seçim ekranı gridinde satır renklendirme için kullanılabilir. IsHandled true ise renkler argümanlardan alınır."},
+        {event: "OnJobOrderSearching", description: "İş emri seçim ekranında arama yerinde barkod okutulduktan sonra tetiklenir."},
+        {event: "OnMainFormCounterTextsSetting", description: "Ana form üzerinde gösterilen sayaç metinleri ayarlanırken tetiklenir."},
+        {event: "OnMainFormNoteTextSetting", description: "Ana form üzerinde gösterilen not metni ayarlanırken tetiklenir."},
+        {event: "OnMainUserControlJobOrderPanelClicked", description: "trex Edge ana ekranın sağ kısmında bulunan üretilen iş emirleri tablarından herhangi biri tıklandığında tetiklenir."},
+        {event: "OnOperationSpecFormOpening", description: "Manuel yada otomatik olarak operasyon parametreleri ekranı açılmadan hemen önce tetiklenir."},
+        {event: "OnOperatorCreatingDefectEntry", description: "Iskarta ekranında kaydet butonuna basıldığı sırada her ıskarta için tetiklenir."},
+        {event: "OnOperatorPlanLoadButtonClicking", description: "Operatör tarafından iş yükle butonuna basıldığında tetiklenir. IsHandled true ise alternatif iş yükleme akışı kullanılabilir."},
+        {event: "OnOperatorPlanLoaded", description: "Operatör planı yüklendikten sonra tetiklenir."},
+        {event: "OnOtherOperationsFormClosed", description: "Diğer işlemler formu kapatıldığında tetiklenir."},
+        {event: "OnPitchLabelSetting", description: "İlgili ekranlarda pitch etiket metni ayarlanırken tetiklenir."},
+        {event: "OnPlanContinueQuestionAsking", description: "Üretim sonrası 'İşe Devam Edilecek Mi?' sorusu sorulmadan hemen önce tetiklenir."},
+        {event: "OnPlanSearching", description: "İş seçim ekranında üretim planı arama işleminden hemen önce tetiklenir."},
+        {event: "OnPlanSelectionDetailClicked", description: "İş seçim ekranında Detay butonuna tıklandığında tetiklenir."},
+        {event: "OnPlanSelectionFormOpening", description: "Plan seçim formu açılmadan hemen önce tetiklenir."},
+        {event: "OnProductionAmountLeftTextSetting", description: "Ekrandaki kalan üretim miktarı metni ayarlanırken tetiklenir."},
+        {event: "OnProductionApproveFormOpening", description: "Üretim onay ekranı açılmadan hemen önce tetiklenir."},
+        {event: "OnProductionApproveGridSet", description: "Üretim onay ekranı grid temel ayarları uygulanırken tetiklenir."},
+        {event: "OnProductionApproveGridSetting", description: "Üretim onay ekranında iş emri - stok üretim detay gridine veri doldurulma anında tetiklenir."},
+        {event: "OnProductionApproveOperatorDataGridSetting", description: "Üretim onay ekranında operatör veri gridi yapılandırılırken tetiklenir."},
+        {event: "OnScreenSaverShowning", description: "Ekran koruyucu gösterilme anında tetiklenir. IsHandled true ise ekran koruyucu gösterilmez."},
+        {event: "OnShiftEventFormOpening", description: "Vardiya olay formu açılmadan önce tetiklenir."},
+        {event: "OnUIButtonConfigurationSet", description: "Arayüz buton konfigürasyonları ayarlanırken tetiklenir."},
+        {event: "OnWorkStationSelected", description: "İstasyon seçim işlemi gerçekleştirildiğinde tetiklenir."},
+        {event: "OnStoppageDescriptionFormOpening", description: "Duruş açıklama formu açılmadan önce tetiklenir. IsHandled true ise alternatif açıklama ekranı kullanılabilir."},
+        {event: "OnStockEquipmentMatchDisplaying", description: "Stok-ekipman eşleşme bilgisi gösterilirken tetiklenir."}
+    ];
 
-<script type="text/javascript">
-    (function() {
-        RED.nodes.registerType('Display Events',{
-            category: 'trexMes service',
-            color:"rgb(204, 255, 204)",
-            defaults: {
-                name: {value:""},
-                method: {value:"post",required:true},
-                event: {value:"", required:true,
-                      label:RED._("node-red:event-subscribers.label.event")},
-                ishandled: {value:false, required:true}                      
-            },
-            inputs:0,
-            outputs:1,
-            icon: "trex.png",
-            label: function() {
-                if (this.name) {
-                    return this.name;
-                } else if (this.event) {
-                    return this.event;
+    RED.nodes.registerType('Display Events',{
+        category: 'trexMes service',
+        color:"rgb(204, 255, 204)",
+        defaults: {
+            name: {value:""},
+            event: {value:"", required:true},
+            ishandled: {value:false, required:true}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "trex.png",
+        label: function() {
+            return this.name || this.event || "Display Events";
+        },
+        oneditprepare: function() {
+            var select = $("#node-input-event");
+            select.empty();
+
+            displayEvents.forEach(function(item) {
+                $("<option></option>")
+                    .val(item.event)
+                    .text(item.event)
+                    .appendTo(select);
+            });
+
+            if (this.event) select.val(this.event);
+
+            function showDescription() {
+                var val = select.val();
+                var found = displayEvents.find(e => e.event === val);
+                var row = $("#display-event-description-row");
+                var desc = $("#display-event-description");
+
+                if (found && found.description) {
+                    desc.html(`<strong>${found.event}</strong><br>${found.description}`);
+                    row.show();
                 } else {
-                    return "Display Events";
-                }
-            },
-            labelStyle: function() {
-                return this.name?"node_label_italic":"";
-            },
-            oneditprepare: function() {
-                var root = RED.settings.httpNodeRoot;
-                if (root.slice(-1) == "/") {
-                    root = root.slice(0,-1);
+                    row.hide();
                 }
             }
-    
-        });
-    })();
-</script>  
+
+            select.on("change", showDescription);
+            setTimeout(showDescription, 100);
+        }
+    });
+})();
+</script> 
 
 <script type="text/javascript">
     (function() {
@@ -811,7 +817,8 @@
                 $combo.empty();
 
                 RED.nodes.eachNode(function (node) {
-                    if (node.type === "Method Invoker") { 
+                    if (node.type === "Method Invoker" || 
+						node.type === "Context Getter") { 
                         var option = $("<option></option>")
                         .attr("value", node.name)
                         .text(node.name);
@@ -825,10 +832,11 @@
                
             }
     
-        });   
-    
+        });
+
     })();
 </script>
+
 
 <script type="text/javascript">
     (function() {

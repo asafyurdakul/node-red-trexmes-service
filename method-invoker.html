@@ -1,4 +1,4 @@
-
+<script src="/node-red-trexmes-service/assets/method-data.js"></script>
 
 <script type="text/html" data-template-name="Method Invoker">
     <div class="form-row">
@@ -18,6 +18,12 @@
             </select>
         </div>
 
+        <div id="method-invoker-desc-row" style="display:none; margin:2px 0 6px 0; padding:8px 12px; background:#f4f8f4; border-left:4px solid #58d68d; border-radius:3px; max-height:180px; overflow-y:auto;">
+            <div id="method-invoker-desc-text" style="font-size:0.82em; color:#333; margin-bottom:5px;"></div>
+            <table id="method-invoker-desc-params" style="font-size:0.80em; width:100%; border-collapse:collapse;"></table>
+            <div id="method-invoker-desc-return" style="font-size:0.80em; color:#555; margin-top:5px;"></div>
+        </div>
+
         <div class="form-row node-input-property-container-row">
             <ol id="node-input-property-container"></ol>
         </div>
@@ -31,9 +37,9 @@
         
         function resizeDialog(size) {
             size = size || { height: $(".red-ui-tray-content form").height() }
-            var rows = $("#dialog-form>div:not(.node-input-property-container-row):visible");
             var height = size.height;
-            $("#node-input-property-container").editableList('height',height - 150);
+            var descHeight = $("#method-invoker-desc-row").is(":visible") ? ($("#method-invoker-desc-row").outerHeight(true) || 0) : 0;
+            $("#node-input-property-container").editableList('height', height - 150 - descHeight);
         }
 
         function getProps(el) {
@@ -153,6 +159,7 @@
                           "IIOCardViewService",
                           "IIOSignalService",
                           "IJobOrderExtensionService",
+						  "IJobOrderViewService",
                           "IJobOrderSerieExtensionService",
                           "ILabelExtensionService",
                           "ILabelPrintService",
@@ -173,7 +180,7 @@
                           "IOpcSocketSignalService",
                           "IOperationExtensionService",
                           "IOutputService",
-                          "IParameterService",
+                          "IParameterExtensionService",
                           "IPokaYokeViewService",
                           "IPolyvalenceExtensionService",
                           "IPrintServiceProvider",
@@ -214,9 +221,10 @@
                 // Her servise karşılık gelen metotlar (index sırasına göre gruplandı)
                 var methods =[
                         [
-                          "GetEmployeeAnalysesByTimePeriod",
-                          "GetProductionAnalysesByTimePeriod",
-                          "GetProductionStoppageAnalysesByTimePeriod",
+                          "GetDefectAnalysisViewsByTimePeriod",
+						  "GetEmployeeAnalysisViewsByTimePeriod",
+                          "GetProductionAnalysisViewsByTimePeriod",
+                          "GetProductionStoppageAnalysisViewsByTimePeriod",
                           "GetDefectAnalysesByTimePeriod",
                           "GetShiftDefectAnalyses",
                           "GetShiftOeeAnalyses",
@@ -316,7 +324,7 @@
                           "GetDefectsByWorkStationIdAndType",
                           "GetSelectableDefects",
                           "GetTotalSerialDefectEntryAmount",
-                          "SetCurrentDefectEntries",
+                          "SetCurrentDefects",
                           "GetCurrentDefectEntriesByLanguageId",
                           "GetDefectTypeById",
                           "CreateDefectEntry"
@@ -532,6 +540,9 @@
                           "UpdateJobOrderStatus",
                           "UpdateJobOrderAmountAndStatus"
                         ],
+						[
+						  "ShowJoborderSelection"
+						],
                         [
                           "CreateJobOrderSerie",
                           "DeleteJobOrderSerie",
@@ -1075,8 +1086,7 @@
                           "LogStoppageEvent",
                           "GetDefinableSignalStoppageIds",
                           "CreateStoppageEventEntry",
-                          "UpdateStoppageEventEntry",
-                          "SetWorkStationStatus"
+                          "UpdateStoppageEventEntry"
                         ],
                         [
                           "ChangeDefinedStoppages",
@@ -1093,6 +1103,8 @@
                           "GetFormattedVersion"
                         ],
                         [
+						  "GetWorkCenterById",
+						  "GetWorkCenterByWorkStationId",
                           "GetWorkStationById",
                           "GetAllWorkStations",
                           "GetWorkStationsByWorkCenterId",
@@ -1131,11 +1143,47 @@
                     serviceSelect.appendChild(opt);
                 });
         
+                // Method açıklama panelini güncelleme fonksiyonu
+                function updateMethodDescription() {
+                    var service = serviceSelect.value;
+                    var method = methodSelect.value;
+                    if (typeof methodData === 'undefined' || !methodData[service] || !methodData[service][method]) {
+                        $("#method-invoker-desc-row").hide();
+                        return;
+                    }
+                    var info = methodData[service][method];
+
+                    // Açıklama metni
+                    $("#method-invoker-desc-text").text(info.d || "");
+
+                    // Parametre tablosu
+                    var $table = $("#method-invoker-desc-params");
+                    $table.empty();
+                    if (info.p && info.p.length > 0) {
+                        $table.append('<tr style="background:#e8f5e9;"><th style="padding:2px 8px; text-align:left; font-weight:600;">Parametre</th><th style="padding:2px 8px; text-align:left; font-weight:600;">Tip</th></tr>');
+                        info.p.forEach(function(param) {
+                            $table.append('<tr><td style="padding:2px 8px; font-family:monospace;">' + param.n + '</td><td style="padding:2px 8px; color:#1a6b1a; font-family:monospace;">' + param.t + '</td></tr>');
+                        });
+                    } else {
+                        $table.append('<tr><td style="padding:2px 8px; color:#888; font-style:italic;">Parametre yok</td></tr>');
+                    }
+
+                    // Dönüş tipi
+                    if (info.r) {
+                        $("#method-invoker-desc-return").html('<strong>Dönüş:</strong> <span style="font-family:monospace; color:#1a6b1a;">' + info.r + '</span>');
+                    } else {
+                        $("#method-invoker-desc-return").text("");
+                    }
+
+                    $("#method-invoker-desc-row").show();
+                    resizeDialog();
+                }
+
                 // Metotları güncelleme fonksiyonu
                 function updateMethods() {
                     var selectedIndex = serviceSelect.selectedIndex;
                     methodSelect.innerHTML = ""; // Önceki seçenekleri temizle
-                    
+
                     if (selectedIndex >= 0 && selectedIndex < methods.length) {
                         methods[selectedIndex].forEach(function(method) {
                             var opt = document.createElement("option");
@@ -1144,13 +1192,16 @@
                             methodSelect.appendChild(opt);
                         });
                     }
+                    updateMethodDescription();
                 }
-        
+
                 updateMethods(); // İlk açılışta servise göre methodları güncelle
-        
-        
+
+
                 // Servis seçimi değiştiğinde metot listesini güncelle
                 serviceSelect.addEventListener("change", updateMethods);
+                // Method seçimi değiştiğinde açıklama panelini güncelle
+                methodSelect.addEventListener("change", updateMethodDescription);
 
                 // İlk açılışta, eğer önceden bir servis seçiliyse metotları güncelle
                 if (node.service) {
@@ -1158,6 +1209,7 @@
                     updateMethods();
                     if (node.method) {
                         methodSelect.value = node.method;
+                        updateMethodDescription();
                     }
                 }
             },

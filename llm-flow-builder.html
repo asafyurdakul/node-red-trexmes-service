@@ -1,0 +1,427 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     LLM Flow BUILDER — Config Node (Credentials)
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script type="text/javascript">
+  RED.nodes.registerType('llm-flow-builder-config', {
+    category: 'config',
+    defaults: {
+      name      : { value: '' },
+      provider  : { value: 'openai' },
+      apiUrl    : { value: '' },
+      modelName : { value: '' }
+    },
+    credentials: {
+      apiKey: { type: 'password' }
+    },
+    label: function () {
+      return this.name || this.provider + ' Config';
+    }
+  });
+
+  // ── Provider presets ──────────────────────────────────────────────────────
+  const PROVIDER_PRESETS = {
+    openai   : { url: 'https://api.openai.com/v1/chat/completions',            model: 'gpt-4o' },
+    gemini   : { url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent', model: 'gemini-1.5-pro' },
+    deepseek : { url: 'https://api.deepseek.com/v1/chat/completions',          model: 'deepseek-coder' },
+    anthropic: { url: 'https://api.anthropic.com/v1/messages',                 model: 'claude-sonnet-4-20250514' },
+    mistral  : { url: 'https://api.mistral.ai/v1/chat/completions',            model: 'mistral-large-latest' },
+    groq     : { url: 'https://api.groq.com/openai/v1/chat/completions',       model: 'llama3-70b-8192' },
+    custom   : { url: '', model: '' }
+  };
+
+  function fillPreset(provider) {
+    const p = PROVIDER_PRESETS[provider];
+    if (!p) return;
+    const urlEl   = document.getElementById('node-config-input-apiUrl');
+    const modelEl = document.getElementById('node-config-input-modelName');
+    if (urlEl   && (!urlEl.value   || urlEl._wasPreset))   { urlEl.value   = p.url;   urlEl._wasPreset   = !!p.url; }
+    if (modelEl && (!modelEl.value || modelEl._wasPreset)) { modelEl.value = p.model; modelEl._wasPreset = !!p.model; }
+  }
+
+  // Attach change listener after DOM is ready
+  document.addEventListener('DOMContentLoaded', function () {
+    const sel = document.getElementById('node-config-input-provider');
+    if (sel) sel.addEventListener('change', () => fillPreset(sel.value));
+  });
+</script>
+
+<script type="text/html" data-template-name="llm-flow-builder-config">
+  <style>
+    .llm-config-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .llm-config-header svg { flex-shrink: 0; }
+    .llm-config-header h3 {
+      color: #e2e8f0;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .llm-config-header p {
+      color: #94a3b8;
+      margin: 2px 0 0;
+      font-size: 11px;
+    }
+    .provider-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #1e40af22;
+      border: 1px solid #3b82f644;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 10px;
+      color: #60a5fa;
+      margin-left: 4px;
+    }
+  </style>
+
+  <div class="llm-config-header">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <rect width="32" height="32" rx="6" fill="#1e40af"/>
+      <path d="M8 20L14 10L18 16L22 12L26 20H8Z" fill="#60a5fa" opacity="0.8"/>
+      <circle cx="16" cy="8" r="3" fill="#f59e0b"/>
+    </svg>
+    <div>
+      <h3>LLM Bağlantı Ayarları</h3>
+      <p>AI servis sağlayıcısı kimlik bilgileri</p>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> İsim</label>
+    <input type="text" id="node-config-input-name" placeholder="Örn: OpenAI Production">
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-provider"><i class="fa fa-server"></i> Sağlayıcı</label>
+    <select id="node-config-input-provider" onchange="fillPreset(this.value)" style="width:100%">
+      <option value="openai">🤖 OpenAI (ChatGPT)</option>
+      <option value="gemini">✨ Google Gemini</option>
+      <option value="deepseek">🔍 DeepSeek</option>
+      <option value="anthropic">🧠 Anthropic (Claude)</option>
+      <option value="mistral">💫 Mistral AI</option>
+      <option value="groq">⚡ Groq</option>
+      <option value="custom">⚙️ Özel / Custom</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-apiUrl"><i class="fa fa-link"></i> API URL</label>
+    <input type="text" id="node-config-input-apiUrl"
+           placeholder="https://api.openai.com/v1/chat/completions"
+           style="font-family:monospace; font-size:12px">
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-apiKey"><i class="fa fa-key"></i> API Anahtarı</label>
+    <input type="password" id="node-config-input-apiKey" placeholder="sk-...">
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-modelName"><i class="fa fa-cube"></i> Model</label>
+    <input type="text" id="node-config-input-modelName"
+           placeholder="gpt-4o / gemini-1.5-pro / deepseek-coder ...">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="llm-flow-builder-config">
+  <p>LLM Flow Builder için AI servis bağlantı bilgilerini saklar.</p>
+  <ul>
+    <li><b>Sağlayıcı</b>: Hazır preset seçin veya "Özel" ile kendi URL'inizi girin.</li>
+    <li><b>API URL</b>: Sağlayıcının chat completion endpoint'i.</li>
+    <li><b>API Anahtarı</b>: Şifreli olarak saklanır.</li>
+    <li><b>Model</b>: Kullanılacak model adı (örn: gpt-4o, gemini-1.5-pro).</li>
+  </ul>
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     LLM Flow BUILDER — Main Node
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script type="text/javascript">
+  RED.nodes.registerType('llm-flow-builder', {
+    category   : 'trexMes service',
+    color      : 'rgb(153, 255, 51)',
+    icon       : 'font-awesome/fa-magic',
+    inputs     : 1,
+    outputs    : 1,
+    paletteLabel: 'LLM Flow Builder',
+
+    defaults: {
+      name       : { value: '' },
+      llmConfig  : { value: '', type: 'llm-flow-builder-config' },
+      autoImport : { value: true },
+      autoDeploy : { value: true },
+      flowTab    : { value: '' }
+    },
+
+    label: function () {
+      return this.name || 'LLM Flow Builder';
+    },
+    labelStyle: function () {
+      return this.name ? 'node_label_italic' : '';
+    },
+
+  });
+</script>
+
+<script type="text/html" data-template-name="llm-flow-builder">
+  <style>
+    /* ── Node editor styles ─────────────────────────────── */
+    #llm-nb-editor { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+    .llm-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .llm-logo {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .llm-header-text h2 { color: #f1f5f9; margin:0; font-size:16px; font-weight:700; }
+    .llm-header-text p  { color: #94a3b8; margin:3px 0 0; font-size:11px; line-height:1.4; }
+
+    .llm-section {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .llm-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .llm-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .llm-form-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .llm-form-row label {
+      min-width: 110px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      padding-top: 6px;
+    }
+    .llm-form-row input[type="text"],
+    .llm-form-row select,
+    .llm-form-row textarea {
+      flex: 1;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #111827;
+      background: #fff;
+      transition: border-color 0.15s;
+    }
+    .llm-form-row input:focus,
+    .llm-form-row select:focus,
+    .llm-form-row textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+
+    .llm-textarea {
+      resize: vertical;
+      min-height: 90px;
+      font-family: 'SF Mono', 'Cascadia Code', monospace;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .llm-toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .llm-toggle-row:last-child { border-bottom: none; }
+    .llm-toggle-label { flex: 1; }
+    .llm-toggle-label strong { font-size: 12px; color: #1e293b; display: block; }
+    .llm-toggle-label span   { font-size: 10px; color: #94a3b8; }
+
+    /* Toggle switch */
+    .llm-switch { position: relative; display: inline-block; width: 40px; height: 22px; flex-shrink: 0; }
+    .llm-switch input { opacity: 0; width: 0; height: 0; }
+    .llm-slider {
+      position: absolute; cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #cbd5e1;
+      border-radius: 22px;
+      transition: 0.25s;
+    }
+    .llm-slider:before {
+      content: '';
+      position: absolute;
+      width: 16px; height: 16px;
+      left: 3px; bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.25s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .llm-switch input:checked + .llm-slider { background: #3b82f6; }
+    .llm-switch input:checked + .llm-slider:before { transform: translateX(18px); }
+
+    .llm-info-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 11px;
+      color: #1e40af;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+    .llm-info-box b { color: #1d4ed8; }
+
+    .llm-char-count {
+      font-size: 10px;
+      color: #94a3b8;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .llm-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+      border-radius: 100px;
+      padding: 1px 8px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+  </style>
+
+  <div id="llm-nb-editor">
+    <!-- General -->
+    <div class="llm-section">
+      <p class="llm-section-title"><i class="fa fa-cog"></i> Genel Ayarlar</p>
+
+      <div class="llm-form-row">
+        <label><i class="fa fa-tag"></i> Node İsmi</label>
+        <input type="text" id="node-input-name" placeholder="LLM Flow Builder">
+      </div>
+
+      <div class="llm-form-row">
+        <label><i class="fa fa-plug"></i> LLM Config</label>
+        <input type="text" id="node-input-llmConfig">
+      </div>
+    </div>
+
+    <!-- Import / Deploy -->
+    <div class="llm-section">
+      <p class="llm-section-title"><i class="fa fa-rocket"></i> Import &amp; Deploy</p>
+
+      <div class="llm-toggle-row">
+        <div class="llm-toggle-label">
+          <strong>Otomatik Import</strong>
+          <span>Üretilen flow otomatik olarak Node-RED'e aktarılır.</span>
+        </div>
+        <label class="llm-switch">
+          <input type="checkbox" id="node-input-autoImport">
+          <span class="llm-slider"></span>
+        </label>
+      </div>
+
+      <div class="llm-toggle-row">
+        <div class="llm-toggle-label">
+          <strong>Otomatik Deploy</strong>
+          <span>Import sonrasında akışlar otomatik deploy edilir.</span>
+        </div>
+        <label class="llm-switch">
+          <input type="checkbox" id="node-input-autoDeploy">
+          <span class="llm-slider"></span>
+        </label>
+      </div>
+
+      <div class="llm-info-box" style="margin-top:12px; background:#fefce8; border-color:#fde68a; color:#92400e;">
+        ⚠️ <b>Dikkat:</b> Otomatik deploy aktifken üretilen her flow anında canlıya alınır.
+        Kritik ortamlarda önce test edin.
+      </div>
+    </div>
+
+    <!-- Output -->
+    <div class="llm-section">
+      <p class="llm-section-title"><i class="fa fa-sign-out"></i> Çıktı Yapısı</p>
+      <div class="llm-info-box" style="background:#f0fdf4; border-color:#bbf7d0; color:#14532d;">
+        <b>msg.payload</b> → <code>{ success, flow[], nodeCount, imported, deployed }</code><br>
+        <b>msg.generatedFlow</b> → Ham JSON array<br>
+        <b>msg.llmRawResponse</b> → AI'nın ham cevabı<br>
+        <b>msg.importedTab</b> → Import edilen tab ismi
+      </div>
+    </div>
+
+  </div>
+</script>
+
+<script type="text/html" data-help-name="llm-flow-builder">
+  <h3>LLM Flow Builder</h3>
+  <p>
+    Farklı AI servislerine bağlanarak <b>Node-RED flow'u JSON formatında</b> üretir,
+    otomatik import eder ve deploy eder.
+  </p>
+
+  <h4>Giriş (msg.payload)</h4>
+  <p>String formatında prompt gönderin. Örneğin:</p>
+  <pre>"MQTT'den veri al, threshold kontrolü yap, aşılırsa e-posta gönder"</pre>
+
+  <h4>Desteklenen Sağlayıcılar</h4>
+  <ul>
+    <li><b>OpenAI</b> — GPT-4o, GPT-4 Turbo vb.</li>
+    <li><b>Google Gemini</b> — Gemini 1.5 Pro vb.</li>
+    <li><b>DeepSeek</b> — DeepSeek Coder / Chat</li>
+    <li><b>Anthropic Claude</b> — Claude Sonnet, Opus vb.</li>
+    <li><b>Mistral AI</b> — Mistral Large vb.</li>
+    <li><b>Groq</b> — Llama3, Mixtral vb.</li>
+    <li><b>Custom</b> — OpenAI uyumlu herhangi bir endpoint</li>
+  </ul>
+
+  <h4>Çıktılar</h4>
+  <dl>
+    <dt>msg.payload.success</dt><dd>İşlem başarı durumu</dd>
+    <dt>msg.payload.flow</dt><dd>Üretilen Node-RED flow array</dd>
+    <dt>msg.payload.nodeCount</dt><dd>Flow içindeki toplam node sayısı</dd>
+    <dt>msg.generatedFlow</dt><dd>Ham flow JSON array</dd>
+    <dt>msg.llmRawResponse</dt><dd>AI'nın ham metin yanıtı</dd>
+    <dt>msg.importedTab</dt><dd>Import edilen tab'ın adı</dd>
+  </dl>
+</script>

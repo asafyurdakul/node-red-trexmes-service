@@ -41,6 +41,8 @@
             "formainform":"For MainForm",
             "eventtime": "Event Time",
             "ishandled": "Handled",
+            "context": "Context",
+            "workstationid": "WorkStation ID",
             "suffix": "Call Suffix",
             "suffixRequired": "Required if the same event is called more than once",
             "doc": "Docs",

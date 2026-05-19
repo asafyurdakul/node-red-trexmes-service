@@ -1,0 +1,48 @@
+<script type="text/html" data-help-name="Context Getter">
+    <p>Seçili <b>StateContext</b>'i trexMes panelinden sorgular. Bir event akışı içinde kullanılır; sonuç <b>Method Returns</b> node'u ile asenkron olarak alınır.</p>
+
+    <h3>Giriş</h3>
+    <dl class="message-properties">
+        <dt>payload</dt>
+        <dd>Önceki node'dan gelen mesaj olduğu gibi iletilir.</dd>
+    </dl>
+
+    <h3>Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            <b>Method Invoker ile aynı pattern:</b> sorgu nesnesi <code>msg.payload</code> dizisine eklenir.
+            Her eleman:
+            <ul>
+                <li><code>message</code> — Seçili StateContext adı (ör. <code>ConsumptionStateContext</code>)</li>
+                <li><code>valuelabel</code> — Sorgulanacak istasyon ID'si (integer)</li>
+                <li><code>name</code> — Node adı (<b>Method Returns</b> ile eşleşmesi gerekir)</li>
+                <li><code>operationtype</code> — <code>"ContextGetterProcess"</code></li>
+            </ul>
+            Önceki node'dan gelen payload bir nesne ise önce <code>receiveddata</code> olarak saklanır; zincirdeki veriler korunur.
+        </dd>
+    </dl>
+
+    <h3>Özellikler</h3>
+    <dl class="message-properties">
+        <dt>Name <span class="property-type">string</span></dt>
+        <dd>Node adı. <b>Method Returns</b> node'undaki seçimle birebir eşleşmelidir.</dd>
+        <dt>Context <span class="property-type">combobox</span></dt>
+        <dd>Sorgulanacak StateContext (25 seçenek). Seçim değiştiğinde ilgili property açıklamaları panelde görünür.</dd>
+        <dt>WorkStation ID <span class="property-type">num | msg</span></dt>
+        <dd>Sorgulanacak istasyon referansı. Sabit sayı veya <code>msg</code> path olarak verilebilir.</dd>
+    </dl>
+
+    <h3>Çalışma Modeli</h3>
+    <p>
+        Context Getter, panele bir <b>StateContext sorgusu</b> gönderir. Bu çağrı asenkrondur:
+        ilk akış <code>Responser</code> ile kapanır, panel context verisini hazırladıktan sonra
+        <b>Method Returns</b> node'u ile yeni bir akış tetiklenir.
+    </p>
+    <pre style="font-size:0.85em; background:#f4f4f4; padding:8px; border-radius:4px;">
+Business Events → Context Getter → Responser
+
+Method Returns  → [context verisi işleme]  → Responser</pre>
+
+    <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
+</script>

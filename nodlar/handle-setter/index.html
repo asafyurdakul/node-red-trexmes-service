@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/handle-setter/">
       
       
-        <link rel="prev" href="../responser/">
+        <link rel="prev" href="../method-returns/">
       
       
-        <link rel="next" href="../event-subscribers/">
+        <link rel="next" href="../custom-form/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -662,14 +662,10 @@
                 
   
   
-    
-  
   
   
     
     
-      
-        
       
         
       
@@ -687,11 +683,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
@@ -707,7 +703,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Cekirdek Nodlar
@@ -760,182 +756,6 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Handle Setter
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Handle Setter
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      İçindekiler
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ozet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Özet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#property-tablosu" class="md-nav__link">
-    <span class="md-ellipsis">
-      Property Tablosu
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Property Tablosu">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ishandledtype-secenekleri" class="md-nav__link">
-    <span class="md-ellipsis">
-      isHandledType Seçenekleri
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cks-mesaj" class="md-nav__link">
-    <span class="md-ellipsis">
-      Çıkış Mesajı
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#davrans-kodu" class="md-nav__link">
-    <span class="md-ellipsis">
-      Davranış Kodu
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipik-kullanm" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tipik Kullanım
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tipik Kullanım">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ornek-function-node-kodu" class="md-nav__link">
-    <span class="md-ellipsis">
-      Örnek Function Node Kodu
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#onemli-uyar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Önemli Uyarı
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#durum-gostergesi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Durum Göstergesi
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sk-karslaslan-hatalar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sık Karşılaşılan Hatalar
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ilgili-nodlar" class="md-nav__link">
-    <span class="md-ellipsis">
-      İlgili Nodlar
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -948,10 +768,14 @@
                 
   
   
+    
+  
   
   
     
     
+      
+        
       
         
       
@@ -981,11 +805,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
@@ -1001,7 +825,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Olay Nodlari
@@ -1187,6 +1011,182 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Handle Setter
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Handle Setter
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      İçindekiler
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ozet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Özet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-tablosu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property Tablosu
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Property Tablosu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ishandledtype-secenekleri" class="md-nav__link">
+    <span class="md-ellipsis">
+      isHandledType Seçenekleri
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cks-mesaj" class="md-nav__link">
+    <span class="md-ellipsis">
+      Çıkış Mesajı
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#davrans-kodu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Davranış Kodu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipik-kullanm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipik Kullanım
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipik Kullanım">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ornek-function-node-kodu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Örnek Function Node Kodu
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onemli-uyar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Önemli Uyarı
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#durum-gostergesi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Durum Göstergesi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sk-karslaslan-hatalar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sık Karşılaşılan Hatalar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ilgili-nodlar" class="md-nav__link">
+    <span class="md-ellipsis">
+      İlgili Nodlar
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1961,14 +1961,6 @@
                   
 
 
-  
-    <a href="https://github.com/asafyurdakul/node-red-trexmes-service/edit/main/doc/docs/nodlar/handle-setter.md" title="Düzenle" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
-  
-  
-
 
 <h1 id="handle-setter">Handle Setter<a class="headerlink" href="#handle-setter" title="Bu bolume kalici baglanti">&para;</a></h1>
 <div class="node-header">
@@ -2193,7 +2185,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Altbilgi" >
         
           
-          <a href="../responser/" class="md-footer__link md-footer__link--prev" aria-label="Önceki: Responser">
+          <a href="../method-returns/" class="md-footer__link md-footer__link--prev" aria-label="Önceki: Method Returns">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2203,20 +2195,20 @@
                 Önceki
               </span>
               <div class="md-ellipsis">
-                Responser
+                Method Returns
               </div>
             </div>
           </a>
         
         
           
-          <a href="../event-subscribers/" class="md-footer__link md-footer__link--next" aria-label="Sonraki: Genel Bakis">
+          <a href="../custom-form/" class="md-footer__link md-footer__link--next" aria-label="Sonraki: Custom Form">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sonraki
               </span>
               <div class="md-ellipsis">
-                Genel Bakis
+                Custom Form
               </div>
             </div>
             <div class="md-footer__button md-icon">

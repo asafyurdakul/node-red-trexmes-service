@@ -5,7 +5,7 @@ site_url: https://asafyurdakul.github.io/node-red-trexmes-service/
 
 repo_name: asafyurdakul/node-red-trexmes-service
 repo_url: https://github.com/asafyurdakul/node-red-trexmes-service
-edit_uri: edit/main/doc/docs/
+edit_uri: ""
 
 copyright: Copyright &copy; 2024 - 2026 Asaf Yurdakul - trex Digital Manufacturing
 
@@ -124,7 +124,6 @@ nav:
       - Cekirdek Nodlar:
           - trex Subscriber: nodlar/trex-subscriber.md
           - Responser: nodlar/responser.md
-          - Handle Setter: nodlar/handle-setter.md
       - Olay Nodlari:
           - Genel Bakis: nodlar/event-subscribers.md
           - Business Events: nodlar/business-events.md
@@ -134,6 +133,7 @@ nav:
           - Form Events: nodlar/form-events.md
           - Display Methods: nodlar/display-methods.md
           - Method Returns: nodlar/method-returns.md
+          - Handle Setter: nodlar/handle-setter.md
       - Form Nodlari:
           - Custom Form: nodlar/custom-form.md
           - Form Bind Controls: nodlar/form-bind-controls.md

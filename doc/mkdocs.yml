@@ -1,0 +1,156 @@
+site_name: node-red-trexmes-service
+site_description: trexMes Edge sistemleri icin Node-RED servis node paketi dokumantasyonu
+site_author: Asaf Yurdakul
+site_url: https://asafyurdakul.github.io/node-red-trexmes-service/
+
+repo_name: asafyurdakul/node-red-trexmes-service
+repo_url: https://github.com/asafyurdakul/node-red-trexmes-service
+edit_uri: ""
+
+copyright: Copyright &copy; 2024 - 2026 Asaf Yurdakul - trex Digital Manufacturing
+
+theme:
+  name: material
+  language: tr
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/brightness-7
+        name: Koyu temaya gec
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/brightness-4
+        name: Acik temaya gec
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - content.action.edit
+    - toc.follow
+
+plugins:
+  - search:
+      lang:
+        - tr
+        - en
+  - tags
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Bu bolume kalici baglanti
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/asafyurdakul
+      name: GitHub
+    - icon: fontawesome/solid/globe
+      link: https://trex.com.tr
+      name: trex Digital Manufacturing
+  generator: false
+
+nav:
+  - Ana Sayfa: index.md
+  - Baslangic:
+      - baslangic/index.md
+      - Kurulum: baslangic/kurulum.md
+      - Hizli Baslangic: baslangic/hizli-baslangic.md
+      - Mimari Genel Bakis: baslangic/mimari.md
+      - Mesaj Yapisi: baslangic/mesaj-yapisi.md
+  - Node Referansi:
+      - nodlar/index.md
+      - Cekirdek Nodlar:
+          - trex Subscriber: nodlar/trex-subscriber.md
+          - Responser: nodlar/responser.md
+      - Olay Nodlari:
+          - Genel Bakis: nodlar/event-subscribers.md
+          - Business Events: nodlar/business-events.md
+          - System Events: nodlar/system-events.md
+          - Communication Events: nodlar/communication-events.md
+          - Display Events: nodlar/display-events.md
+          - Form Events: nodlar/form-events.md
+          - Display Methods: nodlar/display-methods.md
+          - Method Returns: nodlar/method-returns.md
+          - Handle Setter: nodlar/handle-setter.md
+      - Form Nodlari:
+          - Custom Form: nodlar/custom-form.md
+          - Form Bind Controls: nodlar/form-bind-controls.md
+          - Control Properties: nodlar/control-properties.md
+          - Button Configurator: nodlar/button-configurator.md
+          - Main Form Action: nodlar/main-form-action.md
+      - Islem Nodlari:
+          - Method Invoker: nodlar/method-invoker.md
+          - Context Getter: nodlar/context-getter.md
+          - Execute Process: nodlar/execute-process.md
+          - Execute Script: nodlar/execute-script.md
+      - Yapay Zeka:
+          - LLM Flow Builder: nodlar/llm-flow-builder.md
+  - Ornekler:
+      - ornekler/index.md
+      - Temel Akis: ornekler/temel-akis.md
+      - Custom Form Akisi: ornekler/custom-form-akisi.md
+      - Buton Konfigurasyonu: ornekler/buton-konfigurasyonu.md
+  - SSS: sss.md
+  - Surum Notlari: degisiklik-gunlugu.md

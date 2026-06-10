@@ -1,6 +1,6 @@
 {
   "name": "node-red-trexmes-service",
-  "version": "1.6.2",
+  "version": "1.7.1",
   "description": "service Nodes for trexMes systems",
   "main": "event-subscribers.js",
   "scripts": {
@@ -16,6 +16,7 @@
   "node-red": {
     "nodes": {
       "trex-subscriber": "trex-subscriber.js",
+      "llm-builder" : "llm-flow-builder.js",
       "business-event-subscriber": "event-subscribers.js",
       "custom-form": "custom-form.js",
       "form-bind-controls": "form-bind-controls.js",
@@ -23,9 +24,10 @@
       "button-configurator": "button-configurator.js",
       "main-form-actions": "main-form-actions.js",
       "method-invoker": "method-invoker.js",
+      "context-getter": "context-getter.js",
       "execute-process": "execute-process.js",
       "execute-script": "execute-script.js",
-      "handle-setter": "handle-setter.js"
+      "handle-setter": "handle-setter.js"   
     }
   },
   "repository": {

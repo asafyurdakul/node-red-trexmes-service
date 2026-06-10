@@ -1,14 +1,33 @@
 <script type="text/html" data-help-name="Button Configurator">
-    <p>It is the node used to configure the buttons on the main form and other operations form in the trexMes panel software.</p>
-    <h4>The index numbers of the buttons that can be configured are shown in the pictures below.</h1>
-    <img src="/node-red-trexmes-service/assets/button-configurator.png" 
-         alt="Button Configurator" 
-         style="max-width:100%; height:auto;">
+    <p>
+        trexMes panel yazılımındaki <b>ana form</b> ve <b>diğer işlemler formu</b> üzerindeki butonları
+        yapılandırmak için kullanılan node'dur. Butonların görünürlük, etkinlik ve etiket gibi
+        özelliklerini çalışma zamanında değiştirmenizi sağlar.
+    </p>
 
-    <h3>Outputs</h3>
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains the parameters required for button configuration.</dd>        
+        <dt>Configurations <span class="property-type">liste</span></dt>
+        <dd>
+            Her satır bir buton yapılandırmasını temsil eder. Buton indis numarası,
+            ayarlanacak özellik ve değer girilir.
+            Aşağıdaki görselde yapılandırılabilir butonların indis numaraları gösterilmektedir.
+        </dd>
     </dl>
+
+    <img src="/node-red-trexmes-service/assets/button-configurator.png"
+         alt="Buton İndis Numaraları"
+         style="max-width:100%; height:auto; margin:6px 0;">
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Önceki node'lardan gelen veri korunarak buton yapılandırma nesnesi
+            <code>msg.payload</code> dizisine eklenir ve iletilir.
+            Akışın sonunda <b>Responser</b> ile kapatılır.
+        </dd>
+    </dl>
+
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>

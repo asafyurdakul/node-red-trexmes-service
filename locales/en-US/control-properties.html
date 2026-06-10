@@ -1,9 +1,27 @@
 <script type="text/html" data-help-name="Control Properties">
-    <p>It is a node that is used to connect data to fields in a custom form.</p>
-    <h3>Outputs</h3>
+    <p>
+        trexMes panel yazılımındaki ana form veya custom form üzerindeki kontrollerin
+        özelliklerini (görünürlük, etkinlik, renk, metin vb.) çalışma zamanında ayarlamak için kullanılır.
+    </p>
+
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>It is used to set the properties of all kinds of controls on form screens in the trexMes panel software.</dd>        
+        <dt>Properties <span class="property-type">liste</span></dt>
+        <dd>
+            Her satır bir kontrol özelliği tanımlar. Kontrol adı, özellik adı ve atanacak değer girilir.
+            Değer kaynağı olarak sabit değer, <code>msg</code>, <code>flow</code> veya
+            <code>global</code> seçilebilir.
+        </dd>
     </dl>
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Özellik nesneleri <code>msg.payload</code> dizisine eklenerek iletilir.
+            Akışın sonunda <b>Responser</b> ile kapatılır.
+        </dd>
+    </dl>
+
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>

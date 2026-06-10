@@ -1,0 +1,34 @@
+<script type="text/html" data-help-name="Execute Script">
+    <p>
+        trexMes panel yazılımındaki aktif form üzerinde <b>script</b> çalıştırmak için kullanılır.
+        Script içeriği node üzerinde yapılandırılabilir ya da <code>msg.script</code> üzerinden
+        dinamik olarak geçilebilir.
+    </p>
+
+    <h3>Özellikler</h3>
+    <dl class="message-properties">
+        <dt>Name <span class="property-type">string</span></dt>
+        <dd>Node adı.</dd>
+        <dt>Form Name <span class="property-type">string</span></dt>
+        <dd>Script'in çalıştırılacağı formun adı.</dd>
+        <dt>Script <span class="property-type">string</span></dt>
+        <dd>
+            Çalıştırılacak script içeriği. Eğer <code>msg.script</code> değeri varsa
+            node yapılandırmasındaki değerin önüne geçer.
+        </dd>
+    </dl>
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Script çalıştırma nesnesi <code>msg.payload</code> dizisine eklenerek iletilir.
+            Önceki node'lardan gelen veri <code>receiveddata</code> olarak korunur.
+            Akışın sonunda <b>Responser</b> ile kapatılır.
+        </dd>
+        <dt>script <span class="property-type">string</span></dt>
+        <dd>Opsiyonel. Varsa node üzerindeki script değerini geçersiz kılar.</dd>
+    </dl>
+
+    <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
+</script>

@@ -1,13 +1,25 @@
 <script type="text/html" data-help-name="trex Subscriber">
-    <p>This node must be used once in each project.
-        The event names of the trex event nodes used in all flows are recorded in the trex Mes system. In this way, only relevant events are captured.</p>
-    <h3>Outputs</h3>
+    <p>
+        Her trexMes projesinde <b>bir kez</b> kullanılması zorunlu olan temel yapılandırma node'udur.
+        Projedeki tüm olay node'larının (Business Events, System Events vb.) kayıt işlemini panele bildirir;
+        böylece yalnızca ilgili olaylar yakalanır.
+    </p>
+
+    <h3>Çıkış</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains IP information of the registered Trex Mes Panel system and a list of registered events.</dd>        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>
+            Bağlanan trexMes panellerinin IP bilgilerini ve panele bildirilen olay listesini içerir.
+            Debug node'u bağlanarak bağlantı durumu izlenebilir.
+        </dd>
     </dl>
-    <dt>Important</dt>
-    <dd>There is no need for a responder node.</dd>
-        
+
+    <h3>Önemli Notlar</h3>
+    <ul>
+        <li>Her projede <b>yalnızca bir adet</b> trex Subscriber bulunmalıdır.</li>
+        <li>Bu node bağımsız çalışır; çıkışına <b>Responser bağlanmaz</b>.</li>
+        <li>Olay akışları bu node'dan değil, Event node'larından (Business Events vb.) başlar.</li>
+    </ul>
+
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>

@@ -1,14 +1,30 @@
 <script type="text/html" data-help-name="Main Form Action">
-    <p>It is used to directly trigger actions run on buttons on the Main Form in the trex Mes panel software.</p>
-    <h4>Actions are called with the ID numbers of the buttons. These IDs are shown in the picture below.</h1>
-    <img src="/node-red-trexmes-service/assets/button-configurator.png" 
-         alt="Button Configurator" 
-         style="max-width:100%; height:auto;">
+    <p>
+        trexMes panel yazılımının <b>ana formu</b> üzerindeki butonlara ait aksiyonları doğrudan
+        tetiklemek için kullanılır. Buton indis numarası ile ilgili aksiyon çağrılır.
+    </p>
 
-    <h3>Outputs</h3>
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains the parameters required for button configuration.</dd>        
+        <dt>Actions <span class="property-type">liste</span></dt>
+        <dd>
+            Tetiklenecek buton aksiyonları. Her satır için buton indis numarası girilir.
+            Aşağıdaki görselde butonların indis numaraları gösterilmektedir.
+        </dd>
     </dl>
+
+    <img src="/node-red-trexmes-service/assets/button-configurator.png"
+         alt="Buton İndis Numaraları"
+         style="max-width:100%; height:auto; margin:6px 0;">
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Aksiyon nesneleri <code>msg.payload</code> dizisine eklenerek iletilir.
+            Akışın sonunda <b>Responser</b> ile kapatılır.
+        </dd>
+    </dl>
+
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>

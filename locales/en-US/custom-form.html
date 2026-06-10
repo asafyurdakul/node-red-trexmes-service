@@ -1,9 +1,28 @@
 <script type="text/html" data-help-name="Custom Form">
-    <p>It aims to create special forms on the trex Mes system at run time and use them within the application.</p>
-    <h3>Outputs</h3>
+    <p>
+        trexMes panel yazılımında çalışma zamanında <b>özel form</b> oluşturmak için kullanılır.
+        XML formatında tanımlanan form tasarımı panele gönderilir ve uygulama içinde gerçek zamanlı
+        olarak gösterilir.
+    </p>
+
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>It contains information needed by the trexMes system, such as form design in XML format.</dd>        
+        <dt>Name <span class="property-type">string</span></dt>
+        <dd>
+            Formun benzersiz adı. <b>Form Events</b> node'larında bu isim ile referans alınır.
+        </dd>
+        <dt>Form Design <span class="property-type">XML</span></dt>
+        <dd>Panelde oluşturulacak formun XML tasarımı. Form adı, kontroller ve düzen bu alanda tanımlanır.</dd>
     </dl>
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Form tasarım nesnesi <code>msg.payload</code> dizisine eklenerek iletilir.
+            Akışın sonunda <b>Responser</b> ile kapatılır.
+        </dd>
+    </dl>
+
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>

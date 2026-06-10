@@ -1,82 +1,104 @@
 
 <script type="text/html" data-help-name="Business Events">
-    <p>Used to subscribe to Business events in the trex Mes panel software.</p>
-    <h3>Outputs</h3>
+    <p>trexMes panelinden gelen iş akışı olaylarını yakalar.</p>
+    <p>Üretim, plan, vardiya, ıskarta, malzeme, bakım ve benzeri iş süreçlerine ait eventler bu node ile dinlenir.</p>
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains data sent by the subscribed event</dd>        
+        <dt>Event <span class="property-type">combobox</span></dt>
+        <dd>Dinlenecek olay tipi. Seçim yapıldığında açıklama ve <code>msg.payload</code> JSON yapısı gösterilir.</dd>
+        <dt>IsHandled <span class="property-type">boolean</span></dt>
+        <dd>İşaretlenirse panel bu olayı "handled" olarak işler.</dd>
+        <dt>Call Suffix <span class="property-type">string</span></dt>
+        <dd>Aynı event tipini birden fazla node'da kullanmak için ayırt edici sonek.</dd>
+    </dl>
+    <h3>Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Seçili olayın EventArgs verisi. Yapı olaya göre değişir; editörde event seçildiğinde gösterilir.</dd>
     </dl>
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>
-<!--
-<script type="text/html" data-help-name="Application Events">
-    <p>Used to subscribe to Application events in the trex Mes panel software.</p>
-    <h3>Outputs</h3>
-    <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains data sent by the subscribed event</dd>        
-    </dl>
-    <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
-</script>
--->
+
 <script type="text/html" data-help-name="System Events">
-    <p>Used to subscribe to System events in the trex Mes panel software.</p>
-    <h3>Outputs</h3>
+    <p>Uygulama başlatma/kapama ve sistem seviyesi olayları yakalar.</p>
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains data sent by the subscribed event</dd>        
+        <dt>Event <span class="property-type">combobox</span></dt>
+        <dd>Dinlenecek sistem olayı. Seçim yapıldığında açıklama ve payload yapısı gösterilir.</dd>
+    </dl>
+    <h3>Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Seçili olayın EventArgs verisi.</dd>
     </dl>
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>
 
 <script type="text/html" data-help-name="Communication Events">
-    <p>Used to subscribe to Communication events in the trex Mes panel software.</p>
-    <h3>Outputs</h3>
+    <p>Barkod okuma, I/O port değişimleri, OPC haberleşme ve bildirim mesajı gibi iletişim katmanı olaylarını yakalar.</p>
+    <h3>Çıkış</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains data sent by the subscribed event</dd>        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Seçili olayın EventArgs verisi. Yapı olaya göre değişir; editörde event seçildiğinde gösterilir.</dd>
     </dl>
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>
 
 <script type="text/html" data-help-name="Display Events">
-    <p>Used to subscribe to Display events in the trex Mes panel software.</p>
-    <h3>Outputs</h3>
+    <p>Ana form üzerindeki UI etkileşimlerini, buton tıklamalarını ve görsel güncelleme olaylarını yakalar.</p>
+    <h3>Çıkış</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains data sent by the subscribed event</dd>        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Seçili olayın EventArgs verisi. Yapı olaya göre değişir; editörde event seçildiğinde gösterilir.</dd>
     </dl>
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>
 
 <script type="text/html" data-help-name="Form Events">
-    <p>Used to subscribe to Form events in the trex Mes panel software.</p>
-    <h3>If MainForm is selected</h3>
-    <h4>The index numbers of the buttons that can be configured are shown in the pictures below.</h1>
-        <img src="/node-red-trexmes-service/assets/button-configurator.png" 
-             alt="Button Configurator" 
-             style="max-width:100%; height:auto;">
-             
-    <h3>Outputs</h3>
+    <p>Custom form ve ana form üzerindeki kullanıcı etkileşimlerini yakalar.</p>
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains data sent by the subscribed event</dd>        
+        <dt>For Main Form <span class="property-type">boolean</span></dt>
+        <dd>Ana form için mi yoksa Custom Form için mi dinleneceğini belirler.</dd>
+        <dt>Form Name <span class="property-type">combobox</span></dt>
+        <dd>Dinlenecek Custom Form (For Main Form seçili değilken aktif).</dd>
+        <dt>Control <span class="property-type">string</span></dt>
+        <dd>Olay dinlenecek kontrol adı.</dd>
+        <dt>Event Time <span class="property-type">select</span></dt>
+        <dd>Olayın Before mi After mı tetikleneceği.</dd>
+        <dt>Event Name <span class="property-type">select</span></dt>
+        <dd>Click, Changed, Load, Tick vb. olay tipi.</dd>
     </dl>
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>
 
-<script type="text/html" data-help-name="Display Methods">
-    <p>Used to subscribe to Main Form specific events in trex Mes panel software.</p>            
-    <h3>Outputs</h3>
-    <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Contains data sent by the subscribed event</dd>        
-    </dl>
-    <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
-</script>
+<script type="text/html" data-help-name="Method Returns">
+    <p>
+        <b>Method Invoker</b> veya <b>Context Getter</b> ile başlatılan asenkron bir işlemin
+        <b>dönüş verisini</b> yakalar. Panel işlemi tamamlayıp cevap gönderdiğinde bu node tetiklenir.
+    </p>
 
-<script type="text/html" data-help-name="Responser">
-    <p>Provides a outputs.It must be connected to the end of each subscribed event stream!!!</p>
-    <p>Only the <code>msg.payload</code> is sent.</p>
+    <h3>Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>
+            Panelden dönen veriyi içerir.<br>
+            <b>Method Invoker</b> için: method'un return değeri.<br>
+            <b>Context Getter</b> için: StateContext verisi.
+        </dd>
+    </dl>
+
+    <h3>Özellikler</h3>
+    <dl class="message-properties">
+        <dt>Name <span class="property-type">string</span></dt>
+        <dd>Node adı. <b>Method Invoker</b> veya <b>Context Getter</b> node'undaki <code>name</code> ile birebir eşleşmelidir.</dd>
+    </dl>
+
+    <h3>Çalışma Modeli</h3>
+    <pre style="font-size:0.85em; background:#f4f4f4; padding:8px; border-radius:4px;">
+Business Events → Method Invoker → Responser
+                      ↓ (async)
+Method Returns  → [işlem]  → Responser</pre>
+
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>

@@ -1,0 +1,39 @@
+<script type="text/html" data-help-name="Method Invoker">
+    <p>
+        trexMes panel yazılımındaki bir <b>servis metodunu</b> parametre geçerek çağırır.
+        Bu çağrı asenkrondur: ilk akış <b>Responser</b> ile kapanır, panel metodu işledikten sonra
+        <b>Method Returns</b> node'u yeni bir akış tetikler.
+    </p>
+
+    <h3>Özellikler</h3>
+    <dl class="message-properties">
+        <dt>Name <span class="property-type">string</span></dt>
+        <dd>Node adı. <b>Method Returns</b> node'undaki seçimle birebir eşleşmelidir.</dd>
+        <dt>Service <span class="property-type">combobox</span></dt>
+        <dd>Çağrılacak servis. Seçim yapıldığında mevcut metodlar listelenir.</dd>
+        <dt>Method <span class="property-type">combobox</span></dt>
+        <dd>Çağrılacak metod. Seçim yapıldığında metodun parametreleri otomatik olarak eklenir.</dd>
+        <dt>Parameters <span class="property-type">liste</span></dt>
+        <dd>
+            Her parametre için ad ve değer tanımlanır. Değer kaynağı olarak sabit değer,
+            <code>msg</code>, <code>flow</code>, <code>global</code> veya JSONata kullanılabilir.
+        </dd>
+    </dl>
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Metod çağrı nesnesi <code>msg.payload</code> dizisine eklenerek iletilir.
+            Önceki node'lardan gelen veri <code>receiveddata</code> olarak korunur.
+        </dd>
+    </dl>
+
+    <h3>Çalışma Modeli</h3>
+    <pre style="font-size:0.85em; background:#f4f4f4; padding:8px; border-radius:4px;">
+Business Events → Method Invoker → Responser
+                       ↓ (async)
+Method Returns  → [dönüş verisi işleme]  → Responser</pre>
+
+    <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
+</script>

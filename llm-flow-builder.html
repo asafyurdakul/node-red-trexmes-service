@@ -1,0 +1,352 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     LLM Flow BUILDER — Config Node (Credentials)
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script type="text/javascript">
+  // ── Provider presets ──────────────────────────────────────────────────────
+  var LLM_PROVIDER_PRESETS = {
+    openai   : { url: 'https://api.openai.com/v1/chat/completions',            model: 'gpt-4o' },
+    gemini   : { url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent', model: 'gemini-2.0-flash' },
+    deepseek : { url: 'https://api.deepseek.com/v1/chat/completions',          model: 'deepseek-coder' },
+    anthropic: { url: 'https://api.anthropic.com/v1/messages',                 model: 'claude-sonnet-4-20250514' },
+    mistral  : { url: 'https://api.mistral.ai/v1/chat/completions',            model: 'mistral-large-latest' },
+    groq     : { url: 'https://api.groq.com/openai/v1/chat/completions',       model: 'llama-3.3-70b-versatile' },
+    custom   : { url: '', model: '' }
+  };
+
+  function fillPreset(provider) {
+    var p = LLM_PROVIDER_PRESETS[provider];
+    if (!p) return;
+    var urlEl   = document.getElementById('node-config-input-apiUrl');
+    var modelEl = document.getElementById('node-config-input-modelName');
+    if (urlEl   && (!urlEl.value   || urlEl._wasPreset))   { urlEl.value   = p.url;   urlEl._wasPreset   = !!p.url; }
+    if (modelEl && (!modelEl.value || modelEl._wasPreset)) { modelEl.value = p.model; modelEl._wasPreset = !!p.model; }
+  }
+
+  RED.nodes.registerType('llm-flow-builder-config', {
+    category: 'config',
+    defaults: {
+      name      : { value: '' },
+      provider  : { value: 'openai' },
+      apiUrl    : { value: '' },
+      modelName : { value: '' }
+    },
+    credentials: {
+      apiKey: { type: 'password' }
+    },
+    label: function () {
+      return this.name || this.provider + ' Config';
+    },
+
+    oneditprepare: function () {
+      // Resolve trex.png URL from the package module dynamically
+      var trexType = RED.nodes.getType('Context Getter');
+      var trexIconUrl = (trexType && trexType.set && trexType.set.module)
+        ? '/icons/' + trexType.set.module + '/trex.png'
+        : '/icons/node-red-trexmes-service/trex.png';
+
+      var OPTS = [
+        { value: 'openai',    icon: '🤖', label: 'OpenAI (ChatGPT)' },
+        { value: 'gemini',    icon: '✨', label: 'Google Gemini' },
+        { value: 'deepseek',  icon: '🔍', label: 'DeepSeek' },
+        { value: 'anthropic', icon: '🧠', label: 'Anthropic (Claude)' },
+        { value: 'mistral',   icon: '💫', label: 'Mistral AI' },
+        { value: 'groq',      icon: '⚡', label: 'Groq' },
+        { value: 'custom',    icon: null, label: 'trex Lens AI', img: trexIconUrl }
+      ];
+
+      function iconHtml(opt) {
+        if (opt.img) {
+          return '<img src="' + opt.img + '" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">';
+        }
+        return '<span style="margin-right:6px;">' + opt.icon + '</span>';
+      }
+
+      function getOpt(val) {
+        for (var i = 0; i < OPTS.length; i++) { if (OPTS[i].value === val) return OPTS[i]; }
+        return OPTS[0];
+      }
+
+      var $sel = $('#node-config-input-provider');
+      var currentOpt = getOpt($sel.val() || 'openai');
+
+      // Build custom dropdown
+      var $wrap = $('<div>').css({ position: 'relative', width: '100%' });
+
+      var $btn = $('<div tabindex="0">').css({
+        border: '1px solid #ccc', borderRadius: '3px', padding: '4px 8px',
+        cursor: 'pointer', display: 'flex', alignItems: 'center',
+        background: 'white', userSelect: 'none', minHeight: '28px'
+      });
+
+      function updateDisplay(opt) {
+        $btn.html(iconHtml(opt) + '<span>' + opt.label + '</span>' +
+          '<i class="fa fa-caret-down" style="margin-left:auto;padding-left:8px;"></i>');
+      }
+      updateDisplay(currentOpt);
+
+      var $list = $('<div>').css({
+        display: 'none', position: 'absolute', zIndex: 9999,
+        background: 'white', border: '1px solid #ccc', borderRadius: '3px',
+        width: '100%', boxShadow: '0 2px 8px rgba(0,0,0,.15)', top: '100%', left: 0
+      });
+
+      OPTS.forEach(function (opt) {
+        var $item = $('<div>').css({
+          padding: '6px 10px', cursor: 'pointer',
+          display: 'flex', alignItems: 'center'
+        }).html(iconHtml(opt) + '<span>' + opt.label + '</span>');
+
+        $item.on('mouseenter', function () { $(this).css('background', '#f0f7ff'); });
+        $item.on('mouseleave', function () { $(this).css('background', 'white'); });
+        $item.on('click', function () {
+          $sel.val(opt.value);
+          updateDisplay(opt);
+          $list.hide();
+          fillPreset(opt.value);
+        });
+        $list.append($item);
+      });
+
+      $btn.on('click', function (e) {
+        e.stopPropagation();
+        $list.is(':visible') ? $list.hide() : $list.show();
+      });
+
+      $(document).on('click.llmProviderDrop', function () { $list.hide(); });
+
+      $wrap.append($btn).append($list);
+      $sel.after($wrap);
+    },
+
+    oneditsave: function () {
+      $(document).off('click.llmProviderDrop');
+    },
+    oneditcancel: function () {
+      $(document).off('click.llmProviderDrop');
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="llm-flow-builder-config">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> İsim</label>
+    <input type="text" id="node-config-input-name" placeholder="Örn: OpenAI Production">
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-provider"><i class="fa fa-server"></i> Sağlayıcı</label>
+    <select id="node-config-input-provider" style="display:none">
+      <option value="openai">OpenAI (ChatGPT)</option>
+      <option value="gemini">Google Gemini</option>
+      <option value="deepseek">DeepSeek</option>
+      <option value="anthropic">Anthropic (Claude)</option>
+      <option value="mistral">Mistral AI</option>
+      <option value="groq">Groq</option>
+      <option value="custom">trex Lens AI</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-apiUrl"><i class="fa fa-link"></i> API URL</label>
+    <input type="text" id="node-config-input-apiUrl"
+           placeholder="https://api.openai.com/v1/chat/completions"
+           style="font-family:monospace; font-size:12px">
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-apiKey"><i class="fa fa-key"></i> API Anahtarı</label>
+    <input type="password" id="node-config-input-apiKey" placeholder="sk-...">
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-modelName"><i class="fa fa-cube"></i> Model</label>
+    <input type="text" id="node-config-input-modelName"
+           placeholder="gpt-4o / gemini-1.5-pro / deepseek-coder ...">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="llm-flow-builder-config">
+  <p>LLM Flow Builder için AI servis bağlantı bilgilerini saklar.</p>
+  <ul>
+    <li><b>Sağlayıcı</b>: Hazır preset seçin veya "Özel" ile kendi URL'inizi girin.</li>
+    <li><b>API URL</b>: Sağlayıcının chat completion endpoint'i.</li>
+    <li><b>API Anahtarı</b>: Şifreli olarak saklanır.</li>
+    <li><b>Model</b>: Kullanılacak model adı (örn: gpt-4o, gemini-1.5-pro).</li>
+  </ul>
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     LLM Flow BUILDER — Main Node
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script type="text/javascript">
+  RED.nodes.registerType('llm-flow-builder', {
+    category   : 'trexMes service',
+    color      : 'rgb(153, 255, 51)',
+    icon       : 'font-awesome/fa-magic',
+    inputs     : 1,
+    outputs    : 1,
+    paletteLabel: 'LLM Flow Builder',
+
+    defaults: {
+      name       : { value: '' },
+      llmConfig  : { value: '', type: 'llm-flow-builder-config' },
+      autoImport : { value: true },
+      autoDeploy : { value: true },
+      flowTab    : { value: '' },
+      lastPrompt : { value: '' }
+    },
+    credentials: {
+      nrAdminUser: { type: 'text'     },
+      nrAdminPass: { type: 'password' }
+    },
+
+    label: function () {
+      return this.name || 'LLM Flow Builder';
+    },
+    labelStyle: function () {
+      return this.name ? 'node_label_italic' : '';
+    },
+
+    oneditprepare: function () {
+      var nodeId  = this.id;
+      var $btn    = $('#llm-generate-btn');
+      var $status = $('#llm-generate-status');
+
+      $btn.on('click', function () {
+        var prompt = $('#node-input-lastPrompt').val().trim();
+        if (!prompt) {
+          $status.css('color', '#ef4444').text('Lütfen bir prompt girin.');
+          return;
+        }
+        $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i>');
+        $status.css('color', '#6b7280').text('Üretiliyor...');
+
+        $.ajax({
+          url: 'llm-flow-builder/generate',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ nodeId: nodeId, prompt: prompt }),
+          success: function (data) {
+            $btn.prop('disabled', false).html('<i class="fa fa-magic"></i> Üret');
+            if (data.success) {
+              var msg = data.imported
+                ? (data.deployed ? '✓ Deploy edildi' : '✓ Import edildi')
+                : ('✓ ' + data.nodeCount + ' node üretildi (import kapalı)');
+              $status.css('color', '#16a34a').text(msg);
+            } else {
+              $status.css('color', '#ef4444').text('Hata: ' + (data.importError || data.error || 'Bilinmeyen hata'));
+            }
+          },
+          error: function (xhr) {
+            $btn.prop('disabled', false).html('<i class="fa fa-magic"></i> Üret');
+            var msg = (xhr.responseJSON && xhr.responseJSON.error) || xhr.statusText || 'Bağlantı hatası';
+            $status.css('color', '#ef4444').text('Hata: ' + msg);
+          }
+        });
+      });
+    }
+
+  });
+</script>
+
+<script type="text/html" data-template-name="llm-flow-builder">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> İsim</label>
+    <input type="text" id="node-input-name" placeholder="LLM Flow Builder">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-llmConfig"><i class="fa fa-plug"></i> LLM Config</label>
+    <input type="text" id="node-input-llmConfig">
+  </div>
+
+  <!-- Import & Deploy — tek satırda -->
+  <div class="form-row" style="display:flex; align-items:center; gap:20px;">
+    <label style="width:auto; margin:0; display:flex; align-items:center; gap:5px; cursor:pointer; white-space:nowrap;">
+      <input type="checkbox" id="node-input-autoImport" style="width:auto; margin:0;">
+      <i class="fa fa-download"></i> Otomatik Import
+    </label>
+    <label style="width:auto; margin:0; display:flex; align-items:center; gap:5px; cursor:pointer; white-space:nowrap;">
+      <input type="checkbox" id="node-input-autoDeploy" style="width:auto; margin:0;">
+      <i class="fa fa-rocket"></i> Otomatik Deploy
+    </label>
+  </div>
+
+  <hr style="margin:12px 0; border:none; border-top:1px solid #e5e7eb;">
+
+  <!-- Prompt editörü -->
+  <div class="form-row">
+    <label><i class="fa fa-comment"></i> Prompt</label>
+    <div style="display:flex; gap:8px; align-items:flex-start;">
+      <textarea id="node-input-lastPrompt" rows="5"
+                style="flex:1; font-family:monospace; font-size:11px; resize:vertical;"
+                placeholder="Akış isteğinizi yazın...&#10;Örnek:&#10;- İş yüklendiği zaman bir form aç.&#10;- Forma data Grid nesnesi ekle.&#10;- Form açıldıktan sonra SELECT TOP 10 * FROM STOCK sorgusunu çalıştır&#10;- Dönüş verisini formdaki gridde göster.&#10;- Tamam butonu ile formun kapanmasını sağla."></textarea>
+      <button type="button" id="llm-generate-btn"
+              style="white-space:nowrap; padding:6px 10px; background:#3b82f6; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:12px;">
+        <i class="fa fa-magic"></i> Üret
+      </button>
+    </div>
+    <div id="llm-generate-status" style="font-size:11px; margin-top:4px; color:#6b7280; min-height:16px;"></div>
+  </div>
+
+  <hr style="margin:12px 0; border:none; border-top:1px solid #e5e7eb;">
+
+  <div class="form-row">
+    <label style="width:100%; font-weight:600; color:#374151; margin-bottom:4px;">
+      <i class="fa fa-lock"></i> Node-RED Admin Kimlik Bilgileri
+    </label>
+    <p style="font-size:11px; color:#6b7280; margin:0 0 10px; line-height:1.5; white-space:normal; word-wrap:break-word;">
+      <code>adminAuth</code> aktifse kullanıcı adı ve şifreyi girin. Auth kapalıysa boş bırakın.
+    </p>
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-nrAdminUser"><i class="fa fa-user"></i> Kullanıcı Adı</label>
+    <input type="text" id="node-input-nrAdminUser" placeholder="admin" autocomplete="off">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-nrAdminPass"><i class="fa fa-key"></i> Şifre</label>
+    <input type="password" id="node-input-nrAdminPass" placeholder="••••••••" autocomplete="new-password">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="llm-flow-builder">
+  <h3>LLM Flow Builder</h3>
+  <p>
+    Farklı AI servislerine bağlanarak <b>Node-RED flow'u JSON formatında</b> üretir,
+    otomatik import eder ve deploy eder. Node editöründeki <b>Prompt</b> alanından
+    doğrudan üretim yapılabilir.
+  </p>
+
+  <h4>Editörden Üretim</h4>
+  <p>Node'u çift tıklayıp <b>Prompt</b> alanına komutu yazın ve <b>Üret</b> butonuna basın.
+  Node daha önce Deploy edilmiş olmalıdır. Üretilen node'lar otomatik olarak
+  <em>"Created By LLM Flow Builder"</em> adlı bir Group içine yerleştirilir.</p>
+
+  <h4>Giriş (msg.payload)</h4>
+  <p>inject veya başka node'dan string prompt gönderin:</p>
+  <pre>"Barkod okununca sipariş bilgisini Custom Form'da göster"</pre>
+
+  <h4>Desteklenen Sağlayıcılar</h4>
+  <ul>
+    <li><b>OpenAI</b> — GPT-4o, GPT-4 Turbo vb.</li>
+    <li><b>Google Gemini</b> — Gemini 1.5 Flash/Pro vb.</li>
+    <li><b>DeepSeek</b> — DeepSeek Coder / Chat</li>
+    <li><b>Anthropic Claude</b> — Claude Sonnet, Opus vb.</li>
+    <li><b>Mistral AI</b> — Mistral Large vb.</li>
+    <li><b>Groq</b> — Llama3, Mixtral vb.</li>
+    <li><b>trex Lens AI</b> — OpenAI uyumlu özel endpoint</li>
+  </ul>
+
+  <h4>Çıktılar</h4>
+  <dl>
+    <dt>msg.payload.success</dt><dd>İşlem başarı durumu</dd>
+    <dt>msg.payload.flow</dt><dd>Üretilen Node-RED flow array (Group dahil)</dd>
+    <dt>msg.payload.nodeCount</dt><dd>Flow içindeki toplam node sayısı</dd>
+    <dt>msg.generatedFlow</dt><dd>Ham flow JSON array</dd>
+    <dt>msg.llmRawResponse</dt><dd>AI'nın ham metin yanıtı</dd>
+    <dt>msg.importedTab</dt><dd>Import edilen tab'ın adı</dd>
+  </dl>
+</script>

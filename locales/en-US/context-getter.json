@@ -1,0 +1,13 @@
+{
+    "common": {
+        "label": {
+            "name": "Name"
+        }
+    },
+    "context-getter": {
+        "label": {
+            "context"      : "Context",
+            "workstationid": "WorkStation ID"
+        }
+    }
+}

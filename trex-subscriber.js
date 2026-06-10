@@ -98,14 +98,13 @@ module.exports = function(RED) {
                     
                     //node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:req.query});
                     
-                    const eventTypes = new Set(["Business Events", 
-                                                /*"Application Events", */
+                    const eventTypes = new Set(["Business Events",
                                                 "System Events",
                                                 "Communication Events",
                                                 "Display Events",
                                                 "Form Events",
                                                 "Display Methods",
-                                                "Method Returns",]);
+                                                "Method Returns"]);
                         
                     let matchingNodes = [];
                     let matchingHandlers = [];

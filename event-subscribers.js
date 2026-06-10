@@ -213,110 +213,6 @@ module.exports = function(RED) {
     }
     RED.nodes.registerType("Business Events",BusinessEventSubscriber);
 
-    /*function ApplicationEventSubscriber(n) {
-        RED.nodes.createNode(this,n);
-        if (RED.settings.httpNodeRoot !== false) {
-            n.method = "post";
-            if (!n.event) {
-                this.warn(RED._("event-subscribers.errors.missing-path"));
-                return;
-            }
-            this.event = n.event;
-
-            if (this.event[0] !== '/') {
-                this.event = '/'+this.event;
-            } 
-            this.ishandled = n.ishandled;
-            this.method = n.method;
-            var node = this;
-
-            this.errorHandler = function(err,req,res,next) {
-                node.warn(err);
-                res.sendStatus(500);
-            };
-
-            this.callback = function(req,res) {
-                  var msgid = RED.util.generateId();
-                res._msgid = msgid;
-                // Since Node 15, req.headers are lazily computed and the property
-                // marked as non-enumerable.
-                // That means it doesn't show up in the Debug sidebar.
-                // This redefines the property causing it to be evaluated *and*
-                // marked as enumerable again.
-                Object.defineProperty(req, 'headers', {
-                    value: req.headers,
-                    enumerable: true
-                })
-                //Bütün talepler POST olcağı için burada bir kontrol yapmaya gerek yok
-                //if (node.method.match(/^(post|delete|put|options|patch)$/)) { }
-                if(node.method == "post"){
-                    let _payload = req.body;
-                    _payload.IsHandled = node.ishandled;
-                    node.status({}); //clear node status                        
-                    node.send({_msgid:msgid,req:req,res:createResponseWrapper(node,res),payload:_payload});   
-                    node.status({fill:"yellow",shape:"dot",text:"Triggered"});
-
-                    setTimeout(function() {
-                        node.status({}); // 1 saniye sonra status'u temizle
-                    }, 1000);  
-                }             
-                
-            };
-
-            var httpMiddleware = function(req,res,next) { next(); }
-
-            if (RED.settings.httpNodeMiddleware) {
-                if (typeof RED.settings.httpNodeMiddleware === "function" || Array.isArray(RED.settings.httpNodeMiddleware)) {
-                    httpMiddleware = RED.settings.httpNodeMiddleware;
-                }
-            }
-
-            var maxApiRequestSize = RED.settings.apiMaxLength || '5mb';
-            var jsonParser = bodyParser.json({limit:maxApiRequestSize});
-            var urlencParser = bodyParser.urlencoded({limit:maxApiRequestSize,extended:true});
-
-            var metricsHandler = function(req,res,next) { next(); }
-            if (this.metric()) {
-                metricsHandler = function(req, res, next) {
-                    var startAt = process.hrtime();
-                    onHeaders(res, function() {
-                        if (res._msgid) {
-                            var diff = process.hrtime(startAt);
-                            var ms = diff[0] * 1e3 + diff[1] * 1e-6;
-                            var metricResponseTime = ms.toFixed(3);
-                            var metricContentLength = res.getHeader("content-length");
-                            //assuming that _id has been set for res._metrics in HttpOut node!
-                            node.metric("response.time.millis", {_msgid:res._msgid} , metricResponseTime);
-                            node.metric("response.content-length.bytes", {_msgid:res._msgid} , metricContentLength);
-                        }
-                    });
-                    next();
-                };
-            }
-
-            var multipartParser = function(req,res,next) { next(); }
-            if (this.method == "post") {            
-                RED.httpNode.post(this.event,cookieParser(),httpMiddleware,corsHandler,metricsHandler,jsonParser,urlencParser,multipartParser,rawBodyParser,this.callback,this.errorHandler);
-            }
-
-            this.on("close",function() {
-                var node = this;
-                node.method = "post";
-                RED.httpNode._router.stack.forEach(function(route,i,routes) {
-                    if (route.route && route.route.path === node.event && route.route.methods[node.method]) {
-                        routes.splice(i,1);
-                    }
-                });
-            });
-
-            
-        } else {
-            this.warn(RED._("event-subscribers.errors.not-created"));
-        }
-    }
-    RED.nodes.registerType("Application Events",ApplicationEventSubscriber);
-    */
-
     function SystemEventSubscriber(n) {
         RED.nodes.createNode(this,n);
         if (RED.settings.httpNodeRoot !== false) {
@@ -972,7 +868,8 @@ module.exports = function(RED) {
         }
     }
     RED.nodes.registerType("Method Returns",MethodReturnSubscriber);
-    
+
+
 
     function EventResponser(n) {
         RED.nodes.createNode(this,n);

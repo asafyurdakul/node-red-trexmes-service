@@ -1,0 +1,26 @@
+<script type="text/html" data-help-name="Execute Process">
+    <p>
+        trexMes panel yazılımında tanımlı bir <b>process'i</b> tetiklemek için kullanılır.
+        Process adı node üzerinde yapılandırılır ve çalışma zamanında panele gönderilir.
+    </p>
+
+    <h3>Özellikler</h3>
+    <dl class="message-properties">
+        <dt>Name <span class="property-type">string</span></dt>
+        <dd>Node adı.</dd>
+        <dt>Process Name <span class="property-type">string</span></dt>
+        <dd>Tetiklenecek process'in adı. Panelde tanımlı process adı ile birebir eşleşmelidir.</dd>
+    </dl>
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Process tetikleme nesnesi <code>msg.payload</code> dizisine eklenerek iletilir.
+            Önceki node'lardan gelen veri <code>receiveddata</code> olarak korunur.
+            Akışın sonunda <b>Responser</b> ile kapatılır.
+        </dd>
+    </dl>
+
+    <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
+</script>

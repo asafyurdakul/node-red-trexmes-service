@@ -1,0 +1,33 @@
+<script type="text/html" data-help-name="Handle Setter">
+    <p>
+        <code>IsHandled</code> özelliği bulunan olay akışlarında zincirin <b>son trexMes node'u</b>
+        olarak kullanılır. <code>IsHandled = true</code> ayarlandığında panel ilgili olayı
+        "ele alındı" olarak işaretler ve standart panel davranışını durdurur.
+    </p>
+
+    <h3>Özellikler</h3>
+    <dl class="message-properties">
+        <dt>IsHandled <span class="property-type">bool | msg | flow</span></dt>
+        <dd>
+            Panele gönderilecek <code>IsHandled</code> değeri. Sabit <code>true/false</code>,
+            <code>msg</code> yolu veya <code>flow</code> context değişkeni olarak tanımlanabilir.
+        </dd>
+    </dl>
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            <code>TrexEventHandler</code> nesnesi <code>msg.payload</code> dizisine eklenerek iletilir.
+            Bu node'dan sonra <b>Responser</b> ile akış kapatılır.
+        </dd>
+    </dl>
+
+    <h3>Kullanım Örneği</h3>
+    <pre style="font-size:0.85em; background:#f4f4f4; padding:8px; border-radius:4px;">Business Events (OnPlanSelecting)
+  → [özel plan seçim ekranı]
+  → Handle Setter  (IsHandled = true)
+  → Responser</pre>
+
+    <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
+</script>

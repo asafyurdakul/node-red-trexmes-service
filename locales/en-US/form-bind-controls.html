@@ -1,9 +1,27 @@
 <script type="text/html" data-help-name="Form Bind Controls">
-    <p>It is a node that is used to connect data to fields in a custom form.</p>
-    <h3>Outputs</h3>
+    <p>
+        <b>Custom Form</b> üzerindeki kontrollere veri bağlamak için kullanılır.
+        Form alanlarına görüntülenecek değerleri ve kaynak bilgilerini tanımlar.
+    </p>
+
+    <h3>Özellikler</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>It contains the information needed by the trexMes system, including the properties of the objects on which the data to be returned will be displayed and the form.</dd>        
+        <dt>Bindings <span class="property-type">liste</span></dt>
+        <dd>
+            Her satır bir kontrol bağlamasını temsil eder. Kontrol adı, veri kaynağı
+            (<code>msg</code>, <code>flow</code>, <code>global</code>, sabit değer vb.) ve
+            hedef özellik girilir.
+        </dd>
     </dl>
+
+    <h3>Giriş / Çıkış</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array</span></dt>
+        <dd>
+            Bağlama nesneleri <code>msg.payload</code> dizisine eklenerek iletilir.
+            Akışın sonunda <b>Responser</b> ile kapatılır.
+        </dd>
+    </dl>
+
     <a href="http://www.trex.com.tr" target="_blank">trex Digital Manufacturing</a>
 </script>

@@ -1913,15 +1913,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v171" class="md-nav__link">
+  <a href="#v180" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1.7.1
+        v1.8.0
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="v1.7.1">
+    <nav class="md-nav" aria-label="v1.8.0">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1929,17 +1929,6 @@
     <span class="md-ellipsis">
       
         Temel Özellikler
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v17x-yeni-ozellikler" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        v1.7.x Yeni Özellikler
       
     </span>
   </a>
@@ -1989,6 +1978,17 @@
   
     <nav class="md-nav" aria-label="Sürüm Geçmişi">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v171" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.7.1
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#v162" class="md-nav__link">
@@ -2158,15 +2158,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v171" class="md-nav__link">
+  <a href="#v180" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1.7.1
+        v1.8.0
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="v1.7.1">
+    <nav class="md-nav" aria-label="v1.8.0">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2174,17 +2174,6 @@
     <span class="md-ellipsis">
       
         Temel Özellikler
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v17x-yeni-ozellikler" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        v1.7.x Yeni Özellikler
       
     </span>
   </a>
@@ -2234,6 +2223,17 @@
   
     <nav class="md-nav" aria-label="Sürüm Geçmişi">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v171" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.7.1
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#v162" class="md-nav__link">
@@ -2384,7 +2384,7 @@
 <h1 id="surum-notlar">Sürüm Notları<a class="headerlink" href="#surum-notlar" title="Bu bolume kalici baglanti">&para;</a></h1>
 <p><code>node-red-trexmes-service</code> paketinin sürüm bilgileri.</p>
 <h2 id="gecerli-surum">Geçerli Sürüm<a class="headerlink" href="#gecerli-surum" title="Bu bolume kalici baglanti">&para;</a></h2>
-<h3 id="v171">v1.7.1<a class="headerlink" href="#v171" title="Bu bolume kalici baglanti">&para;</a></h3>
+<h3 id="v180">v1.8.0<a class="headerlink" href="#v180" title="Bu bolume kalici baglanti">&para;</a></h3>
 <p>Paketin bu dokümantasyonda kapsamlı olarak ele alınan <strong>güncel sürümüdür</strong>.</p>
 <h4 id="temel-ozellikler">Temel Özellikler<a class="headerlink" href="#temel-ozellikler" title="Bu bolume kalici baglanti">&para;</a></h4>
 <ul>
@@ -2399,31 +2399,6 @@
 <li><strong>Multi-panel destek</strong> (150-200 panel aynı anda)</li>
 <li><strong>Türkçe/İngilizce yerelleştirme</strong> (en-US locale)</li>
 <li>Statik <strong>assets</strong> servisi (<code>assets/button-configurator.png</code>)</li>
-</ul>
-<h4 id="v17x-yeni-ozellikler">v1.7.x Yeni Özellikler<a class="headerlink" href="#v17x-yeni-ozellikler" title="Bu bolume kalici baglanti">&para;</a></h4>
-<p><strong>LLM Flow Builder</strong></p>
-<ul>
-<li>Node editöründe <code>Prompt</code> alanı ve <strong>Üret</strong> butonu — <code>inject</code> node'u gerekmeden akış üretilebilir</li>
-<li>Üretilen tüm node'lar otomatik olarak <strong>Group</strong> node içine alınır (etiket: <code>Created By LLM Flow Builder</code>)</li>
-<li>Sağlayıcı seçim dropdown'ı custom bileşene dönüştürüldü; <strong>trex Lens AI</strong> seçeneği trex ikonuyla gösterilir</li>
-<li>Node-RED admin kimlik bilgileri (kullanıcı adı + şifre) ile otomatik import/deploy desteği</li>
-<li>Gemini endpoint <code>v1</code> sürümüne güncellendi (<code>x-goog-api-key</code> header ile auth)</li>
-<li>Groq, Mistral sağlayıcı desteği eklendi</li>
-<li><code>systemprompt.txt</code> her LLM çağrısında dosyadan yeniden okunur</li>
-</ul>
-<p><strong>Custom Form Akış Yapısı</strong></p>
-<ul>
-<li>Doğru iki-akış pattern'i belgelendi: <code>EventNode → Custom Form → Responser</code> (Akış 1) + <code>Form Events(Load) → değişiklikler → Responser</code> (Akış 2)</li>
-<li>Pattern 9 eklendi: İş yükleme → SQL grid formu → Tamam butonu ile kapatma (4 bağımsız akış)</li>
-<li><strong>DataGridView</strong> için standart varsayılan XML formatı tanımlandı (ReadOnly, FullRowSelect, AutoSizeColumnsMode: Fill, satır font 18pt Bold)</li>
-</ul>
-<p><strong>Dokümantasyon</strong></p>
-<ul>
-<li>Method Invoker: SQL sorgusu çalıştırma (ISqlDataContext) bölümü eklendi</li>
-<li>Method Returns: <code>msg.payload.Result.Result</code> yapısı tüm örneklerde standartlaştırıldı</li>
-<li>Form Events: Form Load (<code>control="_"</code>) olayı belgelendi</li>
-<li>Control Properties: Form kapatma (Visible=false) bölümü eklendi</li>
-<li>Form Bind Controls: Yalnızca Grid datasource için kullanım kapsamı netleştirildi</li>
 </ul>
 <h4 id="teknik-stack">Teknik Stack<a class="headerlink" href="#teknik-stack" title="Bu bolume kalici baglanti">&para;</a></h4>
 <table>
@@ -2463,6 +2438,15 @@
 </ul>
 <hr />
 <h2 id="surum-gecmisi">Sürüm Geçmişi<a class="headerlink" href="#surum-gecmisi" title="Bu bolume kalici baglanti">&para;</a></h2>
+<h3 id="v171">v1.7.1<a class="headerlink" href="#v171" title="Bu bolume kalici baglanti">&para;</a></h3>
+<ul>
+<li>LLM Flow Builder node editöründe <code>Prompt</code> alanı ve <strong>Üret</strong> butonu eklendi</li>
+<li>Üretilen node'lar otomatik olarak <strong>Group</strong> node içine alınır (<code>Created By LLM Flow Builder</code>)</li>
+<li>Sağlayıcı dropdown'ı custom bileşene dönüştürüldü; <strong>trex Lens AI</strong> trex ikonuyla gösterilir</li>
+<li>Custom Form iki-akış pattern'i belgelendi ve standartlaştırıldı</li>
+<li>DataGridView varsayılan XML formatı tanımlandı</li>
+<li>GitHub Actions ile otomatik dokümantasyon dağıtımı eklendi</li>
+</ul>
 <h3 id="v162">v1.6.2<a class="headerlink" href="#v162" title="Bu bolume kalici baglanti">&para;</a></h3>
 <ul>
 <li>LLM Flow Builder node'u eklendi (7 sağlayıcı preset)</li>
@@ -2511,7 +2495,7 @@
 </div>
 <hr />
 <h2 id="bagmllklar">Bağımlılıklar<a class="headerlink" href="#bagmllklar" title="Bu bolume kalici baglanti">&para;</a></h2>
-<p><code>v1.7.1</code> itibarıyla paketin bağlı olduğu npm paketleri:</p>
+<p><code>v1.8.0</code> itibarıyla paketin bağlı olduğu npm paketleri:</p>
 <table>
 <thead>
 <tr>

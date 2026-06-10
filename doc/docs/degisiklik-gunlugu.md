@@ -4,7 +4,7 @@
 
 ## Geçerli Sürüm
 
-### v1.7.1
+### v1.8.0
 
 Paketin bu dokümantasyonda kapsamlı olarak ele alınan **güncel sürümüdür**.
 
@@ -21,32 +21,6 @@ Paketin bu dokümantasyonda kapsamlı olarak ele alınan **güncel sürümüdür
 - **Multi-panel destek** (150-200 panel aynı anda)
 - **Türkçe/İngilizce yerelleştirme** (en-US locale)
 - Statik **assets** servisi (`assets/button-configurator.png`)
-
-#### v1.7.x Yeni Özellikler
-
-**LLM Flow Builder**
-
-- Node editöründe `Prompt` alanı ve **Üret** butonu — `inject` node'u gerekmeden akış üretilebilir
-- Üretilen tüm node'lar otomatik olarak **Group** node içine alınır (etiket: `Created By LLM Flow Builder`)
-- Sağlayıcı seçim dropdown'ı custom bileşene dönüştürüldü; **trex Lens AI** seçeneği trex ikonuyla gösterilir
-- Node-RED admin kimlik bilgileri (kullanıcı adı + şifre) ile otomatik import/deploy desteği
-- Gemini endpoint `v1` sürümüne güncellendi (`x-goog-api-key` header ile auth)
-- Groq, Mistral sağlayıcı desteği eklendi
-- `systemprompt.txt` her LLM çağrısında dosyadan yeniden okunur
-
-**Custom Form Akış Yapısı**
-
-- Doğru iki-akış pattern'i belgelendi: `EventNode → Custom Form → Responser` (Akış 1) + `Form Events(Load) → değişiklikler → Responser` (Akış 2)
-- Pattern 9 eklendi: İş yükleme → SQL grid formu → Tamam butonu ile kapatma (4 bağımsız akış)
-- **DataGridView** için standart varsayılan XML formatı tanımlandı (ReadOnly, FullRowSelect, AutoSizeColumnsMode: Fill, satır font 18pt Bold)
-
-**Dokümantasyon**
-
-- Method Invoker: SQL sorgusu çalıştırma (ISqlDataContext) bölümü eklendi
-- Method Returns: `msg.payload.Result.Result` yapısı tüm örneklerde standartlaştırıldı
-- Form Events: Form Load (`control="_"`) olayı belgelendi
-- Control Properties: Form kapatma (Visible=false) bölümü eklendi
-- Form Bind Controls: Yalnızca Grid datasource için kullanım kapsamı netleştirildi
 
 #### Teknik Stack
 
@@ -66,6 +40,15 @@ Paketin bu dokümantasyonda kapsamlı olarak ele alınan **güncel sürümüdür
 ---
 
 ## Sürüm Geçmişi
+
+### v1.7.1
+
+- LLM Flow Builder node editöründe `Prompt` alanı ve **Üret** butonu eklendi
+- Üretilen node'lar otomatik olarak **Group** node içine alınır (`Created By LLM Flow Builder`)
+- Sağlayıcı dropdown'ı custom bileşene dönüştürüldü; **trex Lens AI** trex ikonuyla gösterilir
+- Custom Form iki-akış pattern'i belgelendi ve standartlaştırıldı
+- DataGridView varsayılan XML formatı tanımlandı
+- GitHub Actions ile otomatik dokümantasyon dağıtımı eklendi
 
 ### v1.6.2
 
@@ -127,7 +110,7 @@ Aşağıdaki özellikler topluluk geri bildirimine bağlı olarak değerlendiril
 
 ## Bağımlılıklar
 
-`v1.7.1` itibarıyla paketin bağlı olduğu npm paketleri:
+`v1.8.0` itibarıyla paketin bağlı olduğu npm paketleri:
 
 | Paket | Amaç |
 |---|---|

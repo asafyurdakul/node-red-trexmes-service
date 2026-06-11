@@ -18,7 +18,7 @@
         <link rel="prev" href="../method-invoker/">
       
       
-        <link rel="next" href="../execute-process/">
+        <link rel="next" href="../context-setter/">
       
       
         
@@ -1397,6 +1397,8 @@
       
         
       
+        
+      
     
     
     
@@ -1681,6 +1683,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context-setter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Setter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4515,14 +4545,15 @@
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// msg.payload (array)</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">[</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ProductionPlanStateContext&quot;</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;valuelabel&quot;</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PlanContext&quot;</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;operationtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ContextGetterProcess&quot;</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;receiveddata&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;WorkStationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;...&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ProductionPlanStateContext&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;valuelabel&quot;</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PlanContext&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&quot;operationtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ContextGetterProcess&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">]</span>
 </span></code></pre></div>
-<p>Önceki node'dan gelen <code>msg.payload</code> bir nesne ise (dizi değil) önce <code>receiveddata</code> olarak saklanır, ardından diziye sarılır — bu sayede zincirdeki veriler kaybolmaz.</p>
+<p>Önceki node'dan gelen <code>msg.payload</code> bir nesne ise (dizi değil) önce <code>receiveddata</code> olarak saklanır, ardından diziye sarılır — bu sayede zincirdeki event verisi kaybolmaz.</p>
 <table>
 <thead>
 <tr>
@@ -4531,6 +4562,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>receiveddata</code></td>
+<td>Önceki node'dan taşınan orijinal payload (event verisi)</td>
+</tr>
 <tr>
 <td><code>message</code></td>
 <td>Seçili StateContext adı</td>
@@ -4692,13 +4727,13 @@ Her çağrıda aynı istasyon sorgulanır.</p>
         
         
           
-          <a href="../execute-process/" class="md-footer__link md-footer__link--next" aria-label="Sonraki: Execute Process">
+          <a href="../context-setter/" class="md-footer__link md-footer__link--next" aria-label="Sonraki: Context Setter">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sonraki
               </span>
               <div class="md-ellipsis">
-                Execute Process
+                Context Setter
               </div>
             </div>
             <div class="md-footer__button md-icon">

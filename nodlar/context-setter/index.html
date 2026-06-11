@@ -12,13 +12,13 @@
         <meta name="author" content="Asaf Yurdakul">
       
       
-        <link rel="canonical" href="https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/form-bind-controls/">
+        <link rel="canonical" href="https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/context-setter/">
       
       
-        <link rel="prev" href="../custom-form/">
+        <link rel="prev" href="../context-getter/">
       
       
-        <link rel="next" href="../control-properties/">
+        <link rel="next" href="../execute-process/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Form Bind Controls - node-red-trexmes-service</title>
+        <title>Context Setter - node-red-trexmes-service</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#form-bind-controls" class="md-skip">
+        <a href="#context-setter" class="md-skip">
           Ana içeriğe geç
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Form Bind Controls
+              Context Setter
             
           </span>
         </div>
@@ -1167,8 +1167,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1196,11 +1194,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
@@ -1221,7 +1219,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1264,37 +1262,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Form Bind Controls
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../form-bind-controls/" class="md-nav__link">
         
   
   
@@ -1310,186 +1281,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      İçindekiler
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ne-zaman-kullanlr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ne Zaman Kullanılır?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kullanm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kullanımı
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#property-tablosu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Property Tablosu
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#props-yaps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        props Yapısı
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#veri-kaynag-data-datatype" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Veri Kaynağı (data + dataType)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cks-mesaj" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Çıkış Mesajı
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#formainform-davrans" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        formainform Davranışı
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipik-aks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipik Akış
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#onemli-konular" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Önemli Konular
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Önemli Konular">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#value-hesaplama-mantg" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        value Hesaplama Mantığı
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#birden-fazla-form" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Birden Fazla Form
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sk-karslaslan-hatalar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sık Karşılaşılan Hatalar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ipuclar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        İpuçları
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ilgili" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        İlgili
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1591,6 +1382,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1618,11 +1411,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
@@ -1643,7 +1436,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1714,10 +1507,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../context-setter/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Setter
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1733,6 +1553,164 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      İçindekiler
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ozet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Özet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-tablosu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Tablosu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Property Tablosu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#items-dizisi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        items Dizisi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-secenekleri-25-adet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Seçenekleri (25 adet)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cks-mesaj" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Çıkış Mesajı
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deger-tipi-cozumleme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Değer Tipi Çözümleme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipik-aks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipik Akış
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-getter-ile-fark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Getter ile Farkı
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workstation-id-kaynag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WorkStation ID Kaynağı
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ornek-senaryo-anlk-hz-guncelleme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Örnek Senaryo — Anlık Hız Güncelleme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sk-karslaslan-hatalar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sık Karşılaşılan Hatalar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ilgili" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        İlgili
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2149,21 +2127,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ne-zaman-kullanlr" class="md-nav__link">
+  <a href="#ozet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ne Zaman Kullanılır?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kullanm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kullanımı
+        Özet
       
     </span>
   </a>
@@ -2179,27 +2146,33 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#props-yaps" class="md-nav__link">
+    <nav class="md-nav" aria-label="Property Tablosu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#items-dizisi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        props Yapısı
+        items Dizisi
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#veri-kaynag-data-datatype" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#context-secenekleri-25-adet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Veri Kaynağı (data + dataType)
+        Context Seçenekleri (25 adet)
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2215,10 +2188,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#formainform-davrans" class="md-nav__link">
+  <a href="#deger-tipi-cozumleme" class="md-nav__link">
     <span class="md-ellipsis">
       
-        formainform Davranışı
+        Değer Tipi Çözümleme
       
     </span>
   </a>
@@ -2237,41 +2210,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#onemli-konular" class="md-nav__link">
+  <a href="#context-getter-ile-fark" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Önemli Konular
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Önemli Konular">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#value-hesaplama-mantg" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        value Hesaplama Mantığı
+        Context Getter ile Farkı
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#birden-fazla-form" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#workstation-id-kaynag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Birden Fazla Form
+        WorkStation ID Kaynağı
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#ornek-senaryo-anlk-hz-guncelleme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Örnek Senaryo — Anlık Hız Güncelleme
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2280,17 +2247,6 @@
     <span class="md-ellipsis">
       
         Sık Karşılaşılan Hatalar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ipuclar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        İpuçları
       
     </span>
   </a>
@@ -2369,10 +2325,10 @@
     
     
       <li class="md-path__item">
-        <a href="../custom-form/" class="md-path__link">
+        <a href="../method-invoker/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Form Nodlari
+    Islem Nodlari
   </span>
 
         </a>
@@ -2391,62 +2347,20 @@
 
 
 
-<h1 id="form-bind-controls">Form Bind Controls<a class="headerlink" href="#form-bind-controls" title="Bu bolume kalici baglanti">&para;</a></h1>
+<h1 id="context-setter">Context Setter<a class="headerlink" href="#context-setter" title="Bu bolume kalici baglanti">&para;</a></h1>
 <div class="node-header">
-  <span class="node-preview green-light">Form Bind Controls</span>
+  <span class="node-preview green-light">Context Setter</span>
   <div class="meta-item"><strong>Inputs:</strong> <span class="io-badge in">1</span></div>
   <div class="meta-item"><strong>Outputs:</strong> <span class="io-badge out">1</span></div>
   <div class="meta-item"><strong>Kategori:</strong> trexMes service</div>
 </div>
 
-<p>Custom Form üzerindeki <strong>Grid'in datasource</strong> veya <strong>web kontrolünün source</strong> değerini dinamik olarak atar.</p>
-<div class="admonition warning">
-<p class="admonition-title">Kullanım kapsamı</p>
-<p>Bu node yalnızca <strong>Grid (<code>DataGridView</code> vb.) datasource</strong> veya <strong>web kontrol source</strong> ataması için kullanılır.
-Bir Label, Button veya TextBox'ın metnini/rengini değiştirmek için <strong><a href="../control-properties/">Control Properties</a></strong> nodunu kullan.</p>
+<p>Belirtilen <strong>WorkStation</strong>'a ait bir <strong>StateContext</strong> üzerinde bir veya birden fazla property değerini programatik olarak ayarlar.</p>
+<h2 id="ozet">Özet<a class="headerlink" href="#ozet" title="Bu bolume kalici baglanti">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Context Getter kardeşi</p>
+<p>Context Getter bir StateContext'i <strong>okur</strong>; Context Setter ise bir StateContext'e <strong>yazar</strong>. Context Getter'ın aksine asenkron değildir — panel değerleri doğrudan <code>Responser</code> üzerinden iletilir, ayrı bir <code>Method Returns</code> akışı gerekmez.</p>
 </div>
-<h2 id="ne-zaman-kullanlr">Ne Zaman Kullanılır?<a class="headerlink" href="#ne-zaman-kullanlr" title="Bu bolume kalici baglanti">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Senaryo</th>
-<th>Doğru Node</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Formdaki Grid'e JSON array bağla</td>
-<td><strong>Form Bind Controls</strong></td>
-</tr>
-<tr>
-<td>Web kontrolünün source'unu ata</td>
-<td><strong>Form Bind Controls</strong></td>
-</tr>
-<tr>
-<td>Label Text'ini değiştir</td>
-<td>Control Properties</td>
-</tr>
-<tr>
-<td>Button'u gizle / aktif et</td>
-<td>Control Properties</td>
-</tr>
-<tr>
-<td>TextBox'a değer yaz</td>
-<td>Control Properties</td>
-</tr>
-</tbody>
-</table>
-<h2 id="kullanm">Kullanımı<a class="headerlink" href="#kullanm" title="Bu bolume kalici baglanti">&para;</a></h2>
-<ol>
-<li><strong>Form Name</strong> listesinden hedef formu seç.</li>
-<li><strong>Data</strong> alanına Grid'e atanacak JSON array değişkenini belirt (örn. <code>msg.</code> → <code>payload</code>).</li>
-<li><strong>Add</strong> butonuna tıkla; listeye yeni bir satır eklenir.</li>
-<li><strong>Control</strong> alanına Grid'in adını gir. Örnek: <code>dbGrid</code></li>
-</ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Form Name : OrderForm
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Data      : msg.  →  payload          ← JSON array buradan okunur
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Control   : dbGrid                    ← Grid&#39;in XML&#39;deki name değeri
-</span></code></pre></div>
 <h2 id="property-tablosu">Property Tablosu<a class="headerlink" href="#property-tablosu" title="Bu bolume kalici baglanti">&para;</a></h2>
 <table>
 <thead>
@@ -2462,190 +2376,353 @@ Bir Label, Button veya TextBox'ın metnini/rengini değiştirmek için <strong><
 <td><code>name</code></td>
 <td>string</td>
 <td>—</td>
-<td>Canvas üzerinde gösterilecek ad</td>
+<td>Node adı</td>
 </tr>
 <tr>
-<td><code>formname</code></td>
-<td>string</td>
-<td><em>(boş)</em></td>
-<td>Hangi formun kontrollerine bağlanacak?</td>
+<td><code>context</code></td>
+<td>combobox</td>
+<td><code>AnalysisStateContext</code></td>
+<td>Değer atanacak StateContext</td>
 </tr>
 <tr>
-<td><code>formainform</code></td>
-<td>boolean</td>
-<td><code>false</code></td>
-<td>Ana form (<code>AppForm</code>) mı?</td>
+<td><code>workstationid</code></td>
+<td>num | msg</td>
+<td><code>0</code></td>
+<td>Hedef istasyon ID'si</td>
 </tr>
 <tr>
-<td><code>props</code></td>
+<td><code>workstationidType</code></td>
+<td><code>"num"</code> | <code>"msg"</code></td>
+<td><code>"num"</code></td>
+<td>WorkStation ID değer kaynağı</td>
+</tr>
+<tr>
+<td><code>items</code></td>
 <td>array</td>
 <td><code>[]</code></td>
-<td>Bağlama listesi: <code>{p: controlName, v: fieldName}</code></td>
-</tr>
-<tr>
-<td><code>data</code></td>
-<td>string</td>
-<td><em>(boş)</em></td>
-<td>Veriyi nereden okuyacağız (path)</td>
-</tr>
-<tr>
-<td><code>dataType</code></td>
-<td>string</td>
-<td>—</td>
-<td>Kaynak: <code>msg</code>, <code>flow</code>, <code>global</code>, vs.</td>
+<td>Atanacak property listesi (<code>n</code>, <code>v</code>, <code>vt</code>)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="props-yaps"><code>props</code> Yapısı<a class="headerlink" href="#props-yaps" title="Bu bolume kalici baglanti">&para;</a></h2>
-<p>Editör arayüzünde her satır iki sütundan oluşur:</p>
+<h3 id="items-dizisi">items Dizisi<a class="headerlink" href="#items-dizisi" title="Bu bolume kalici baglanti">&para;</a></h3>
+<p>Her öğe üç alandan oluşur:</p>
 <table>
 <thead>
 <tr>
-<th>Sütun</th>
-<th>Anahtar</th>
+<th>Alan</th>
 <th>Açıklama</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Property</strong> (<code>p</code>)</td>
-<td>Kontrol adı</td>
-<td>XML'deki <code>name</code> attribute'u (örn. <code>txtOrderNo</code>)</td>
+<td><code>n</code></td>
+<td>Property adı (string)</td>
 </tr>
 <tr>
-<td><strong>Value</strong> (<code>v</code>)</td>
-<td>Field adı</td>
-<td>Verinin içindeki property adı (örn. <code>orderNo</code>)</td>
+<td><code>v</code></td>
+<td>Atanacak değer</td>
+</tr>
+<tr>
+<td><code>vt</code></td>
+<td>Değer tipi: <code>str</code>, <code>num</code>, <code>bool</code>, <code>msg</code>, <code>flow</code>, <code>global</code>, <code>json</code>, <code>env</code>, <code>jsonata</code></td>
 </tr>
 </tbody>
 </table>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;p&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txtOrderNo&quot;</span><span class="p">,</span><span class="w">  </span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;orderNo&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;p&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txtCustomer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customer&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;p&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txtQty&quot;</span><span class="p">,</span><span class="w">      </span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qty&quot;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">]</span>
-</span></code></pre></div>
-<h2 id="veri-kaynag-data-datatype">Veri Kaynağı (<code>data</code> + <code>dataType</code>)<a class="headerlink" href="#veri-kaynag-data-datatype" title="Bu bolume kalici baglanti">&para;</a></h2>
-<p><code>dataType</code> ile değer şu kaynaklardan okunabilir:</p>
+<h3 id="context-secenekleri-25-adet">Context Seçenekleri (25 adet)<a class="headerlink" href="#context-secenekleri-25-adet" title="Bu bolume kalici baglanti">&para;</a></h3>
+<p>Context Getter ile birebir aynı context listesini destekler. Editörde context seçildiğinde o context'e ait property açıklamaları otomatik görüntülenir.</p>
 <table>
 <thead>
 <tr>
-<th><code>dataType</code></th>
-<th><code>data</code> örneği</th>
-<th>Anlamı</th>
+<th>Context</th>
+<th>Kapsam</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>AnalysisStateContext</code></td>
+<td>OEE, performans, vardiya analizleri</td>
+</tr>
+<tr>
+<td><code>BarcodeStateContext</code></td>
+<td>Barkod okutma konfigürasyonu</td>
+</tr>
+<tr>
+<td><code>CapacityStateContext</code></td>
+<td>Çevrim süresi, max kapasite, hız</td>
+</tr>
+<tr>
+<td><code>ConsumptionStateContext</code></td>
+<td>Sarf tüketimi ve lot verileri</td>
+</tr>
+<tr>
+<td><code>CounterStateContext</code></td>
+<td>Üretim sayaçları ve sinyal portları</td>
+</tr>
+<tr>
+<td><code>DefectStateContext</code></td>
+<td>Iskarta miktarları ve konfigürasyonları</td>
+</tr>
+<tr>
+<td><code>EmployeeStateContext</code></td>
+<td>Personel giriş/çıkış ve takım bilgisi</td>
+</tr>
+<tr>
+<td><code>EnergyStateContext</code></td>
+<td>Enerji tüketim verileri (kW)</td>
+</tr>
+<tr>
+<td><code>EquipmentStateContext</code></td>
+<td>Mevcut ekipman bilgisi ve konfigürasyonu</td>
+</tr>
+<tr>
+<td><code>ForkliftStateContext</code></td>
+<td>Forklift görevi oluşturma ve takibi</td>
+</tr>
+<tr>
+<td><code>LabelStateContext</code></td>
+<td>Etiket yazıcı konfigürasyonu</td>
+</tr>
+<tr>
+<td><code>LineStateContext</code></td>
+<td>Hat üretimi, master istasyon</td>
+</tr>
+<tr>
+<td><code>MaintenanceStateContext</code></td>
+<td>Bakım planı, aktif bakım iş emri</td>
+</tr>
+<tr>
+<td><code>OpcStateContext</code></td>
+<td>OPC üzerinden ekipman/stok/hız konfigürasyonu</td>
+</tr>
+<tr>
+<td><code>OperationStateContext</code></td>
+<td>Mevcut operasyon bilgileri</td>
+</tr>
+<tr>
+<td><code>ProcessDataStateContext</code></td>
+<td>Proses veri analiz değerleri</td>
+</tr>
+<tr>
+<td><code>ProductionConfirmationStateContext</code></td>
+<td>Üretim bildirimi konfigürasyon ve son kayıtlar</td>
+</tr>
+<tr>
+<td><code>ProductionPlanStateContext</code></td>
+<td>Yüklü plan bilgileri, stoklar, iş emirleri</td>
+</tr>
+<tr>
+<td><code>ProductionToleranceStateContext</code></td>
+<td>Üretim tolerans kontrol değerleri</td>
+</tr>
+<tr>
+<td><code>QualityControlStateContext</code></td>
+<td>Kalite kontrol tanımları ve output konfigürasyonları</td>
+</tr>
+<tr>
+<td><code>RobotModelStateContext</code></td>
+<td>Robot model üretim kurgusu</td>
+</tr>
+<tr>
+<td><code>ScaleStateContext</code></td>
+<td>Terazi ağırlık ve port verileri</td>
+</tr>
+<tr>
+<td><code>SerieStateContext</code></td>
+<td>Mevcut ürün seri barkodu</td>
+</tr>
+<tr>
+<td><code>StoppageStateContext</code></td>
+<td>Mevcut duruş bilgileri, süre, output konfigürasyonları</td>
+</tr>
+<tr>
+<td><code>WorkStationStateContext</code></td>
+<td>İstasyon kimlik ve iş merkezi bilgileri</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Property açıklamaları</p>
+<p>Node editör panelinde Context seçimi değiştikçe, seçilen context'e ait tüm property'lerin açıklamaları WorkStation ID alanının altında görünür.</p>
+</div>
+<h2 id="cks-mesaj">Çıkış Mesajı<a class="headerlink" href="#cks-mesaj" title="Bu bolume kalici baglanti">&para;</a></h2>
+<p><code>msg.payload</code> dizisine eklenen operasyon:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CapacityStateContext&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;valuelabel&quot;</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpeedSetter&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&quot;operationtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ContextSetterProcess&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;itemname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InstantSpeed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;itemname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CyclePeriod&quot;</span><span class="p">,</span><span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Alan</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td>Seçili StateContext adı</td>
+</tr>
+<tr>
+<td><code>valuelabel</code></td>
+<td>Hedef istasyon ID'si</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Node adı</td>
+</tr>
+<tr>
+<td><code>operationtype</code></td>
+<td>Sabit: <code>"ContextSetterProcess"</code></td>
+</tr>
+<tr>
+<td><code>items[].itemname</code></td>
+<td>Atanacak property adı</td>
+</tr>
+<tr>
+<td><code>items[].value</code></td>
+<td>Hesaplanmış değer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deger-tipi-cozumleme">Değer Tipi Çözümleme<a class="headerlink" href="#deger-tipi-cozumleme" title="Bu bolume kalici baglanti">&para;</a></h2>
+<p><code>vt</code> değerine göre değerler çalışma anında hesaplanır:</p>
+<table>
+<thead>
+<tr>
+<th><code>vt</code></th>
+<th>Kaynak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td>Sabit string</td>
+</tr>
+<tr>
+<td><code>num</code></td>
+<td><code>Number(v)</code> dönüşümü</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><code>v === 'true'</code></td>
+</tr>
+<tr>
 <td><code>msg</code></td>
-<td><code>payload.order</code></td>
-<td><code>msg.payload.order</code></td>
+<td><code>msg</code> içinden okunur (<code>RED.util.getMessageProperty</code>)</td>
 </tr>
 <tr>
 <td><code>flow</code></td>
-<td><code>currentOrder</code></td>
-<td><code>flow.get("currentOrder")</code></td>
+<td>Flow context'inden okunur</td>
 </tr>
 <tr>
 <td><code>global</code></td>
-<td><code>defaultUser</code></td>
-<td><code>global.get("defaultUser")</code></td>
+<td>Global context'inden okunur</td>
+</tr>
+<tr>
+<td><code>json</code></td>
+<td><code>JSON.parse(v)</code></td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>Ortam değişkeni</td>
+</tr>
+<tr>
+<td><code>jsonata</code></td>
+<td>JSONata ifadesi değerlendirilir</td>
 </tr>
 </tbody>
 </table>
-<p><a href="../../baslangic/mesaj-yapisi/#datatype-cozumleme">Tüm <code>dataType</code> seçenekleri →</a></p>
-<h2 id="cks-mesaj">Çıkış Mesajı<a class="headerlink" href="#cks-mesaj" title="Bu bolume kalici baglanti">&para;</a></h2>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;operationtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BindControl&quot;</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;receiveddata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* event data */</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OrderForm&quot;</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">&quot;bindcontrols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txtOrderNo&quot;</span><span class="p">,</span><span class="w">  </span><span class="nt">&quot;FieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;orderNo&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txtCustomer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;FieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customer&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txtQty&quot;</span><span class="p">,</span><span class="w">      </span><span class="nt">&quot;FieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qty&quot;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="p">],</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nt">&quot;orderNo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ORD-001&quot;</span><span class="p">,</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACME&quot;</span><span class="p">,</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nt">&quot;qty&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="p">}</span>
-</span></code></pre></div>
-<h2 id="formainform-davrans"><code>formainform</code> Davranışı<a class="headerlink" href="#formainform-davrans" title="Bu bolume kalici baglanti">&para;</a></h2>
+<h2 id="tipik-aks">Tipik Akış<a class="headerlink" href="#tipik-aks" title="Bu bolume kalici baglanti">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A[Business Events&lt;br/&gt;OnShiftChanged] --&gt; B[Context Setter&lt;br/&gt;CapacityStateContext&lt;br/&gt;wsId=5]
+    B --&gt; C[Responser]
+
+    style A fill:#ccffcc,color:#000
+    style B fill:#ccffcc,color:#000
+    style C fill:#ccffcc,color:#000</code></pre>
+<h2 id="context-getter-ile-fark">Context Getter ile Farkı<a class="headerlink" href="#context-getter-ile-fark" title="Bu bolume kalici baglanti">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Değer</th>
-<th><code>formname</code> Otomatik</th>
-<th>Senaryo</th>
+<th>Özellik</th>
+<th>Context Getter</th>
+<th>Context Setter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>false</code></td>
-<td>Kullanıcı tanımlı</td>
-<td>Custom dialog'a bağlama</td>
+<td>Amaç</td>
+<td>Context'i oku</td>
+<td>Context'e yaz</td>
 </tr>
 <tr>
-<td><code>true</code></td>
-<td><code>"AppForm"</code></td>
-<td>Ana form'a bağlama</td>
+<td>Asenkron</td>
+<td>Evet (Method Returns)</td>
+<td>Hayır</td>
+</tr>
+<tr>
+<td>items dizisi</td>
+<td>Yok</td>
+<td>Var</td>
+</tr>
+<tr>
+<td>operationtype</td>
+<td><code>ContextGetterProcess</code></td>
+<td><code>ContextSetterProcess</code></td>
+</tr>
+<tr>
+<td>Method Returns</td>
+<td>Gerekli</td>
+<td>Gerekmez</td>
 </tr>
 </tbody>
 </table>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">formname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">node</span><span class="p">.</span><span class="nx">formname</span><span class="p">;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">formainform</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">formname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AppForm&quot;</span><span class="p">;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+<h2 id="workstation-id-kaynag">WorkStation ID Kaynağı<a class="headerlink" href="#workstation-id-kaynag" title="Bu bolume kalici baglanti">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Sabit sayı (num)</label><label for="__tabbed_1_2">Mesajdan oku (msg)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>WorkStation ID: 5   (num)
 </span></code></pre></div>
-<h2 id="tipik-aks">Tipik Akış<a class="headerlink" href="#tipik-aks" title="Bu bolume kalici baglanti">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A[Business Events&lt;br/&gt;OrderStartEvent] --&gt; B[Custom Form&lt;br/&gt;OrderForm]
-    B --&gt; C[Form Bind Controls&lt;br/&gt;txt* → orderNo,...]
-    C --&gt; D[Responser]
-
-    style A fill:#ccffcc,color:#000
-    style B fill:#ccffcc,color:#000
-    style C fill:#ccffcc,color:#000
-    style D fill:#ccffcc,color:#000</code></pre>
-<h2 id="onemli-konular">Önemli Konular<a class="headerlink" href="#onemli-konular" title="Bu bolume kalici baglanti">&para;</a></h2>
-<h3 id="value-hesaplama-mantg"><code>value</code> Hesaplama Mantığı<a class="headerlink" href="#value-hesaplama-mantg" title="Bu bolume kalici baglanti">&para;</a></h3>
-<p><code>value</code> alanı <strong>tek bir nesne</strong> olarak gönderilir; panel her kontrol için kendi <code>FieldName</code>'i bu nesneden okur.</p>
-<p>Eğer <code>data</code> boş bırakılırsa <code>value: null</code> olur ve panel <code>receiveddata</code>'yı kullanır.</p>
-<h3 id="birden-fazla-form">Birden Fazla Form<a class="headerlink" href="#birden-fazla-form" title="Bu bolume kalici baglanti">&para;</a></h3>
-<p>Her form için ayrı bir <code>Form Bind Controls</code> node'u kullanın. Aynı node birden fazla formu yönetemez.</p>
+Her çağrıda aynı istasyon hedeflenir.</p>
+</div>
+<div class="tabbed-block">
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>WorkStation ID: payload.workStationId   (msg)
+</span></code></pre></div>
+Önceki node'dan gelen mesaj içindeki değer kullanılır.</p>
+</div>
+</div>
+</div>
+<h2 id="ornek-senaryo-anlk-hz-guncelleme">Örnek Senaryo — Anlık Hız Güncelleme<a class="headerlink" href="#ornek-senaryo-anlk-hz-guncelleme" title="Bu bolume kalici baglanti">&para;</a></h2>
+<ol>
+<li><code>Business Events</code> — <code>OnProductionCounterIncreased</code> tetiklenir</li>
+<li><code>function</code> node — <code>msg.newSpeed = msg.payload.InstantSpeed * 1.05</code> hesaplar</li>
+<li><code>Context Setter</code> — <code>CapacityStateContext</code>, Item: <code>InstantSpeed</code> = <code>msg.newSpeed</code> (msg)</li>
+<li><code>Responser</code> — panel güncellendi</li>
+</ol>
 <h2 id="sk-karslaslan-hatalar">Sık Karşılaşılan Hatalar<a class="headerlink" href="#sk-karslaslan-hatalar" title="Bu bolume kalici baglanti">&para;</a></h2>
 <div class="admonition failure">
-<p class="admonition-title">Form alanları boş kalıyor</p>
+<p class="admonition-title">Değer uygulanmıyor</p>
 <ul>
-<li>Kontrol adları (<code>p</code>) XML'deki <code>name</code> ile <strong>birebir</strong> eşleşiyor mu? (Büyük/küçük harf duyarlı)</li>
-<li><code>dataType</code> doğru mu? <code>msg</code> seçtiniz ama <code>data</code> yolu yanlış olabilir.</li>
-<li>Akışta <code>Custom Form</code> <code>Form Bind Controls</code>'tan <strong>önce</strong> geliyor mu?</li>
+<li>Doğru WorkStation ID girildi mi?</li>
+<li>Property adı büyük/küçük harf duyarlıdır. Context Getter ile okuyarak alanı doğrulayın.</li>
 </ul>
 </div>
 <div class="admonition failure">
-<p class="admonition-title">Veri yapısı uyumsuz</p>
-<p><code>value</code> nesnesinde <code>FieldName</code> ile eşleşen property olmalı. Örnek: <code>bindcontrol</code> <code>{Name: "txtA", FieldName: "a"}</code> ise <code>value.a</code> mevcut olmalı.</p>
-</div>
-<h2 id="ipuclar">İpuçları<a class="headerlink" href="#ipuclar" title="Bu bolume kalici baglanti">&para;</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">JSONata ile dönüştürme</p>
-<p>Veriyi olduğu gibi bağlamak yerine dönüştürmek istiyorsanız:</p>
-<ol>
-<li>Önce bir <code>function</code> veya <code>change</code> node ile veriyi şekillendirin</li>
-<li>Sonuçları <code>flow</code> context'e koyun</li>
-<li><code>Form Bind Controls</code>'ta <code>dataType: flow</code> kullanın</li>
-</ol>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Kontrol isimlendirme standartı</p>
-<p>XML form tasarımında kontrol isimlerini tip prefix'leriyle adlandırın (<code>txt*</code> textbox, <code>chk*</code> checkbox, <code>cb*</code> combobox). Bu, debug'ı kolaylaştırır.</p>
+<p class="admonition-title">msg tipi değer boş geliyor</p>
+<p><code>vt = msg</code> seçiliyken belirtilen yol önceki node'dan gelmiyor olabilir. <code>debug</code> node ile kontrol edin.</p>
 </div>
 <h2 id="ilgili">İlgili<a class="headerlink" href="#ilgili" title="Bu bolume kalici baglanti">&para;</a></h2>
 <ul>
-<li><a href="../custom-form/">Custom Form</a> — Form tasarımı</li>
-<li><a href="../control-properties/">Control Properties</a> — Statik özellik atama</li>
-<li><a href="../../baslangic/mesaj-yapisi/">Mesaj Yapısı</a></li>
+<li><a href="../context-getter/">Context Getter</a> — StateContext okuma</li>
+<li><a href="../method-invoker/">Method Invoker</a> — Servis method çağrısı</li>
+<li><a href="../responser/">Responser</a> — Her akışın sonu</li>
 </ul>
 
 
@@ -2684,7 +2761,7 @@ Bir Label, Button veya TextBox'ın metnini/rengini değiştirmek için <strong><
       <nav class="md-footer__inner md-grid" aria-label="Altbilgi" >
         
           
-          <a href="../custom-form/" class="md-footer__link md-footer__link--prev" aria-label="Önceki: Custom Form">
+          <a href="../context-getter/" class="md-footer__link md-footer__link--prev" aria-label="Önceki: Context Getter">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2694,20 +2771,20 @@ Bir Label, Button veya TextBox'ın metnini/rengini değiştirmek için <strong><
                 Önceki
               </span>
               <div class="md-ellipsis">
-                Custom Form
+                Context Getter
               </div>
             </div>
           </a>
         
         
           
-          <a href="../control-properties/" class="md-footer__link md-footer__link--next" aria-label="Sonraki: Control Properties">
+          <a href="../execute-process/" class="md-footer__link md-footer__link--next" aria-label="Sonraki: Execute Process">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sonraki
               </span>
               <div class="md-ellipsis">
-                Control Properties
+                Execute Process
               </div>
             </div>
             <div class="md-footer__button md-icon">

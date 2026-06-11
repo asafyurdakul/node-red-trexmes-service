@@ -2,138 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/degisiklik-gunlugu/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/sss/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/baslangic/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/baslangic/hizli-baslangic/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/baslangic/kurulum/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/baslangic/mesaj-yapisi/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/baslangic/mimari/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/business-events/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/button-configurator/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/communication-events/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/context-getter/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/context-setter/</loc>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/control-properties/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/custom-form/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/display-events/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/display-methods/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/event-subscribers/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/execute-process/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/execute-script/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/form-bind-controls/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/form-events/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/handle-setter/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/llm-flow-builder/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/main-form-action/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/method-invoker/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/method-returns/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/responser/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/system-events/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/nodlar/trex-subscriber/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/ornekler/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/ornekler/buton-konfigurasyonu/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/ornekler/custom-form-akisi/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://asafyurdakul.github.io/node-red-trexmes-service/ornekler/temel-akis/</loc>
-         <lastmod>2026-06-10</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
 </urlset>

@@ -1,0 +1,397 @@
+<script type="text/html" data-template-name="Context Setter">
+    <div class="form-row">
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+        </div>
+        <div class="form-row">
+            <label for="node-input-context"><i class="fa fa-database"></i> <span data-i18n="context-setter.label.context"></span></label>
+            <select id="node-input-context" style="width:70%;">
+                <option value="AnalysisStateContext">AnalysisStateContext</option>
+                <option value="BarcodeStateContext">BarcodeStateContext</option>
+                <option value="CapacityStateContext">CapacityStateContext</option>
+                <option value="ConsumptionStateContext">ConsumptionStateContext</option>
+                <option value="CounterStateContext">CounterStateContext</option>
+                <option value="DefectStateContext">DefectStateContext</option>
+                <option value="EmployeeStateContext">EmployeeStateContext</option>
+                <option value="EnergyStateContext">EnergyStateContext</option>
+                <option value="EquipmentStateContext">EquipmentStateContext</option>
+                <option value="ForkliftStateContext">ForkliftStateContext</option>
+                <option value="LabelStateContext">LabelStateContext</option>
+                <option value="LineStateContext">LineStateContext</option>
+                <option value="MaintenanceStateContext">MaintenanceStateContext</option>
+                <option value="OpcStateContext">OpcStateContext</option>
+                <option value="OperationStateContext">OperationStateContext</option>
+                <option value="ProcessDataStateContext">ProcessDataStateContext</option>
+                <option value="ProductionConfirmationStateContext">ProductionConfirmationStateContext</option>
+                <option value="ProductionPlanStateContext">ProductionPlanStateContext</option>
+                <option value="ProductionToleranceStateContext">ProductionToleranceStateContext</option>
+                <option value="QualityControlStateContext">QualityControlStateContext</option>
+                <option value="RobotModelStateContext">RobotModelStateContext</option>
+                <option value="ScaleStateContext">ScaleStateContext</option>
+                <option value="SerieStateContext">SerieStateContext</option>
+                <option value="StoppageStateContext">StoppageStateContext</option>
+                <option value="WorkStationStateContext">WorkStationStateContext</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-workstationid"><i class="fa fa-hashtag"></i> <span data-i18n="context-setter.label.workstationid"></span></label>
+            <input type="text" id="node-input-workstationid" style="width:70%;">
+            <input type="hidden" id="node-input-workstationidType">
+        </div>
+        <div id="context-setter-desc-row" style="display:none; margin-top:6px; padding:10px 12px; background:#f4f8f4; border-left:4px solid #58d68d; border-radius:3px; max-height:220px; overflow-y:auto;">
+            <div id="context-setter-desc" style="font-size:0.82em; line-height:1.8; color:#333;"></div>
+        </div>
+        <div class="form-row">
+            <div style="display:flex; align-items:center; margin-bottom:4px;">
+                <label style="margin:0; flex:1;"><i class="fa fa-list"></i> <span data-i18n="context-setter.label.items"></span></label>
+            </div>
+            <div style="display:flex; padding:0 0 4px 0; font-size:0.82em; color:#888;">
+                <span style="width:40%; padding-left:8px;" data-i18n="context-setter.label.itemname"></span>
+                <span style="flex:1; padding-left:8px;" data-i18n="context-setter.label.value"></span>
+            </div>
+        </div>
+        <div class="form-row node-input-items-container-row">
+            <ol id="node-input-items-container"></ol>
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript">
+    (function() {
+
+        function resizeDialog(size) {
+            size = size || { height: $(".red-ui-tray-content form").height() };
+            var height = size.height;
+            $("#node-input-items-container").editableList('height', height - 200);
+        }
+
+        RED.nodes.registerType('Context Setter', {
+            category: 'trexMes service',
+            color: "rgb(204, 255, 204)",
+            defaults: {
+                name:              { value: "" },
+                context:           { value: "AnalysisStateContext" },
+                workstationid:     { value: "0" },
+                workstationidType: { value: "num" },
+                items:             { value: [] }
+            },
+            inputs : 1,
+            outputs: 1,
+            icon   : "trex.png",
+            label: function() {
+                return this.name || "Context Setter";
+            },
+            labelStyle: function() {
+                return this.name ? "node_label_italic" : "";
+            },
+
+            oneditprepare: function() {
+                var node = this;
+
+                var contextDescriptions = {
+                    "AnalysisStateContext":
+                        "<b>ShiftProduction</b>: Vardiyadaki üretim değeri (1. miktar birimi)<br>" +
+                        "<b>ShiftProduction2/3</b>: 2. ve 3. miktar birimi cinsinden üretim<br>" +
+                        "<b>ShiftOeePercent</b>: Vardiya OEE yüzdesi<br>" +
+                        "<b>ShiftPerformancePercent</b>: Performans yüzdesi<br>" +
+                        "<b>ShiftAvailabilityPercent</b>: Kullanılabilirlik yüzdesi<br>" +
+                        "<b>ShiftQualityPercent</b>: Kalite yüzdesi<br>" +
+                        "<b>ShiftProducibleAmount</b>: Toplam üretilebilir miktar<br>" +
+                        "<b>ShiftAverageSpeed</b>: Ortalama üretim hızı<br>" +
+                        "<b>ShiftStoppageDuration</b>: Toplam duruş süresi (sn)<br>" +
+                        "<b>PlannedStopDuration</b>: Planlı duruş süresi (sn)<br>" +
+                        "<b>UnplannedStopDuration</b>: Plansız duruş süresi (sn)<br>" +
+                        "<b>PlanPerformancePercent</b>: Plan genel performans yüzdesi<br>" +
+                        "<b>TargetOee</b>: Hedef OEE yüzdesi<br>" +
+                        "<b>ShiftEfficiencyRefreshInterval</b>: Vardiya analiz yenileme aralığı<br>" +
+                        "<b>PerformanceRangeOutputNo1/2/3</b>: Performans aralığı output konfigürasyonları<br>" +
+                        "<b>IsPerformanceOutputControlActive</b>: Performans bazlı output konfigürasyonu var mı",
+                    "BarcodeStateContext":
+                        "<b>DigitalOutputToBeActivatedOnBarcodeScan</b>: Barkod okutmada aktif edilecek output port no<br>" +
+                        "<b>IsWebBarcodeServiceEnabled</b>: Web barkod entegrasyon servisi aktif mi",
+                    "CapacityStateContext":
+                        "<b>CyclePeriod</b>: Planlanan çevrim süresi<br>" +
+                        "<b>DynamicCyclePeriod</b>: Dinamik çevrim süresi<br>" +
+                        "<b>MaxSpeed</b>: Tanımlı maksimum hız<br>" +
+                        "<b>InstantSpeed</b>: Anlık hız<br>" +
+                        "<b>AverageCycleDuration / AverageSpeed</b>: Ortalama örneklem çevrim/hız<br>" +
+                        "<b>MaxPlanCapacity</b>: Plan için saatlik maks. üretim miktarı<br>" +
+                        "<b>MaxStationCapacity</b>: İstasyon saatlik maks. üretim miktarı<br>" +
+                        "<b>IsMaxCapacityControlEnabled</b>: Kapasite sınır kontrolü aktif mi<br>" +
+                        "<b>MaxCapacityControlTolerance</b>: Kapasite kontrol tolerans yüzdesi<br>" +
+                        "<b>SpeedCounterPortNo</b>: Hız sayaç port numarası<br>" +
+                        "<b>SpeedTimeMultiplier</b>: Hız zaman çarpanı<br>" +
+                        "<b>LineSpeedMultiplier</b>: Hat hız çarpanı<br>" +
+                        "<b>SpeedSamples</b>: Hız örneklem değerleri<br>" +
+                        "<b>IsCapacityValidationEnabled</b>: Plan yükleme kapasite validasyonu aktif mi",
+                    "ConsumptionStateContext":
+                        "<b>Consumptions</b>: Mevcut plan için sarf stok tüketim ve lot koleksiyonu<br>" +
+                        "<b>InsufficientLotDigitalOutputNo</b>: Yetersiz lot durumunda aktif edilecek output port no<br>" +
+                        "<b>IsConsideringOtherWorkStationsLotConsumptionEnabled</b>: Diğer istasyonların lot tüketimi hesaba katılsın mı<br>" +
+                        "<b>OtherWorkStationLotConsumptionCalculationInvertal</b>: Diğer istasyon tüketim sorgulama periyodu (sn)<br>" +
+                        "<b>MaterialLotBalanceCheckTimeInverval</b>: Lot yeterlilik kontrol periyodu (sn)<br>" +
+                        "<b>MaterialLotBalanceCheckUpSystemTimeInverval</b>: Dış sistem lot bakiye sorgulama periyodu (sn)",
+                    "CounterStateContext":
+                        "<b>Counter / Counter2 / Counter3</b>: Ana üretim sayacı (1./2./3. birim)<br>" +
+                        "<b>TotalPortCounter</b>: Ana + ek sayaç portlarının toplam değeri<br>" +
+                        "<b>LastCycleDuration</b>: Son iki sayaç artışı arasındaki süre (sn)<br>" +
+                        "<b>LastCounterChangeTime</b>: Son sayaç değişim zamanı<br>" +
+                        "<b>MachineCounter / MachineCounter2 / MachineCounter3</b>: Sinyal ile toplanan makine sayacı<br>" +
+                        "<b>IndexedSectionCounters</b>: Stok indis bazlı kesit üretim sayaçları<br>" +
+                        "<b>CounterSignalPort</b>: Ana sayaç sinyal port nesnesi<br>" +
+                        "<b>AdditionalCounterSignalPorts</b>: Ek sayaç sinyal port koleksiyonu<br>" +
+                        "<b>IsEquipmentStockIndexBasedCounterEnabled</b>: Ekipman stok index bazlı sayım aktif mi<br>" +
+                        "<b>DigitalOutputToBeActivatedOnCounterIncrement</b>: Sayaç artışında aktif edilecek output port no",
+                    "DefectStateContext":
+                        "<b>DefectQuantity / DefectQuantity2 / DefectQuantity3</b>: Toplam ıskarta miktarı (1./2./3. birim)<br>" +
+                        "<b>MaterialDefectQuantity</b>: Toplam sarf ıskarta miktarı<br>" +
+                        "<b>StockDefectQuantity</b>: Stok indis bazlı ıskarta miktarı<br>" +
+                        "<b>CounterDifferenceCausedAutoDefectId</b>: Sayaç farkı kaynaklı otomatik ıskarta tanım ref.<br>" +
+                        "<b>IsCheckingDefectEntryIfGreaterThanCounterEnabled</b>: Üretim sayacından büyük ıskarta kontrolü<br>" +
+                        "<b>DefectSignalPorts</b>: Iskarta sayaç sinyal port koleksiyonu<br>" +
+                        "<b>IsUpdatingPreviousOperationPlanQuantityDueToScrapAmountEnabled</b>: Önceki operasyon plan miktarını ıskarta kadar artır",
+                    "EmployeeStateContext":
+                        "<b>Team</b>: O an çalışan takım bilgisi<br>" +
+                        "<b>EmployeeLoginLogoutDigitalOutputNo</b>: Personel giriş/çıkışında aktif edilecek output port no<br>" +
+                        "<b>IsNotifyingIfEmployeeLoggedInAnotherWorkStationEnabled</b>: Başka istasyonda çalışan personel uyarısı<br>" +
+                        "<b>IsPreventingEmployeeLoginIfLoggedInAnotherWorkStationEnabled</b>: Başka istasyonda çalışana giriş izni engelle<br>" +
+                        "<b>IsLoggingInAndOutEmployeeViaBarcodeEnabled</b>: Barkod ile personel giriş/çıkış<br>" +
+                        "<b>IsChangingEmployeeViaBarcodeEnabled</b>: Barkod ile personel değişimi<br>" +
+                        "<b>ProductionWithoutEmployeeDigitalOutputNo</b>: Personelsiz üretim durumunda aktif edilecek output",
+                    "EnergyStateContext":
+                        "<b>EnergyCounterCount</b>: Tanımlı enerji sayaç adedi<br>" +
+                        "<b>EnergyConsumptionsDuringWorkAsKilowatt</b>: Çalışıyor durumunda harcanan enerji (kW, indis bazlı)<br>" +
+                        "<b>EnergyConsumptionsDuringStoppageAsKilowatt</b>: Duruş durumunda harcanan enerji (kW, indis bazlı)<br>" +
+                        "<b>EnergyConsumptionDuringStandByAsKilowatt</b>: İş bekliyor durumunda harcanan enerji (kW, indis bazlı)",
+                    "EquipmentStateContext":
+                        "<b>EquipmentId / EquipmentNo / EquipmentName</b>: Kullanılan ekipman ref./no/adı<br>" +
+                        "<b>EquipmentCoefficient</b>: Ekipman üretim çarpanı<br>" +
+                        "<b>IsEquipmentValidationEnabled</b>: Plan yüklemede ekipman barkod validasyonu aktif mi<br>" +
+                        "<b>IsEquipmentSelectionOnPlanLoadEnabled</b>: Plan yüklemede ekipman seçimi aktif mi<br>" +
+                        "<b>IsEquipmentSelectionOnPlanLoadRequired</b>: Plan yüklemede ekipman seçimi zorunlu mu",
+                    "ForkliftStateContext":
+                        "<b>IsAutoForkliftOrderCreationEnabled</b>: Otomatik forklift görevi oluşturma aktif mi<br>" +
+                        "<b>AutoForkliftOrderInterval</b>: Otomatik forklift kontrol zaman damgası (20 sn'de bir)<br>" +
+                        "<b>IsConsecutivelyForkliftOrderCreationDisabled</b>: Aktif görev varken ard arda yeni görev oluşturmayı engelle<br>" +
+                        "<b>ForkliftTakeOrderAmountFrequency</b>: Stok indis bazlı malzeme taşıma frekansı<br>" +
+                        "<b>LastForkliftTakeOrderProductionAmount</b>: Son taşıma görevi oluşturulan üretim miktarı<br>" +
+                        "<b>ForkliftFetchOrderFrequency</b>: Sarf malzeme getirme görevi oluşturma frekansı",
+                    "LabelStateContext":
+                        "<b>LabelComPortNo</b>: COM yazıcı için tanımlı COM port numarası",
+                    "LineStateContext":
+                        "<b>LineIds</b>: Bağlı hat referansları<br>" +
+                        "<b>MasterStationIds</b>: Master istasyon referansları<br>" +
+                        "<b>IsLineProductionEnabled</b>: Hatlı üretim kurguları aktif mi<br>" +
+                        "<b>IsLineAssemblyProductionEnabled</b>: Hat montaj üretim aktif mi<br>" +
+                        "<b>IsLinePalletingWorkStation</b>: Paletleme istasyonu mu<br>" +
+                        "<b>IsLinePackagingWorkStation</b>: Paketleme istasyonu mu<br>" +
+                        "<b>CurrentLineId</b>: Çalışılan hat tanım ref.<br>" +
+                        "<b>LineStationOrderNo</b>: Hat tanımındaki istasyon sırası<br>" +
+                        "<b>IsMasterStation</b>: Master istasyon olarak tanımlı mı<br>" +
+                        "<b>IsLineSerieProductionEnabled</b>: Serili hat üretim aktif mi<br>" +
+                        "<b>RelatedWorkStationId</b>: Hat tanımından gelen ilişkili istasyon ref.",
+                    "MaintenanceStateContext":
+                        "<b>CurrentOrder</b>: Aktif bakım iş emri bilgisi<br>" +
+                        "<b>AnyMaintenanceOrderActiveForCurrentEquipment</b>: Mevcut ekipman için aktif bakım iş emri var mı<br>" +
+                        "<b>EquipmentPeriodicalMaintenancePlanId</b>: Ekipman bakım plan ref.<br>" +
+                        "<b>EquipmentTargetCycleCount</b>: Ekipman hedef sayaç bilgisi<br>" +
+                        "<b>EquipmentPeriodicalMaintenanceCycleCount</b>: Kaç üretimde bir planlı bakım yapılmalı<br>" +
+                        "<b>EquipmentLastMaintenanceCycleCount</b>: Son bakımdaki sayaç<br>" +
+                        "<b>MaintenanceOrderCompleterEmployeeId</b>: Son bakım iş emrini tamamlayan personel ref.<br>" +
+                        "<b>IsMaintenanceWarningEnabled</b>: Bakım uyarı gösterimi aktif mi<br>" +
+                        "<b>EmployeeEntries</b>: Giriş yapmış bakım personelleri<br>" +
+                        "<b>IsCreatingPeriodicalMaintenanceOrderWithoutWarningEnabled</b>: Onaysız periyodik bakım başlatma",
+                    "OpcStateContext":
+                        "<b>IsOpcEquipmentDefined</b>: OPC ile ekipman kodu belirleme konfigürasyonu var mı<br>" +
+                        "<b>IsOpcStockDefined</b>: OPC ile stok kodu belirleme konfigürasyonu var mı<br>" +
+                        "<b>IsOpcSpeedDefined</b>: OPC ile hız verisi okuma konfigürasyonu var mı<br>" +
+                        "<b>IsSpeedEstablishedViaOpc</b>: Hız verisi OPC ile belirleniyor mu",
+                    "OperationStateContext":
+                        "<b>OperationId</b>: Çalışılan operasyon ref.<br>" +
+                        "<b>OperationNo</b>: Operasyon numarası<br>" +
+                        "<b>OperationName</b>: Operasyon adı<br>" +
+                        "<b>IsCheckingPreviousOperationProductionControlOnJobListingEnabled</b>: İş listeleme de önceki operasyon üretim filtresi<br>" +
+                        "<b>IsCheckingPreviousOperationWorkingControlOnJobListingEnabled</b>: İş listelemedeki operasyon çalışma durumu filtresi",
+                    "ProcessDataStateContext":
+                        "<b>GetCurrentProcessDataValue(dataTypeName)</b>: Belirtilen proses data tipinde mevcut değeri döner<br>" +
+                        "<b>SetCurrentProcessDataValue(dataTypeName, value)</b>: Proses data tipine değer atar<br>" +
+                        "<b>SetMinMaxExpectedValue(dataTypeName, min, max, expected)</b>: Min/maks/beklenen değer atar<br>" +
+                        "<b>AddProcessDataAnalysis</b>: Analiz atama işlemi<br>" +
+                        "<b>GetProcessDataAnalysisByDataTypeName</b>: Tipe ait analiz verisini döner<br>" +
+                        "<b>GetProcessDataEventAnalysisLast100RecordsByDataTypeName</b>: Son 100 analiz olayı<br>" +
+                        "<b>ClearAllProcessDataAnalysis</b>: Proses data verisini sıfırlar",
+                    "ProductionConfirmationStateContext":
+                        "<b>ProductionSaveTime</b>: Üretim kayıt zamanı (geçici)<br>" +
+                        "<b>LastProductionSaveTime</b>: Son üretim fiş kayıt zamanı<br>" +
+                        "<b>LastProductionReceiptIds</b>: Son kaydedilen üretim fiş ref. listesi<br>" +
+                        "<b>IsProductionApproveEnabled</b>: Üretim kayıt operatör onayı aktif mi<br>" +
+                        "<b>IsShiftChiefRequiredToCompleteProduction</b>: Üretim tamamlamada vardiya amiri onayı gerekli mi<br>" +
+                        "<b>ProductionSaveDigitalOutputNo</b>: Üretim bildiriminde aktif edilecek output port no<br>" +
+                        "<b>ProductionStartTime</b>: Üretim başlangıç zamanı<br>" +
+                        "<b>IsUnapprovedProductionSaveEnabled</b>: Onaysız üretim fişi oluşturma aktif mi<br>" +
+                        "<b>LastProductionReceiptQuantity</b>: Son üretim fişinin miktarı<br>" +
+                        "<b>UserDefinedDataList</b>: Firma tanımlı alan girişleri",
+                    "ProductionPlanStateContext":
+                        "<b>PlanId</b>: Yüklü üretim planı ref.<br>" +
+                        "<b>PlanQuantity / PlanQuantity2 / PlanQuantity3</b>: Planlanan üretim miktarı (1./2./3. birim)<br>" +
+                        "<b>PlanTotalProductionQuantity</b>: Plana ait toplam üretim değeri<br>" +
+                        "<b>LeftAmountForPlanCompletion</b>: Plan tamamlanmasına kalan miktar<br>" +
+                        "<b>Stocks</b>: Üretilecek stoklar koleksiyonu<br>" +
+                        "<b>PlanProductCount</b>: Üretilecek ürün çeşit sayısı<br>" +
+                        "<b>JobOrderId</b>: İş emri ref. (stok indis bazlı)<br>" +
+                        "<b>PlanWorkStartDate</b>: Plan yüklenme zamanı<br>" +
+                        "<b>IsLoadingJobViaBarcodeEnabled</b>: Barkod ile iş yükleme aktif mi<br>" +
+                        "<b>IsCompletingProductionOnPlanAmountReachEnabled</b>: Plan miktarı tamamlanında otomatik üretim bitir<br>" +
+                        "<b>DigitalOutputToBeActivatedOnPlanCompletion</b>: Plan tamamlanmada aktif edilecek output<br>" +
+                        "<b>PlanNote / PlanDescription</b>: Plan not ve açıklama bilgisi",
+                    "ProductionToleranceStateContext":
+                        "<b>ProductionToleranceDueToNetWorkTime</b>: Net çalışma zamanı bazlı tolerans yüzdesi<br>" +
+                        "<b>MinProductionToleranceDueToSignalCounter</b>: Sinyal sayacı alt tolerans yüzdesi<br>" +
+                        "<b>MaxProductionToleranceDueToSignalCounter</b>: Sinyal sayacı üst tolerans yüzdesi<br>" +
+                        "<b>MinProductionToleranceDueToPlanAmount</b>: Plan miktarı alt tolerans yüzdesi<br>" +
+                        "<b>MaxProductionToleranceDueToPlanAmount</b>: Plan miktarı üst tolerans yüzdesi<br>" +
+                        "<b>IsMinProductionToleranceDueToPlanAmountEnabled</b>: Plan miktarı alt tolerans kontrolü aktif mi<br>" +
+                        "<b>MinProductionToleranceDueToStockUnit</b>: Stok birim dönüşüm alt tolerans yüzdesi<br>" +
+                        "<b>MaxProductionToleranceDueToStockUnit</b>: Stok birim dönüşüm üst tolerans yüzdesi",
+                    "QualityControlStateContext":
+                        "<b>DigitalOutputToBeActivatedOnQualityReceiptAccepted</b>: Kalite fişi kabul durumu output port no<br>" +
+                        "<b>DigitalOutputToBeActivatedOnQualityReceiptRejected</b>: Red durumu output port no<br>" +
+                        "<b>DigitalOutputToBeActivatedOnQualityReceiptWaiting</b>: Bekleme durumu output port no<br>" +
+                        "<b>InitialControlDefinitions</b>: İlk onay kalite kontrol tanımları (stok indis bazlı)<br>" +
+                        "<b>FrequentialControlDefinitions</b>: Frekansiyel kalite kontrol tanımları<br>" +
+                        "<b>FinalControlDefinitions</b>: Final kalite kontrol tanımları<br>" +
+                        "<b>TechnicalControlEvents</b>: Olay bazlı otomatik fiş oluşturma konfigürasyonları<br>" +
+                        "<b>IsQualityWebModuleEnabled</b>: Kalite web modülü aktif mi<br>" +
+                        "<b>IsDisplayingQualityReceiptMessageOnCreationEnabled</b>: Fiş oluşunca uyarı gösterimi",
+                    "RobotModelStateContext":
+                        "<b>IsRobotModelProductionEnabled</b>: Robot model tanımı var mı<br>" +
+                        "<b>IsRobotModelStockProductionEnabled</b>: Stok bazlı robot model üretim aktif mi<br>" +
+                        "<b>LastRobotModelNo</b>: Son iletilen robot model numarası<br>" +
+                        "<b>LastRobotModelStockIds</b>: Robot model alt tanım bazlı son stok ref. koleksiyonu<br>" +
+                        "<b>LastRobotModelMultipliers</b>: Robot model alt tanım bazlı son üretim çarpanları<br>" +
+                        "<b>IsLastRobotModelStoppageModel</b>: Son robot modeli bir duruş modeli mi",
+                    "ScaleStateContext":
+                        "<b>ScaleWeight</b>: Mevcut terazi ağırlık değeri<br>" +
+                        "<b>ScaleTareWeight</b>: Dara ağırlık değeri<br>" +
+                        "<b>ScaleData</b>: Teraziden gelen yorumlanmamış ham veri<br>" +
+                        "<b>ScaleDataPort</b>: Terazi veri aktarım port nesnesi",
+                    "SerieStateContext":
+                        "<b>CurrentProductBarcodeSerie</b>: Okutulan mevcut ürün seri bilgisi",
+                    "StoppageStateContext":
+                        "<b>CurrentStoppageId</b>: O an yaşanan duruş ref.<br>" +
+                        "<b>CurrentStoppage</b>: Mevcut duruş detayları<br>" +
+                        "<b>CurrentStoppageDuration</b>: Mevcut duruş süresi (sn)<br>" +
+                        "<b>StoppageStartTime</b>: Duruş başlangıç zamanı<br>" +
+                        "<b>TotalStoppageDuration</b>: Üretim süresindeki toplam duruş süresi (sn)<br>" +
+                        "<b>IsPlannedStoppage</b>: Planlı duruş mu ve planlı süre içinde mi<br>" +
+                        "<b>IsCurrentStoppageShiftBreakStoppage</b>: Mola duruşu mu<br>" +
+                        "<b>StatusChangeTime</b>: Son durum değişim zamanı<br>" +
+                        "<b>CurrentStatusDurationAsSeconds</b>: Mevcut durum süresi (sn)<br>" +
+                        "<b>UndefinedStoppageDigitalOutputNo</b>: Tanımsız duruş output port no<br>" +
+                        "<b>WorkingStateDigitalOutputNo</b>: Çalışıyor durumu output port no<br>" +
+                        "<b>IsAutoStartingUndefinedStoppageEnabled</b>: Otomatik tanımsız duruş başlatma",
+                    "WorkStationStateContext":
+                        "<b>WorkStationId / WorkStationNo / WorkStationName</b>: İstasyon ref./no/adı<br>" +
+                        "<b>WorkCenterId / WorkCenterNo / WorkCenterName</b>: Bağlı iş merkezi ref./no/adı<br>" +
+                        "<b>StationEquipmentId</b>: İstasyon tanımına atanan ekipman ref.<br>" +
+                        "<b>MachineType</b>: Makine tipi<br>" +
+                        "<b>RequiredEmployeeCount</b>: Üretim için minimum operatör sayısı<br>" +
+                        "<b>WorkStationCycleUnitType / WorkStationCycleUnitName</b>: Üretim devir birimi<br>" +
+                        "<b>PreviousWorkStationId / NextWorkStationId</b>: Önceki/sonraki istasyon ref.<br>" +
+                        "<b>WorkStationGroup</b>: İstasyon grup kodu<br>" +
+                        "<b>QuantityDisplayFormat</b>: Miktar gösterim formatı<br>" +
+                        "<b>IsHidingOnStationSelectionEnabled</b>: İstasyon seçiminde gizlensin mi"
+                };
+
+                $("#node-input-context").val(node.context || "AnalysisStateContext");
+
+                function updateContextDescription() {
+                    var ctx  = $("#node-input-context").val();
+                    var desc = contextDescriptions[ctx];
+                    if (desc) {
+                        $("#context-setter-desc").html(desc);
+                        $("#context-setter-desc-row").show();
+                    } else {
+                        $("#context-setter-desc-row").hide();
+                    }
+                }
+                $("#node-input-context").on("change", updateContextDescription);
+                updateContextDescription();
+
+                $("#node-input-workstationid").typedInput({
+                    default  : 'num',
+                    types    : ['num', 'msg'],
+                    typeField: "#node-input-workstationidType"
+                });
+                $("#node-input-workstationid").typedInput('type',  node.workstationidType || 'num');
+                $("#node-input-workstationid").typedInput('value', node.workstationid     || '0');
+
+                var eList = $('#node-input-items-container')
+                    .css('min-height', '200px')
+                    .css('min-width', '450px');
+
+                eList.editableList({
+                    addItem: function(container, i, opt) {
+                        var prop = opt;
+                        if (!prop.hasOwnProperty('n')) {
+                            prop = { n: '', v: '', vt: 'str' };
+                        }
+                        container.css({ overflow: 'hidden', whiteSpace: 'nowrap' });
+
+                        var row = $('<div/>').appendTo(container);
+
+                        var itemName = $('<input/>', {
+                            class      : 'node-input-item-name',
+                            type       : 'text',
+                            placeholder: 'Item Name'
+                        }).css('width', '38%').appendTo(row);
+
+                        $('<span/>', { style: 'display:inline-block; padding:0 6px; color:#888;' })
+                            .text(':')
+                            .appendTo(row);
+
+                        var itemValue = $('<input/>', {
+                            class: 'node-input-item-value',
+                            type : 'text'
+                        }).css('width', 'calc(60% - 20px)').appendTo(row)
+                          .typedInput({
+                            default: 'str',
+                            types  : ['str', 'num', 'bool', 'msg', 'flow', 'global', 'json', 'env', 'jsonata']
+                          });
+
+                        itemName.val(prop.n || '');
+                        itemValue.typedInput('type',  prop.vt || 'str');
+                        itemValue.typedInput('value', prop.v  || '');
+
+                        resizeDialog();
+                    },
+                    removable: true,
+                    sortable : true
+                });
+
+                for (var i = 0; i < node.items.length; i++) {
+                    eList.editableList('addItem', node.items[i]);
+                }
+            },
+
+            oneditsave: function() {
+                var items = [];
+                $('#node-input-items-container').editableList('items').each(function() {
+                    var n  = $(this).find('.node-input-item-name').val();
+                    var v  = $(this).find('.node-input-item-value').typedInput('value');
+                    var vt = $(this).find('.node-input-item-value').typedInput('type');
+                    if (n) {
+                        items.push({ n: n, v: v, vt: vt });
+                    }
+                });
+                this.items = items;
+                this.context          = $("#node-input-context").val();
+                this.workstationid    = $("#node-input-workstationid").typedInput('value');
+                this.workstationidType= $("#node-input-workstationid").typedInput('type');
+            },
+
+            oneditresize: resizeDialog
+        });
+    })();
+</script>

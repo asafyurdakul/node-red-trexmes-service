@@ -504,6 +504,7 @@ Context Getter, **Method Invoker ile aynı `msg.payload` array pattern'ini** kul
 // msg.payload (array)
 [
   {
+    "receiveddata" : { "WorkStationId": 5, "..." : "..." },
     "message"      : "ProductionPlanStateContext",
     "valuelabel"   : 5,
     "name"         : "PlanContext",
@@ -512,10 +513,11 @@ Context Getter, **Method Invoker ile aynı `msg.payload` array pattern'ini** kul
 ]
 ```
 
-Önceki node'dan gelen `msg.payload` bir nesne ise (dizi değil) önce `receiveddata` olarak saklanır, ardından diziye sarılır — bu sayede zincirdeki veriler kaybolmaz.
+Önceki node'dan gelen `msg.payload` bir nesne ise (dizi değil) önce `receiveddata` olarak saklanır, ardından diziye sarılır — bu sayede zincirdeki event verisi kaybolmaz.
 
 | Alan | Açıklama |
 |---|---|
+| `receiveddata` | Önceki node'dan taşınan orijinal payload (event verisi) |
 | `message` | Seçili StateContext adı |
 | `valuelabel` | Sorgulanacak istasyon ID'si |
 | `name` | Node adı — Method Returns eşleşmesi bu alanla yapılır |

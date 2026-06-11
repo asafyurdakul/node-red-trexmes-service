@@ -10,7 +10,8 @@ Paketin bu dokümantasyonda kapsamlı olarak ele alınan **güncel sürümüdür
 
 #### Temel Özellikler
 
-- **22 Node-RED node tipi** (7 event, 5 form, 3 işlem, 3 çekirdek, 1 AI, ve config node'ları)
+- **23 Node-RED node tipi** (7 event, 5 form, 5 işlem, 3 çekirdek, 1 AI, ve config node'ları)
+- **Context Setter** node'u eklendi — StateContext property'lerine senkron yazma
 - **Custom Form Designer** entegrasyonu (`customFormDesigner.exe`)
 - **Method Invoker** asenkron Promise.all işleme
 - **LLM Flow Builder** ile 7 LLM sağlayıcı preset'i (OpenAI, Anthropic, Gemini, DeepSeek, Mistral, Groq, trex Lens AI)

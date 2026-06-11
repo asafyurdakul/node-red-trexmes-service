@@ -35,12 +35,13 @@ Button Configurator: formname="", formainform=false, props=[{"p":"btnName","t":"
 Main Form Action  : event="", formainform=true
 Method Invoker    : name="", service="", method="", props=[{"p":"paramKey","d":"value","dt":"msg"|"str"|"num"}]
   SQL pattern → service="ISqlDataContext", method="GetDataTable", props=[{"p":"query","d":"query","dt":"msg"}]; always add a function node BEFORE to set msg.query=`SELECT ...`
-Context Getter    : name="", context="<ContextName>", workstationid=<id>, workstationidType="num"|"msg"  (name MUST match Method Returns methodname)
+Context Getter    : name="", context="<ContextName>", workstationid=<id>, workstationidType="num"|"msg"  (name MUST match Method Returns methodname; carries receiveddata from previous node)
+Context Setter    : name="", context="<ContextName>", workstationid=<id>, workstationidType="num"|"msg", items=[{n:"PropertyName", v:"value", vt:"str"|"num"|"bool"|"msg"|"flow"|"global"|"json"|"jsonata"}]  (synchronous — no Method Returns needed)
 Execute Process   : name="", processname=""
 Execute Script    : name="", script=""
 LLM Flow Builder  : (do not nest)
 
---- CONTEXT GETTER CONTEXTS ---
+--- CONTEXT GETTER / SETTER CONTEXTS ---
 AnalysisStateContext, BarcodeStateContext, CapacityStateContext, ConsumptionStateContext, CounterStateContext, DefectStateContext, EmployeeStateContext, EnergyStateContext, EquipmentStateContext, ForkliftStateContext, LabelStateContext, LineStateContext, MaintenanceStateContext, OpcStateContext, OperationStateContext, ProcessDataStateContext, ProductionConfirmationStateContext, ProductionPlanStateContext, ProductionToleranceStateContext, QualityControlStateContext, RobotModelStateContext, ScaleStateContext, SerieStateContext, StoppageStateContext, WorkStationStateContext
 
 --- EVENT PAYLOAD STRUCTURE ---
@@ -295,6 +296,11 @@ Pattern 5 - Context query:
   trex Subscriber + <EventNode> → Context Getter(context="ProductionPlanStateContext", name="Q1") → Responser
   + Method Returns(methodname="Q1") → function → Responser
   Result ALWAYS at msg.payload.Result.Result — context fields are properties of that object: msg.payload.Result.Result.PlanId
+
+Pattern 10 - Context set:
+  trex Subscriber + <EventNode> → [optional function] → Context Setter(context="CapacityStateContext", workstationid=<id>, items=[{n:"InstantSpeed",v:"120",vt:"num"}]) → Responser
+  No Method Returns needed — synchronous operation.
+  vt values: "str" (literal), "num" (Number(v)), "bool" (v==="true"), "msg" (read from msg), "flow", "global", "json", "jsonata"
 
 Pattern 6 - SQL query:
   inject → function(msg.query=`SELECT TOP 10 * FROM STOCK`) → Method Invoker(name="GetStock", service="ISqlDataContext", method="GetDataTable", props=[{p:"query",d:"query",dt:"msg"}]) → Responser

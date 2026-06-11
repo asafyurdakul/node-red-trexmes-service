@@ -16,7 +16,7 @@
   "node-red": {
     "nodes": {
       "trex-subscriber": "trex-subscriber.js",
-      "llm-builder": "llm-flow-builder.js",
+      "llm-builder" : "llm-flow-builder.js",
       "business-event-subscriber": "event-subscribers.js",
       "custom-form": "custom-form.js",
       "form-bind-controls": "form-bind-controls.js",
@@ -25,9 +25,10 @@
       "main-form-actions": "main-form-actions.js",
       "method-invoker": "method-invoker.js",
       "context-getter": "context-getter.js",
+      "context-setter": "context-setter.js",
       "execute-process": "execute-process.js",
       "execute-script": "execute-script.js",
-      "handle-setter": "handle-setter.js"
+      "handle-setter": "handle-setter.js"   
     }
   },
   "repository": {

@@ -51,7 +51,7 @@ hide:
 
 ## Nodlara Genel Bakış
 
-Paket toplam **22 Node-RED node tipi** kaydeder ve bunları **5 mantıksal gruba** ayırır:
+Paket toplam **23 Node-RED node tipi** kaydeder ve bunları **5 mantıksal gruba** ayırır:
 
 ### 🟢 Çekirdek Nodlar (2)
 Her trexMes projesinde mutlaka bulunması gereken altyapı node'ları.
@@ -80,10 +80,12 @@ Custom form tasarımı, kontrol bağlama ve özellik yönetimi.
 <span class="node-preview green-light">Button Configurator</span>
 <span class="node-preview green-light">Main Form Action</span>
 
-### ⚙️ İşlem Nodları (3)
-Method çağırma, process tetikleme ve script çalıştırma.
+### ⚙️ İşlem Nodları (5)
+Method çağırma, context okuma/yazma, process tetikleme ve script çalıştırma.
 
 <span class="node-preview green-light">Method Invoker</span>
+<span class="node-preview green-light">Context Getter</span>
+<span class="node-preview green-light">Context Setter</span>
 <span class="node-preview green-light">Execute Process</span>
 <span class="node-preview green-light">Execute Script</span>
 

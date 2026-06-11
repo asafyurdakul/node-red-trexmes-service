@@ -30,8 +30,9 @@ module.exports = function(RED) {
                     msg.payload = [];
                 }
         
-                const newmsg = 
+                const newmsg =
                     {
+                        "receiveddata" : receiveddata,
                         "message"      : node.context,
 						"valuelabel"   : wsid,
 						"name"         : node.name,

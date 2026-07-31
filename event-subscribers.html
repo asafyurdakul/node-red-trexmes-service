@@ -131,12 +131,12 @@
             <script type="text/javascript">
                 (function() {
                 var options = [
-                        "Click",
                         "Changed",
-                        "Load",
-                        "Tick",
+                        "Click",
                         "KeyEnter",
-                        "SelectionChanged",];
+                        "Load",
+                        "SelectionChanged",
+                        "Tick",];
                 var select = document.getElementById("node-input-eventname");
                 options.forEach(function(option) {
                     var opt = document.createElement("option");
@@ -6840,7 +6840,10 @@ function showPayloadTree(jsonStr, containerId) {
             var select = $("#node-input-event");
             select.empty();
 
-            businessEvents.forEach(function(item) {
+            var businessEventsSorted = businessEvents.slice().sort(function(a, b) {
+                return a.event.localeCompare(b.event);
+            });
+            businessEventsSorted.forEach(function(item) {
                 $("<option></option>")
                     .val(item.event)
                     .text(item.event)
@@ -6897,7 +6900,10 @@ function showPayloadTree(jsonStr, containerId) {
             var select = $("#node-input-event");
             select.empty();
 
-            systemEvents.forEach(function(item) {
+            var systemEventsSorted = systemEvents.slice().sort(function(a, b) {
+                return a.event.localeCompare(b.event);
+            });
+            systemEventsSorted.forEach(function(item) {
                 $("<option></option>")
                     .val(item.event)
                     .text(item.event)
@@ -6977,7 +6983,10 @@ function showPayloadTree(jsonStr, containerId) {
             var select = $("#node-input-event");
             select.empty();
 
-            communicationEvents.forEach(function(item) {
+            var communicationEventsSorted = communicationEvents.slice().sort(function(a, b) {
+                return a.event.localeCompare(b.event);
+            });
+            communicationEventsSorted.forEach(function(item) {
                 $("<option></option>")
                     .val(item.event)
                     .text(item.event)
@@ -7064,7 +7073,10 @@ function showPayloadTree(jsonStr, containerId) {
             var select = $("#node-input-event");
             select.empty();
 
-            displayEvents.forEach(function(item) {
+            var displayEventsSorted = displayEvents.slice().sort(function(a, b) {
+                return a.event.localeCompare(b.event);
+            });
+            displayEventsSorted.forEach(function(item) {
                 $("<option></option>")
                     .val(item.event)
                     .text(item.event)

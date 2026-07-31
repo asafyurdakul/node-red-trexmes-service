@@ -1185,7 +1185,10 @@
                     methodSelect.innerHTML = ""; // Önceki seçenekleri temizle
 
                     if (selectedIndex >= 0 && selectedIndex < methods.length) {
-                        methods[selectedIndex].forEach(function(method) {
+                        var sortedMethods = methods[selectedIndex].slice().sort(function(a, b) {
+                            return a.localeCompare(b);
+                        });
+                        sortedMethods.forEach(function(method) {
                             var opt = document.createElement("option");
                             opt.value = method;
                             opt.innerHTML = method;

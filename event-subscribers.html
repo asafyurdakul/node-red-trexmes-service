@@ -7047,12 +7047,13 @@ function showPayloadTree(jsonStr, containerId) {
         {event: "OnProductionApproveGridSet", description: "Üretim onay ekranı grid temel ayarları uygulanırken tetiklenir."},
         {event: "OnProductionApproveGridSetting", description: "Üretim onay ekranında iş emri - stok üretim detay gridine veri doldurulma anında tetiklenir."},
         {event: "OnProductionApproveOperatorDataGridSetting", description: "Üretim onay ekranında operatör veri gridi yapılandırılırken tetiklenir."},
+        {event: "OnProductionReceiptIntegrationResponseShowning", description: "Üretim fişi entegrasyon yanıtı gösterilirken tetiklenir."},
         {event: "OnScreenSaverShowning", description: "Ekran koruyucu gösterilme anında tetiklenir. IsHandled true ise ekran koruyucu gösterilmez."},
         {event: "OnShiftEventFormOpening", description: "Vardiya olay formu açılmadan önce tetiklenir."},
-        {event: "OnUIButtonConfigurationSet", description: "Arayüz buton konfigürasyonları ayarlanırken tetiklenir."},
-        {event: "OnWorkStationSelected", description: "İstasyon seçim işlemi gerçekleştirildiğinde tetiklenir."},
         {event: "OnStoppageDescriptionFormOpening", description: "Duruş açıklama formu açılmadan önce tetiklenir. IsHandled true ise alternatif açıklama ekranı kullanılabilir."},
-        {event: "OnStockEquipmentMatchDisplaying", description: "Stok-ekipman eşleşme bilgisi gösterilirken tetiklenir."}
+        {event: "OnStockEquipmentMatchDisplaying", description: "Stok-ekipman eşleşme bilgisi gösterilirken tetiklenir."},
+        {event: "OnUIButtonConfigurationSet", description: "Arayüz buton konfigürasyonları ayarlanırken tetiklenir."},
+        {event: "OnWorkStationSelected", description: "İstasyon seçim işlemi gerçekleştirildiğinde tetiklenir."}
     ];
 
     RED.nodes.registerType('Display Events',{

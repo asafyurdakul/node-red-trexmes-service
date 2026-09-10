@@ -1437,6 +1437,26 @@ const trexEventPayloads = {
     "ProducibleQuantity": 0.0
   }
 }`,
+    "OnConsumptionConfirming": `{
+  "WorkStationId": 0,
+  "PlanId": 0,
+  "Materials": [],
+  "IsHandled": false
+}`,
+    "OnConsumptionMaterialEdited": `{
+  "WorkStationId": 0,
+  "PlanId": 0,
+  "IsHandled": false,
+  "ActualConsumption": 0.0,
+  "Material": {
+    "JobOrderId": 0,
+    "StockId": 0,
+    "StockName": "",
+    "StockNo": "",
+    "Quantity": 0.0,
+    "QuantitySum": 0.0
+  }
+}`,
     "OnConsumedLotEntriesDeleting": `{
   "WorkStationId": 0
 }`,
@@ -5588,6 +5608,10 @@ const trexEventPayloads = {
   "RotationSpeed": 0.0,
   "WorkStationId": 0
 }`,
+    "OnProductionReceiptIntegrationResponseShowning": `{
+  "ReceiptId":0,
+  "Response":""
+}`,
     "OnScreenSaverShowning": `{
   "IsHandled": false,
   "WorkStationStatusEntry": {
@@ -7022,6 +7046,8 @@ function showPayloadTree(jsonStr, containerId) {
     const displayEvents = [
         {event: "OnBarcodeTextBoxSetting", description: "Ana ekranda barkod metin kutusu ayarları yapılandırılırken tetiklenir."},
         {event: "OnCommandKeyProcessing", description: "Arayüzde komut tuşu girdisi işlenirken tetiklenir."},
+        {event: "OnConsumptionConfirming", description: "Sarf malzeme onayı yapılırken tetiklenir."},
+        {event: "OnConsumptionMaterialEdited", description: "Sarf malzeme düzenleme işlemi sırasında tetiklenir."},
         {event: "OnDefectEntryOperatorConfirmationFailed", description: "Iskarta girişinde ek operatör onayı istendiği ve onay alınamadığı durumda tetiklenir."},
         {event: "OnDefectSelected", description: "Iskarta buton seçim işlemi gerçekleştirildiğinde ve miktar giriş ekranı gösterilmeden hemen önce tetiklenir. IsHandled true ise alternatif ıskarta ekranı kullanılabilir."},
         {event: "OnEventDetailSelectionsListing", description: "Olay detay seçimleri listelenmeden hemen önce tetiklenir."},

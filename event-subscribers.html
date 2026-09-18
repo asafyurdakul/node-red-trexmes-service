@@ -6277,6 +6277,14 @@ const trexEventPayloads = {
     "OnSubProductReceiptsCreating": `{
   "WorkStationId": 0
 }`,
+    "OnTeamChanging": `{  
+    "WorkStationId": 0,
+    "TeamId": 0,
+    "Time": null,
+    "TimeWithMilliSeconds": null,
+    "Source": 0
+  }
+}`,
     "OnTeamChanged": `{
   "Summary": {
     "Employees": [
@@ -6697,6 +6705,7 @@ function showPayloadTree(jsonStr, containerId) {
         {event: "OnDocumentNotFound", description: "Belge bulunamadığında tetiklenir."},
 
         {event: "OnTeamChanged", description: "Takım değiştiğinde tetiklenir."},
+        {event: "OnTeamChanging", description: "Takım değişirken tetiklenir."},
 
         {event: "OnForkliftOrderCreated", description: "Forklift siparişi oluşturulduğunda tetiklenir."},
         {event: "OnForkliftFetchOrderCreating", description: "Forklift alma siparişi oluşturulurken tetiklenir."},

@@ -5604,6 +5604,13 @@ const trexEventPayloads = {
   "QualityReceiptId": 0,
   "WorkStationId": 0
 }`,
+    "OnRelatedStationStoppageSynchronizing": `{
+  "IsHandled": false,
+  "IsPropagationStopped": false,
+  "NewStoppageId": 0,
+  "WorkStationId": 0,
+  "ChangingStoppageId" : 0  
+}`,
     "OnRotationSpeedCalculating": `{
   "RotationSpeed": 0.0,
   "WorkStationId": 0
@@ -6828,6 +6835,8 @@ function showPayloadTree(jsonStr, containerId) {
         {event: "OnSignalProductionConfirming", description: "Sinyal ile üretim onayı başlamadan önce tetiklenir."},
 
         {event: "OnQualityReceiptCreated", description: "Kalite fişi oluşturulduğunda tetiklenir."},
+
+        {event: "OnRelatedStationStoppageSynchronizing", description:"İlgili istasyon duruşu senkronize edilirken tetiklenir."},
 
         {event: "OnShiftChanged", description: "Vardiya değiştiğinde tetiklenir."},
         {event: "OnShiftChanging", description: "Vardiya değişimi sırasında tetiklenir."},
